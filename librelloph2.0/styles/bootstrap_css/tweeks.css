@@ -140,6 +140,16 @@ Article page
 	padding-top:20px;
 	}
 	
+/*
+TOC
+*/
+
+.thumbnail > a,.thumbnail > .caption > a  {
+    display: block;
+    text-align: center;
+}
+
+	
 	
 	/*
 	Search

@@ -66,25 +66,21 @@
 	{/if*}
 {if $coverPagePath}
 <div class='row'>
+
 <div class="col-sm-6 col-md-3">
-<div class="thumbnail">
-		     <img src="{$coverPagePath|escape}{$issue->getFileName($locale)|escape}"{if $coverPageAltText != ''} alt="{$coverPageAltText|escape}"{else} alt="{translate key="issue.coverPage.altText"}"{/if}/>
-		      <div class="caption">
-		        <strong><h5><a href="{url op="view" path=$issue->getBestIssueId($currentJournal)}">
-		
-		{$issue->getIssueIdentification(false,false,false,true)|escape}</a></h5></strong>
-		       
-		        <p>{$issue->getLocalizedDescription()|strip_unsafe_html|nl2br}</p>
-		        <div>
-		        <p>
+
+<div class="panel panel-success">
+<div class="panel-heading">Download Issue as:</div>
+  <div class="panel-body">
 		        <a class="btn btn-default btn-xs btn-block" href="{url op='viewXML' path=$issue->getBestIssueId($currentJournal)}"><span class="glyphicon glyphicon-download"></span> Abstracts (XML)</a><br/>
-		        <a class="btn btn-default btn-xs btn-block" href="{url op='downloadPDF' path=$issue->getBestIssueId($currentJournal)}"><span class="glyphicon glyphicon-download"></span> Complete Issue (PDF;  {$issue->getNiceFileSize($issue->getBestIssueId($currentJournal))})</a></p>
-		      	</div>
-		      </div>
-		      </div>
+		        <a class="btn btn-default btn-xs btn-block" href="{url op='downloadPDF' path=$issue->getBestIssueId($currentJournal)}"><span class="glyphicon glyphicon-download"></span> Complete Issue (PDF;  {$issue->getNiceFileSize($issue->getBestIssueId($currentJournal))})</a>
+  </div>
 </div>
+
 </div>
-		  <div style='padding-top:25px;padding-bottom:15px;'>
+
+</div>
+		  <div>
 
 		  <h4>Papers published:</h4>
 		  <div id='journal_toc' style='padding-top:15px;'>

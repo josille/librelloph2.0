@@ -35,14 +35,16 @@
 		
 		  <div class="col-sm-6 col-md-3">
 		    <div class="thumbnail">
-		    
+		    <a href="{url op="view" path=$issue->getBestIssueId($currentJournal)}">
 		     <img  class="img-rounded" src="{$coverPagePath|escape}{$issue->getFileName($locale)|escape}"{if $issue->getCoverPageAltText($locale) != ''} alt="{$issue->getCoverPageAltText($locale)|escape}"{else} alt="{translate key="issue.coverPage.altText"}"{/if}/>
-		      
+		      </a>
 		    
 		      <div class="caption">
-		        <strong><h5><a href="{url op="view" path=$issue->getBestIssueId($currentJournal)}">
-		
-		{$issue->getIssueIdentification(false,false,false,true)|escape}</a></h5></strong>
+		        <a href="{url op="view" path=$issue->getBestIssueId($currentJournal)}">
+		<strong><h5>
+		{$issue->getIssueIdentification(false,false,false,true)|escape}
+		</h5></strong>
+		</a>
 		       
 		        <p>{$issue->getLocalizedDescription()|strip_unsafe_html|nl2br}</p>
 		        <div>
@@ -59,13 +61,16 @@
 	
 		  <div class="col-sm-6 col-md-3">
 		    <div class="thumbnail">
+		    <a href="{url op="view" path=$issue->getBestIssueId($currentJournal)}">
 		     <img  class="img-rounded" src="{$coverPagePath|escape}/cover_issue_current_en_US.jpg" alt='Current'/>
-		     
+		     </a>
 		   
 		      <div class="caption">
-		        <strong><h5><a href="{url op="view" path=$issue->getBestIssueId($currentJournal)}">
-		
-		{$issue->getIssueIdentification(false,false,false,true)|escape}</a></h5></strong>
+		        <a href="{url op="view" path=$issue->getBestIssueId($currentJournal)}">
+		<strong><h5>
+		{$issue->getIssueIdentification(false,false,false,true)|escape}
+		</h5></strong>
+		</a>
 		       
 		        <p>{$issue->getLocalizedDescription()|strip_unsafe_html|nl2br}</p>
 		        <div>
@@ -105,10 +110,15 @@
 		<div class="col-sm-6 col-md-3">
 		
 		 <div class="thumbnail">
+		 <a href="{url op="view" path=issueSI->getBestIssueId($currentJournal)}">
 		    <img class="img-rounded" src="{$coverPagePath|escape}{$issue->getFileName($locale)|escape}"{if $issue->getCoverPageAltText($locale) != ''} alt="{$issue->getCoverPageAltText($locale)|escape}"{else} alt="{translate key="issue.coverPage.altText"}"{/if}/>
-		     
+		     </a>
 		      <div class="caption">
-		        <strong><h5><a href="{url op="view" path=issueSI->getBestIssueId($currentJournal)}">{$issue->getIssueIdentification()|escape}</a></h5></strong>
+		        <a href="{url op="view" path=issueSI->getBestIssueId($currentJournal)}">
+		        <strong><h5>
+		        {$issue->getIssueIdentification()|escape}
+		        </h5></strong>
+		        </a>
 		       
 		        <p>{$issueSI->getLocalizedCoverPageDescription()|strip_unsafe_html|nl2br}</p>
 		        <div>
@@ -122,10 +132,15 @@
 	<div class="col-sm-6 col-md-3">
 	
 	<div class="thumbnail">
+	<a href="{url op="view" path=$issueSI->getBestIssueId($currentJournal)}">
 		<img  class="img-rounded" src="{$coverPagePath|escape}/cover_issue_current_en_US.jpg" alt='Current'/>
-		     
+		     </a>
 		      <div class="caption">
-		        <strong><h5><a href="{url op="view" path=$issueSI->getBestIssueId($currentJournal)}">{$issueSI->getIssueIdentification()|escape}</a></h5></strong>
+		        <a href="{url op="view" path=$issueSI->getBestIssueId($currentJournal)}">
+		        <strong><h5>
+		        {$issueSI->getIssueIdentification()|escape}
+		        </h5></strong>
+		        </a>
 		       
 		        <p>{$issueSI->getLocalizedDescription()|strip_unsafe_html|nl2br}</p>
 		        <div>
