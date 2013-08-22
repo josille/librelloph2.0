@@ -1,0 +1,10 @@
+
+#RewriteEngine on
+
+#<IfModule mod_rewrite.c>
+	
+	RewriteEngine On
+	RewriteRule ^challengesinsustainability(/)?$ /ojs/index.php/challengesinsustainability [L]
+	
+#</IfModule>
+

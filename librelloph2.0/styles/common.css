@@ -1,0 +1,666 @@
+/**
+ * common.css
+ *
+ * Copyright (c) 2003-2012 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * Site-wide shared stylesheet.
+ *
+ * $Id$
+ */
+
+/*
+ * Notifications
+ * FIXME: (Re)move once OJS styles are consolidated with new styles and themes
+ */
+@import url("../lib/pkp/styles/themes/default/pnotify.css");
+
+.ui-pnotify-title {
+	font-size: 0.8em;
+}
+
+.ui-pnotify-text {
+	font-size: 0.6em;
+}
+
+.ui-pnotify-history-container .ui-pnotify-history-header {
+	font-size: 0.8em;
+}
+
+/**
+ * Common HTML elements
+ */
+
+a:link {
+	color: #375;
+	text-decoration:none;
+	/*text-transform:lowercase;
+	text-transform:capitalize;*/
+}
+
+/*
+	Removes the blue boder form the link images
+*/
+a img{
+	border-style:none;
+}
+
+a:active {
+	color: #253;
+}
+
+a:visited {
+	color: #375;
+}
+
+a:hover {
+	color: #253;
+	background: #CDC;
+}
+
+
+
+/**
+ * Main layout elements
+ */
+
+#header {
+	background-color: #FFFFFF;
+	background-image:url(../public/site/headerbg2.png);
+	background-repeat:repeat-x;
+	height:200px;
+	/*height:215px;*/
+	/*500*/
+}
+
+#footer {
+	background-color: #ABA;
+}
+
+#main {
+	/*width: 80%;*/
+	width:60%;
+	margin: 0 auto;
+}
+
+
+#mainHome {
+	/*width: 80%;*/
+	width:68%;
+	margin: 0 auto;
+}
+
+
+
+#bodyMainArticleAdvantage{
+border-style:dotted;
+border-color:#CC9966;
+}
+
+#bodyMainArticleAdvantageDiv{
+border-style:dotted;
+border-color:#CC9966;
+margin-right:10px;
+margin-left:10px;
+}
+
+/**
+ * Access icons and key
+ */
+#accessKey {
+	margin-bottom: 2em;
+}
+
+#accessKey img {
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+
+#content img.accessLogo {
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+
+
+/**
+ * Navigation bar
+ */
+
+#navbar a {
+	font-size: 0.65em;
+	letter-spacing: 0.05em;
+}
+
+
+/**
+ * Announcements
+ */
+
+#announcementsHome {
+	width: 100%;
+	margin: 2em 0 2em 0;
+}
+
+#announcementsHome h3 {
+	text-align: center;
+}
+
+#announcements {
+	width: 100%;
+}
+
+#announcements h3 {
+	text-align: center;
+}
+
+table.announcements {
+	width: 100%;
+}
+
+table.announcements td {
+	padding: 0.25em 0.5em 0.25em 0.5em;
+}
+
+table.announcements td.nodata {
+	text-align: center;
+	font-style: italic;
+}
+
+table.announcements td.headseparator {
+	border-top: 1px dotted #000;
+	font-size: 0.1em;
+	line-height: 1%;
+}
+
+table.announcements td.endseparator {
+	border-top: 1px dotted #000;
+	font-size: 0.25em;
+	line-height: 10%;
+}
+
+table.announcements td.separator {
+	border-top: 1px dotted #DDDDD0;
+	font-size: 0.1em;
+	line-height: 1%;
+}
+
+table.announcements tr.intro {
+}
+
+table.announcements td.intro {
+}
+
+table.announcements tr.title {
+	vertical-align: top;
+}
+
+table.announcements td.title {
+	width: 85%;
+}
+
+table.announcements td.title h4 {
+}
+
+table.announcements tr.description {
+	vertical-align: top;
+}
+
+table.announcements td.description {
+	width: 85%;
+}
+
+table.announcements tr.details {
+	vertical-align: bottom;
+}
+
+table.announcements td.posted {
+	padding-top: 1em;
+	font-style: italic;
+}
+
+table.announcements td.more {
+	width: 15%;
+	text-align: right;
+}
+
+table.announcementsMore {
+	width: 100%;
+}
+
+table.announcementsMore td {
+	padding-top: 1.5em;
+	text-align: right;
+}
+
+
+/**
+ * Table of contents
+ */
+ 
+ /*
+ * article abstract view
+ */
+ table.tocArticleMain td.tocAbstract .article_abs_view{
+display:none;
+}
+
+table.tocArticle td.tocAbstract .article_abs_view{
+display:none;
+width:95%;
+}
+ 
+.article_view_more{
+display: inline-block;
+height: 30px;
+line-height: 15px;
+text-align: left;
+width: 60px;
+color: #337755;
+cursor:pointer;
+	}
+
+
+.article_view_more:hover{
+	color: #253;
+	background: #CDC;
+	}
+
+ 
+/*
+Journal body information
+*/
+#journal_desc.view{
+/*overflow:hidden;
+text-overflow:ellipsis;
+height:150px;*/
+}
+
+#journal_view_more{
+	cursor:pointer;
+	padding-top:15px;
+	color: #337755;
+	width:250px;
+	font-weight:bold;
+	}
+	
+#journal_view_more span:hover {
+    background: none repeat scroll 0 0 #CCDDCC;
+}
+
+h4.tocSectionTitle {
+}
+
+table.tocArticle {
+	width: 100%;
+	margin-bottom:25px;
+	margin-left:20px;
+}
+
+table.tocArticleMain {
+	width: 100%;
+	margin-bottom:25px;
+}
+
+table.tocArticle td.tocTitle,table.tocArticleMain td.tocTitle {
+	width: 70%;
+	height: 100%;
+	vertical-align: top;
+}
+
+table.tocArticle td.tocGalleys,table.tocArticleMain td.tocGalleys {
+	width: 20%;
+	text-align: left;
+	padding-left: 10px;
+}
+
+table.tocArticle td.tocAuthors,table.tocArticleMain td.tocAuthors {
+	padding-left: 30px;
+	font-style: italic;
+	vertical-align: top;
+}
+
+table.tocArticle td.tocSocial,table.tocArticleMain td.tocSocial {
+	text-align: right;
+}
+
+table.tocArticle td.tocAffiliations,table.tocArticleMain td.tocAffiliations {
+	padding-top:10px;
+	padding-left: 30px;
+	font-style: italic;
+	vertical-align: top;
+}
+
+table.tocArticle td.tocPages,table.tocArticleMain td.tocPages {
+	
+	vertical-align: top;
+	text-align: left;
+	width: 10%;
+	padding-left:10px;
+}
+
+.social{
+	text-align: right;
+	display:inline-block;
+	}
+	
+.twitter_div{
+	padding-top:5px;
+	padding-left:15px;
+	}	
+.linkedin_div{
+	padding-top:10px;
+	padding-left:15px;
+	}
+.fb_div{
+	padding-top:10px;
+	padding-left:15px;
+	padding-bottom:10px;
+	}
+
+table.tocArticleMain td.tocAbstract{
+	padding-top:20px;
+	padding-left: 20px;
+	/*font-style: italic;*/
+	vertical-align: top;
+}
+
+table.tocArticle td.tocAbstract{
+	padding-top:20px;
+	/*padding-left: 20px;*/
+	/*font-style: italic;*/
+	vertical-align: top;
+}
+
+table.tocArticle td.tocAbstract a,table.tocArticleMain td.tocAbstract a{
+	text-decoration:  none;
+}
+
+.tocArticleCoverImage img {
+	border: 0;
+	float: left;
+	width: 100px;
+	margin: 0 1em 1em 0;
+}
+
+
+/**
+ * Homepage image
+ */
+
+#homepageImage img {
+	display: block;
+	margin: 0 auto;
+	border: 0;
+	text-align: center;
+}
+
+.homepageImage img {
+	margin: 0 auto;
+	border: 0;
+	float: left;
+	width: 100px;
+	margin: 1em 1em 1em 0;
+	text-align: center;
+}
+
+
+/**
+ * Issue cover image
+ */
+
+#issueCoverImage img {
+	display: block;
+	border: 0;
+}
+
+.issueCoverImage img {
+	border: 0;
+	float: left;
+	width: 100px;
+	margin: 1em 1em 1em 0;
+}
+
+#issueCoverImage a:link, .issueCoverImage a:link {
+}
+
+#issueCoverImage a:active, .issueCoverImage a:active {
+}
+
+#issueCoverImage a:visited, .issueCoverImage a:visited {
+}
+
+#issueCoverImage a:hover, .issueCoverImage a:hover {
+}
+
+
+/**
+ * Editorial Team Lists
+ */
+
+ol.editorialTeam {
+}
+
+ol.editorialTeam li {
+	list-style: none;
+}
+
+ol.editorialTeam, ol.editorialTeam li {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+ol.editorialTeam li a:link{
+	text-transform:none;
+}
+
+
+/**
+ * Additional text styles
+ */
+
+pre {
+	background-color: #F0F0E8;
+	color: #000;
+	font-size: 1.25em;
+}
+
+/**
+ * Table styles
+ */
+
+table.listing tr.highlight {
+	background: yellow;
+}
+
+table.listing tr.fastTracked {
+	background-color: #ABA;
+}
+
+table.listing tr.data td {
+	border-top: 1px dotted #DDDDD0;
+	border-bottom: 1px dotted #DDDDD0;
+}
+
+table.listing tr.data td.drag {
+	cursor: move;
+}
+
+
+/**
+ * Other organizational elements
+ */
+
+div.progressbar {
+	background-image: url(../templates/images/progbg.gif);
+	background-repeat: no-repeat;
+	height: 27px;
+	width: 505px;
+	z-index:1;
+}
+
+td.notificationContent {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+td.notificationFunction {
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: right;
+}
+
+.throbber {
+	display: none;
+	background: url(../lib/pkp/templates/images/throbber.gif) no-repeat;
+	width: 25px;
+	height: 25px;
+	margin-left: 50%;
+	margin-top: 5%;
+}
+
+/* Font Sizer */
+
+.smallFont {
+	outline: none; /*for making it look nice in FF */
+	background: url(../lib/pkp/templates/images/icons/font-down.png);
+	text-indent: -9999px;
+	display: block;
+	float: left;
+	width: 20px;
+	height: 23px;
+	margin-right: 4px;
+	margin-left: 8px;
+}
+
+a.smallFont:hover {
+	background: url(../lib/pkp/templates/images/icons/font-down.png);
+	color: none;
+}
+
+.defaultFont {
+	/*if you want to hide the default font button, use display:none */
+	background: url(../lib/pkp/templates/images/icons/font-default.png);
+	text-indent: -9999px;
+	outline: none;
+	display: block;
+	float: left;
+	width: 20px;
+	height: 23px;
+	margin-right: 4px;
+
+}
+
+a.defaultFont:hover {
+	background: url(../lib/pkp/templates/images/icons/font-default.png);
+	color: none;
+}
+
+.largeFont {
+	background: url(../lib/pkp/templates/images/icons/font-up.png);
+	outline: none;
+	text-indent: -9999px;
+	display: block;
+	float: left;
+	width: 20px;
+	height: 23px;
+}
+
+a.largeFont:hover {
+	background: url(../lib/pkp/templates/images/icons/font-up.png);
+	color: none;
+}
+
+
+
+/* @group Tag-it */
+
+ul.tagit {
+	padding: 1px 5px;
+	overflow: auto;
+    margin-left: inherit; /* usually we don't want the regular ul margins. */
+    margin-right: inherit;
+}
+
+.hidden {
+	display: none;
+}
+
+ul.tagit li {
+	display: block;
+	float: left;
+	margin: 2px 5px 2px 0;
+}
+
+ul.tagit li.tagit-choice {
+	padding: .2em 18px .2em .5em;
+    position: relative;
+    line-height: inherit;
+}
+ul.tagit li.tagit-new {
+	padding: .25em 4px .25em 0;
+}
+
+ul.tagit li.tagit-choice a.tagit-label {
+	cursor: pointer;
+	text-decoration: none;
+}
+ul.tagit li.tagit-choice .tagit-close {
+	cursor: pointer;
+    position: absolute;
+    right: .1em;
+    top: 50%;
+    margin-top: -8px;
+}
+
+/* used for some custom themes that don't need image icons */
+ul.tagit li.tagit-choice .tagit-close .text-icon {
+    display: none;
+}
+.ui-autocomplete .ui-menu-item a {
+	font-size: .6em;
+}
+ul.tagit li.tagit-choice input {
+	display: block;
+	float: left;
+	margin: 2px 5px 2px 0;
+}
+ul.tagit input[type="text"] {
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:         border-box;
+
+    border: none;
+	margin: 0;
+	padding: 0;
+	width: inherit;
+	background-color: inherit;
+    outline: none;
+}
+
+
+/* @end */
+
+
+.submitReviewRecomendation {
+	background-image : url("../lib/pkp/templates/images/icons/submitreview.gif");
+	width : 237px;
+	height :30px;
+	border : none;
+	color : transparent;
+	cursor:pointer;
+}
+
+
+.submitReviewRecomendationdisabled {
+	background-image : url("../lib/pkp/templates/images/icons/submitreview_disabled.gif");
+	width : 237px;
+	height :30px;
+	border : none;
+	color : transparent;
+}
+
+.reviewFormDialog{
+	font-size:12px;
+	}
