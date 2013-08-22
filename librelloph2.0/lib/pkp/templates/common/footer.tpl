@@ -7,11 +7,11 @@
  * Common site footer.
  *
  *}
+ <br /><br />
 {if $displayCreativeCommons}
 {translate key="common.ccLicense"}
 {/if}
 {if $pageFooter}
-<br /><br />
 {$pageFooter}
 {/if}
 {call_hook name="Templates::Common::Footer::PageFooter"}

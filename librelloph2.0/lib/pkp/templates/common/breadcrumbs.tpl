@@ -7,12 +7,14 @@
  * Breadcrumbs
  *
  *}
-<div id="breadcrumb">
-	<a href="{url context=$homeContext page="index"}">{translate key="navigation.home"}</a> &gt;
-	{foreach from=$pageHierarchy item=hierarchyLink}
-		<a href="{$hierarchyLink[0]|escape}" class="hierarchyLink">{if not $hierarchyLink[2]}{translate key=$hierarchyLink[1]}{else}{$hierarchyLink[1]|escape}{/if}</a> &gt;
-	{/foreach}
-	{* Disable linking to the current page if the request is a post (form) request. Otherwise following the link will lead to a form submission error. *}
-	{if $requiresFormRequest}<span class="current">{else}<a href="{$currentUrl|escape}" class="current">{/if}{$pageCrumbTitleTranslated}{if $requiresFormRequest}</span>{else}</a>{/if}
-</div>
 
+<ol class="breadcrumb margin_top_10">
+  <li><a href="{url context=$homeContext page="index"}">{translate key="navigation.home"}</a></li>
+  
+  {foreach from=$pageHierarchy item=hierarchyLink}
+	<li><a href="{$hierarchyLink[0]|escape}" class="hierarchyLink">{if not $hierarchyLink[2]}{translate key=$hierarchyLink[1]}{else}{$hierarchyLink[1]|escape}{/if}</a></li>
+	{/foreach}
+  
+  <li class="active">{$pageCrumbTitleTranslated}</li>
+  
+</ol>

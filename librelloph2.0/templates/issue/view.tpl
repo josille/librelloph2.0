@@ -34,7 +34,7 @@
 	{if $issue->getLocalizedCoverPageDescription()}
 		<div id="issueCoverDescription" style='padding-bottom:20px;'>{$issue->getLocalizedCoverPageDescription()|strip_unsafe_html|nl2br}</div>
 	{/if}
-	{if $coverPagePath}
+	{*if $coverPagePath}
 	<table border='0' style='width:100%'>
 		<tr>
 		<td style='width:150px;'>
@@ -63,7 +63,35 @@
 			</td>
 		</tr>
 		</table>
-	{/if}
+	{/if*}
+{if $coverPagePath}
+<div class='row'>
+<div class="col-sm-6 col-md-3">
+<div class="thumbnail">
+		     <img src="{$coverPagePath|escape}{$issue->getFileName($locale)|escape}"{if $coverPageAltText != ''} alt="{$coverPageAltText|escape}"{else} alt="{translate key="issue.coverPage.altText"}"{/if}/>
+		      <div class="caption">
+		        <strong><h5><a href="{url op="view" path=$issue->getBestIssueId($currentJournal)}">
+		
+		{$issue->getIssueIdentification(false,false,false,true)|escape}</a></h5></strong>
+		       
+		        <p>{$issue->getLocalizedDescription()|strip_unsafe_html|nl2br}</p>
+		        <div>
+		        <p>
+		        <a class="btn btn-default btn-xs btn-block" href="{url op='viewXML' path=$issue->getBestIssueId($currentJournal)}"><span class="glyphicon glyphicon-download"></span> Abstracts (XML)</a><br/>
+		        <a class="btn btn-default btn-xs btn-block" href="{url op='downloadPDF' path=$issue->getBestIssueId($currentJournal)}"><span class="glyphicon glyphicon-download"></span> Complete Issue (PDF;  {$issue->getNiceFileSize($issue->getBestIssueId($currentJournal))})</a></p>
+		      	</div>
+		      </div>
+		      </div>
+</div>
+</div>
+		  <div style='padding-top:25px;padding-bottom:15px;'>
+
+		  <h4>Papers published:</h4>
+		  <div id='journal_toc' style='padding-top:15px;'>
+		      {include file="issue/issue.tpl"}
+		      </div>
+		  </div>
+{/if}
 {elseif $issue}
 	<!--div id="issueDescription">{$issue->getLocalizedDescription()|strip_unsafe_html|nl2br}</div-->
 	<!--  h3>{translate key="issue.toc"}</h3>-->

@@ -41,29 +41,8 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 
 <div class="col-2 col-sm-2 col-lg-2">
 
-<div class="btn-group margin_bottom_10">
-<button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-download"></span> Download</button>
-<button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown">
-<span class="caret"></span>&nbsp;</button>
-<ul class="dropdown-menu" role="menu">
-	{foreach from=$article->getGalleys() item=galley name=galleyList} {if
-	$galley->isPdfGalley()}
-	<li><a href="{url page='article' op='download'
-		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
-	class="file">{$galley->getGalleyLabel()|escape}</a></li>
-
-	<li><a href="{url page='article' op='viewXML' path=$articlePath}/xml" class="file">XML</a></li>
-	{else}
-	<li><a href="{url page='article' op='view'
-		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
-	class="file" target="blank">{$galley->getGalleyLabel()|escape}</a></li>
-	{/if} {/foreach}
-</ul>
-</div>
 <div class="btn-group">
-<button type="button" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-send"></span> Share</button>
-<button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown">
-<span class="caret"></span>&nbsp;</button>
+<button type="button" class="btn btn-link btn-xs dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-send"></span> Share ths article <span class="caret"></span></button>
 
 <ul class="dropdown-menu" role="menu">
 	<li>
@@ -95,12 +74,43 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 <div class="row padding_left_15">
 <div class="col-6 col-sm-6 col-lg-8">
 {$article->getAuthorAffiliationHTML()}</div>
-<div class="col-4 col-sm-6 col-lg-12">
+<div class="col-4 col-sm-6 col-lg-11">
 
-<a class="margin_top_10 btn btn-success btn-xs accordion-toggle"  data-toggle="collapse"
+<div class="row">
+
+<div class="col-2 col-sm-2 col-lg-2">
+<a class="margin_top_10 btn btn-success btn-sm accordion-toggle"  data-toggle="collapse"
 	data-parent="#accordion_{$article->getId()}"
 	href="#collapse_{$article->getId()}"><span class="glyphicon glyphicon-tags"></span> View abstract</a>
 	
+</div>
+<div class="col-4 col-sm-6 col-lg-3">
+
+
+	<div class="btn-group margin_top_10">
+<button type="button" class="btn btn-sm btn-info dropdown-toggle"" data-toggle="dropdown"><span class="glyphicon glyphicon-download"></span> Download <span class="caret"></span></button>
+	
+  <ul class="dropdown-menu" role="menu">
+				{foreach from=$article->getGalleys() item=galley name=galleyList} {if
+	$galley->isPdfGalley()}
+	<li><a href="{url page='article' op='download'
+		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
+	class="file">{$galley->getGalleyLabel()|escape}</a></li>
+
+	<li><a href="{url page='article' op='viewXML' path=$articlePath}/xml" class="file">XML</a></li>
+	{else}
+	<li><a href="{url page='article' op='view'
+		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
+	class="file" target="blank">{$galley->getGalleyLabel()|escape}</a></li>
+	{/if} {/foreach}
+				</ul>
+	</div>
+
+</div>
+
+
+<div class="col-4 col-sm-6 col-lg-12 margin_top_10">
+
 
 <div class="accordion" id="accordion_{$article->getId()}">
 <div class="accordion-group accordion-group_noborders">
@@ -111,8 +121,11 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 {/if}</div>
 </div>
 </div>
+</div>
 
 </div>
+</div>
+
 </div>
 </div>
 

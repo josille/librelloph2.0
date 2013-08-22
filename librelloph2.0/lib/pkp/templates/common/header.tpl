@@ -157,18 +157,10 @@
 
 
 <div id="main">
-<!--
-{include file="common/breadcrumbs.tpl"}
--->
 
 {if !$journalFlag}
 
-<ol class="breadcrumb margin_top_10">
-  <li><a href="{url page="index"}" target="_parent">{translate key="navigation.home"}</a></li>
-  {if $issue}
-  <li class="active">{$issue->getIssueIdentification(false,true)|escape}</li>
-  {/if}
-</ol>
+{include file="common/breadcrumbs.tpl"}
 
 <h2>{$pageTitleTranslated}</h2>
 
