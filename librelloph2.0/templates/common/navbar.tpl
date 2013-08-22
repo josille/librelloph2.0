@@ -127,12 +127,12 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 			($currentJournal->getSetting('submissionFeeEnabled') ||
 			$currentJournal->getSetting('fastTrackFeeEnabled') ||
 			$currentJournal->getSetting('publicationFeeEnabled'))}
-			<li><a href="{url page=" about" op="submissions" anchor="authorFees"}">{translate
+			<li><a href="{url page="about" op="submissions" anchor="authorFees"}">{translate
 			key="about.authorFees"}</a></li>
 			{/if} {call_hook name="Templates::About::Index::Submissions"}
 		</ul>
 		</li>
-		<li><a href="{url page='pages" op='view'}/indexArchive">Indexing and
+		<li><a href="{url page='pages' op='view'}/indexArchive">Indexing and
 		Archiving</a></li>
 		<li class="dropdown-submenu"><a href="#">{translate key="about.other"}</a>
 		<ul class="dropdown-menu" role="menu">
@@ -142,7 +142,7 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 			empty($journalSettings.contributors) &&
 			$currentJournal->getLocalizedSetting('sponsorNote') == '' &&
 			empty($journalSettings.sponsors))}
-			<li><a href="{url page=" about" op="journalSponsorship"}">{translate
+			<li><a href="{url page="about" op="journalSponsorship"}">{translate
 			key="about.journalSponsorship"}</a></li>
 			{/if} {if $currentJournal->getLocalizedSetting('history') != ''}
 			<li><a href="{url page=" about" op="history"}">{translate
