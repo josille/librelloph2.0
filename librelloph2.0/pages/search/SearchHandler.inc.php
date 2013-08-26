@@ -59,9 +59,15 @@ class SearchHandler extends Handler {
 			$templateMgr->assign('journalOptions', array('' => AppLocale::Translate('search.allJournals')) + $journals);
 			$journalPath = Request::getRequestedJournalPath();
 			$yearRange = $publishedArticleDao->getArticleYearRange(null);
+			
+			$templateMgr->assign('imgPathMain', true);
+				
 		} else {
 			$journal =& Request::getJournal();
 			$yearRange = $publishedArticleDao->getArticleYearRange($journal->getId());
+			
+			$templateMgr->assign('imgPathMain', false);
+			
 		}	
 
 		$this->assignAdvancedSearchParameters($templateMgr, $yearRange);

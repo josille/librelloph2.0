@@ -205,7 +205,8 @@ files_dir = C:\wamp\www\librello_library
 ; (This directory should be web-accessible and the specified path
 ; should be relative to the base OJS directory)
 ; Windows users should use forward slashes
-public_files_dir = public
+public_files_dir = ../librelloph/public
+;public_files_dir = public
 
 ; Permissions mask for created files and directories
 umask = 0022

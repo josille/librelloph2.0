@@ -91,14 +91,14 @@
 </a></p>
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
 	href="{url page="gateway"}/plugin/WebFeedGatewayPlugin/rss2">
-<img src="{$baseUrl}/public/site/RSS_icon.png" width="26" height="26" alt="Rss"/></a></p>
+<img src="{$publicFilesDir}/../../site/RSS_icon.png" width="26" height="26" alt="Rss"/></a></p>
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
-	href="https://twitter.com/librello" target="blank"><img src="{$baseUrl}/public/site/Twitter_icon.png" width="26" height="26" alt="Twitter"/></a>
+	href="https://twitter.com/librello" target="blank"><img src="{$publicFilesDir}/../../site/Twitter_icon.png" width="26" height="26" alt="Twitter"/></a>
 </p>
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
-	href="http://www.linkedin.com/company/librello" target="blank"><img src="{$baseUrl}/public/site/Linkedin_icon.png" width="26" height="26" alt="LinkedIn"/></a></p>
+	href="http://www.linkedin.com/company/librello" target="blank"><img src="{$publicFilesDir}/../../site/Linkedin_icon.png" width="26" height="26" alt="LinkedIn"/></a></p>
 	<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
-	href="https://plus.google.com/117721213017356591223" target="blank"><img src="{$baseUrl}/public/site/Google_icon.png" width="26" height="26" alt="Google +"/></a></p>
+	href="https://plus.google.com/117721213017356591223" target="blank"><img src="{$publicFilesDir}/../../site/Google_icon.png" width="26" height="26" alt="Google +"/></a></p>
 </div>
 </div>
 

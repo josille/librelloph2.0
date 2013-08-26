@@ -159,6 +159,9 @@ class AboutHandler extends Handler {
 		} else {
 			// The Editorial Team feature has been enabled.
 			// Generate information using Group data.
+			
+			$publishEmail=false;
+			
 			$groupDao =& DAORegistry::getDAO('GroupDAO');
 			$groupMembershipDao =& DAORegistry::getDAO('GroupMembershipDAO');
 
@@ -176,10 +179,14 @@ class AboutHandler extends Handler {
 				}
 				if (!empty($memberships)) $groups[] =& $group;
 				$teamInfo[$group->getId()] = $memberships;
+				
+				if ($group->getPublishEmail()) $publishEmail = true;
+				
 				unset($group);
 			}
 			
 			$templateMgr->assign_by_ref('groups', $groups);
+			$templateMgr->assign_by_ref('publishEmail', $publishEmail);
 			$templateMgr->assign_by_ref('teamInfo', $teamInfo);
 			$templateMgr->display('about/editorialTeamBoard.tpl');
 		}
