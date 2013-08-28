@@ -49,7 +49,7 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 	<div class='twitter_div margin_bottom_10 padding_left_15'>
 				<a href="https://twitter.com/share" class="twitter-share-button" 
 				data-url="{url page='article' op='view' path=$articlePath}" 
-				data-text="{$article->getLocalizedTitle()|strip_unsafe_html}" data-via="Librello" data-related="Librello" data-hashtags="Librello">Tweet</a>
+				data-text='{$article->getLocalizedTitle()|strip_unsafe_html|escape}' data-via="Librello" data-related="Librello" data-hashtags="Librello">Tweet</a>
 		</div>
 	</li>
 	<li>
@@ -88,7 +88,7 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 
 
 	<div class="btn-group margin_top_10">
-<button type="button" class="btn btn-sm btn-info dropdown-toggle"" data-toggle="dropdown"><span class="glyphicon glyphicon-download"></span> Download <span class="caret"></span></button>
+<button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-download"></span> Download <span class="caret"></span></button>
 	
   <ul class="dropdown-menu" role="menu">
 				{foreach from=$article->getGalleys() item=galley name=galleyList} {if
@@ -130,7 +130,7 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 </div>
 
 
-<hr style='margin-top: 20px;'>
+<hr style='margin-top: 20px;' />
 
 {/iterate} {*/foreach*} {if !$smarty.foreach.sections.last}
 <div class="separator"></div>

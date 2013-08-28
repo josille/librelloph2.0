@@ -182,7 +182,7 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	</ul>
 	</li>
 	<li class='spaces_test'>&#183;</li>
-	<li id="contact"><a href="{url page="indexing"}">{translate
+	<li><a href="{url page="indexing"}">{translate
 	key="navigation.indexing"}</a></li>
 	<li class='spaces_test'>&#183;</li>
 	<li id="contact"><a href="{url page="contact"}">{translate
@@ -246,8 +246,7 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	{if $currentJournal}
 	<li class="active pull-right"><a target='blank' href="{$submissionBaseUrl}/{$currentJournal->getPath()}/author/submit">Submit an article
     </a></li>
-    <!-- li class="active"><a href="{url page="author" op="submit"}">Submit an article
-    </a></li-->
+    
     {*
 	{if $donationEnabled}
 	<li>submit</li>

@@ -15,7 +15,7 @@
 
 {if $journalDescription}
 	<div id='journal_desc' class='view'>{$journalDescription}</div>
-	<!-- div id='journal_view_more'><span id='journal_view_more_span'>View more about this Journal...</span></div-->
+	
 {/if}
 
 <div id="aboutPeople">

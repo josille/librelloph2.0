@@ -1,8 +1,10 @@
 {** * header.tpl * * Copyright (c) 2000-2012 John Willinsky *
 Distributed under the GNU GPL v2. For full terms see the file
-docs/COPYING. * * Common site header. *} {strip} {if
+docs/COPYING. * * Common site header. *} 
+{strip} {if
 !$pageTitleTranslated}{translate|assign:"pageTitleTranslated"
-key=$pageTitle}{/if} {if $pageCrumbTitle}
+key=$pageTitle}{/if} 
+{if $pageCrumbTitle}
 {translate|assign:"pageCrumbTitleTranslated" key=$pageCrumbTitle}
 {elseif !$pageCrumbTitleTranslated} {assign
 var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
@@ -20,34 +22,24 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 {$metaCustomHeaders} {if $displayFavicon}
 <link rel="icon" href="{$faviconDir}/{$displayFavicon.uploadName|escape:" url"}" />
 {/if}
-<!-- link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/pkp.css" type="text/css" /-->
-<!-- link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/common.css" type="text/css" /-->
 
-<!-- link rel="stylesheet" href="{$baseUrl}/styles/common.css" type="text/css" /-->
-
-
-
-
-
-<!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/general.js"></script-->
-<!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/tag-it.js"></script-->
-
-<!-- Add javascript required for font sizer -->
-<!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/jquery.cookie.js"></script-->
-<!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/fontController.js" ></script-->
 {$additionalHeadData}
 
 <script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/jquery-2.0.2.min.js"></script>
-	<script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js"></script>
-	
-	  <!-- script src="http://code.jquery.com/jquery.js"></script-->
+<script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js"></script>
+<!-- script src="http://code.jquery.com/jquery.js"></script-->
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- Bootstrap -->
-<link href="{$baseUrl}/styles/bootstrap_css/bootstrap.min.css"
-	rel="stylesheet" media="screen"><!-- link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css"-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link href="{$baseUrl}/styles/bootstrap_css/tweeks.css" rel="stylesheet"
-	media="screen">
+
+<!-- Bootstrap -->
+<link href="{$baseUrl}/styles/bootstrap_css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<!-- link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css"-->
+<script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/bootstrap.min.js"></script> 
+<!-- script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script-->
+
+
+<link href="{$baseUrl}/styles/bootstrap_css/tweeks.css" rel="stylesheet" media="screen" />
 
 <script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweeks.js"></script>
 <script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweek_social.js"></script>
@@ -58,11 +50,9 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 <div class="navbar navbar-inverse navbar-fixed-top">
 <div class="container">
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://localhost/librelloph2.0/index.php/index/oai?verb=Identify">
-<img width="45px" height="35px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif">
+<img width="45px" height="35px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif" />
 </a></p>
-<!-- p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
-	href="{url page="gateway"}/plugin/WebFeedGatewayPlugin/rss2">
-RSS </a></p-->
+
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
 	href="https://twitter.com/librello" target="blank"><img src="{$publicFilesDir}/Twitter_icon.png" width="26" height="26" alt="Twitter"/></a>
 </p>
@@ -74,18 +64,9 @@ RSS </a></p-->
 </div>
 </div>
 
-<div class="container"><!-- JavaScript plugins (requires jQuery) --> <!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/jquery.min.js"></script-->
-<script type="text/javascript"
-	src="{$baseUrl}/lib/pkp/js/lib/jquery/jquery-2.0.2.min.js"></script> <script
-	type="text/javascript"
-	src="{$baseUrl}/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js"></script>
-
-<!-- script src="http://code.jquery.com/jquery.js"></script--> <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{$baseUrl}/js/bootstrap_js/bootstrap.min.js"></script> <!-- script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script-->
-
-
-<div itemscope="" itemtype="http://schema.org/LocalBusiness"
+<div class="container" itemtype="http://schema.org/LocalBusiness"
 	id="container">
+
 
 <div id="header">
 <div id="headerTitle">
@@ -126,7 +107,7 @@ $alternatePageHeader} {$alternatePageHeader} {elseif $siteTitle}
 			{iterate from=journals item=journal}
 			<li><a href="{url journal=$journal->getPath()}" class="mainjournal"
 				style="font-style: italic; background: none;"> <img
-				style="margin-bottom: 10px; border-style: none;"
+				style="margin-bottom: 10px; border-style: none;" alt="{$journal->getJournalInitials()}" 
 				src="/public/journals/{$journal->getJournalId()}/{$journal->getJournalInitials()}small.png" />
 
 			</a></li>
@@ -145,10 +126,4 @@ $alternatePageHeader} {$alternatePageHeader} {elseif $siteTitle}
 
 		<hr />
 		<div id="content">
-
-
-
-
-
-
 		

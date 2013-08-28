@@ -14,7 +14,6 @@
 {/strip}
 {call_hook name="Templates::About::EditorialTeam::Information"}
 
-<table class="table table-condensed">
 
 {counter start=0 skip=1 assign="count"}
 {foreach from=$groups item=group name=foo}
@@ -41,7 +40,7 @@
 	<p>
 	<!-- Button trigger modal -->
   <a data-toggle="modal" href="#bioModal_{$user->getId()}" class="btn btn-success btn-xs">View Bio</a>
-
+</p>
   <!-- Modal -->
   <div class="modal fade" id="bioModal_{$user->getId()}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -86,7 +85,6 @@
 	
 	
 	
-	</p>
       </div>
     </div>
   </div>
@@ -95,7 +93,7 @@
 {*Can then use the $count var*}
    {if $count is div by 4}
       </div>
-      </br>
+      <br/>
 <div class="row">
    {/if}
 
@@ -109,7 +107,6 @@
 {/foreach}
 
 
-</table>
 {* $groups *}
 
 {include file="common/footer.tpl"}

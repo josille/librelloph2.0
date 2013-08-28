@@ -25,45 +25,6 @@
 	<meta name="generator" content="{$applicationName} {$currentVersionString|escape}" />
 	{$metaCustomHeaders}
 	{if $displayFavicon}<link rel="icon" href="{$faviconDir}/{$displayFavicon.uploadName|escape:"url"}" />{/if}
-	
-	<!-- link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/pkp.css" type="text/css" /-->
-	<!-- link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/common.css" type="text/css" /-->
-	
-	<!--[if IE ]-->
-	   <!-- link rel="stylesheet" href="{$baseUrl}/styles/common_ie.css" type="text/css" /-->
-	<!-- [endif]-->	
-	<!--[if !IE]>-->
-	   <!-- link rel="stylesheet" href="{$baseUrl}/styles/common.css" type="text/css" /-->
-	<!--<![endif]-->
-
-	<!-- Base Jquery -->
-	
-	<!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/jquery.min.js"></script-->
-	<!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js"></script-->
-	
-
-	{call_hook|assign:"leftSidebarCode" name="Templates::Common::LeftSidebar"}
-	{call_hook|assign:"rightSidebarCode" name="Templates::Common::RightSidebar"}
-	{if $leftSidebarCode || $rightSidebarCode}
-	<!-- link rel="stylesheet" href="{$baseUrl}/styles/sidebar.css" type="text/css" /-->{/if}
-	{if $leftSidebarCode}
-	<!-- link rel="stylesheet" href="{$baseUrl}/styles/leftSidebar.css" type="text/css" /-->{/if}
-	{if $rightSidebarCode}
-	<!-- link rel="stylesheet" href="{$baseUrl}/styles/rightSidebar.css" type="text/css" /-->{/if}
-	{if $leftSidebarCode && $rightSidebarCode}
-	<!-- link rel="stylesheet" href="{$baseUrl}/styles/bothSidebars.css" type="text/css" /-->{/if}
-
-	{foreach from=$stylesheets item=cssUrl}
-		<!-- link rel="stylesheet" href="{$cssUrl}" type="text/css" /-->
-	{/foreach}
-
-	<!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/general.js"></script-->
-	<!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/tag-it.js"></script-->
-	<!-- Add javascript required for font sizer -->
-	<!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/jquery.cookie.js"></script-->
-	<!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/fontController.js"></script-->
-
-
 
 	{$additionalHeadData}
 	
@@ -74,22 +35,17 @@
 	<!-- script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/jquery.min.js"></script-->
 	<script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/jquery-2.0.2.min.js"></script>
 	<script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js"></script>
-	
 	  <!-- script src="http://code.jquery.com/jquery.js"></script-->
+      
+
     
-    
-    
-   <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{$baseUrl}/js/bootstrap_js/bootstrap.min.js"></script>
-    <!-- script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script-->
-	
     <!-- Bootstrap -->
-    <link href="{$baseUrl}/styles/bootstrap_css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <!-- link href="{$baseUrl}/styles/bootstrap_css/bootstrap-glyphicons.css" rel="stylesheet" media="screen"-->
-    <!-- link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css"-->
-	
-	<link href="{$baseUrl}/styles/bootstrap_css/tweeks.css" rel="stylesheet" media="screen">
-<script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweeks.js"></script>
+       <script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/bootstrap.min.js"></script>
+    <link href="{$baseUrl}/styles/bootstrap_css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    
+    <!-- BOOTSTRAP Override -->
+	<link href="{$baseUrl}/styles/bootstrap_css/tweeks.css" rel="stylesheet" media="screen" />
+	<script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweeks.js"></script>
 
 <script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweek_social.js"></script>
 
@@ -106,7 +62,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
 <div class="container">
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://localhost/librelloph2.0/index.php/index/oai?verb=Identify">
-<img width="45px" height="35px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif">
+<img width="45px" height="35px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif" />
 </a></p>
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
 	href="{url page="gateway"}/plugin/WebFeedGatewayPlugin/rss2">

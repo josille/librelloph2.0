@@ -490,10 +490,10 @@ function &getAuthorAffiliationHTML()
 		foreach ($arr_affi as $index_affi => $name) {
 			if(count($authors_obj) == 1 && $one_affi)
 			{
-				$html_authors .= "<tr><td style='padding-left:7px;'>".$name.'</td></tr>';
+				$html_authors .= "<tr><td style='padding-left:7px;'>".htmlspecialchars($name).'</td></tr>';
 			}
 			else{
-				$html_authors .= "<tr><td style='padding-left:7px;'><sup>".($index_affi+1).'</sup> '.$name.'</td></tr>';
+				$html_authors .= "<tr><td style='padding-left:7px;'><sup>".($index_affi+1).'</sup> '.htmlspecialchars($name).'</td></tr>';
 			}
 		}
 		

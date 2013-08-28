@@ -12,7 +12,6 @@
 {assign var="pageTitle" value="navigation.membership"}
 {include file="common/header_master.tpl"}
 {/strip}
-
 	<div id="membership">
 	<p><strong>Librello Membership</strong></p>
 	<p>Librello was founded to democratize scientific knowledge. Our electronic journals offer unrestricted, unlimited, free access to any reader, with no subscription or registration required. Our members support the project through the payment of annual membership fees, allowing them to submit an unlimited number of manuscripts for consideration. All manuscripts undergo a meticulous and stringent single-blind peer review process, and only manuscripts deemed of sufficient quality and relevance will be accepted for publication. Our work goes beyond the organization of a fast, yet rigorous single-blind peer review and the archive of publications. For each journal we aim to publish the most relevant research and to guarantee the highest visibility of all articles by including our contents in the most important indexing and abstracting databases.</p>

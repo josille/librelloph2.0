@@ -7,6 +7,11 @@
  * Common site footer.
  *
  *}
+  </div><!-- content -->
+ </div><!-- inner row -->
+</div><!-- row -->
+
+</div><!-- body -->
  <br /><br />
 {if $displayCreativeCommons}
 {translate key="common.ccLicense"}
@@ -15,36 +20,15 @@
 {$pageFooter}
 {/if}
 {call_hook name="Templates::Common::Footer::PageFooter"}
-</div><!-- content -->
-</div><!-- main -->
-<meta itemprop="email" content="support@librelloph.com">
-<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-<meta itemprop="addressLocality" content="Basel">
-<meta itemprop="addressCountry" content="Switzerland"></span>
-</div><!-- body -->
-
 {get_debug_info}
 {if $enableDebugStats}{include file=$pqpTemplate}{/if}
 
 </div><!-- container -->
-{if !empty($systemNotifications)}
-	{translate|assign:"defaultTitleText" key="notification.notification"}
-	<script type="text/javascript">
-	<!--
-	{foreach from=$systemNotifications item=notification}
-		{literal}
-			$.pnotify({
-				pnotify_title: '{/literal}{if $notification->getIsLocalized()}{translate|escape:"js"|default:$defaultTitleText key=$notification->getTitle()}{else}{$notification->getTitle()|escape:"js"|default:$defaultTitleText}{/if}{literal}',
-				pnotify_text: '{/literal}{if $notification->getIsLocalized()}{translate|escape:"js" key=$notification->getContents() param=$notification->getParam()}{else}{$notification->getContents()|escape:"js"}{/if}{literal}',
-				pnotify_addclass: '{/literal}{$notification->getStyleClass()|escape:"js"}{literal}',
-				pnotify_notice_icon: 'notifyIcon {/literal}{$notification->getIconClass()|escape:"js"}{literal}'
-			});
-		{/literal}
-	{/foreach}
-	// -->
-	</script>
-{/if}{* systemNotifications *}
-</div>
+
+<meta itemprop="email" content="support@librelloph.com"/>
+<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+<meta itemprop="addressLocality" content="Basel"/>
+<meta itemprop="addressCountry" content="Switzerland"/></span>
+
 </body>
 </html>
-

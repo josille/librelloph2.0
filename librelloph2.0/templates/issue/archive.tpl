@@ -27,25 +27,20 @@
 			{assign var=FirstLoopIssue value=1}
 		</div>
 		{/if}
-			
-	
-	
+
 	{if $issue->getLocalizedFileName() && $issue->getShowCoverPage($locale) && !$issue->getHideCoverPageArchives($locale)}
 				
-		
 		  <div class="col-sm-6 col-md-3">
 		    <div class="thumbnail">
 		    <a href="{url op="view" path=$issue->getBestIssueId($currentJournal)}">
 		     <img  class="img-rounded" src="{$coverPagePath|escape}{$issue->getFileName($locale)|escape}"{if $issue->getCoverPageAltText($locale) != ''} alt="{$issue->getCoverPageAltText($locale)|escape}"{else} alt="{translate key="issue.coverPage.altText"}"{/if}/>
 		      </a>
-		    
 		      <div class="caption">
 		        <a href="{url op="view" path=$issue->getBestIssueId($currentJournal)}">
 		<strong><h5>
 		{$issue->getIssueIdentification(false,false,false,true)|escape}
 		</h5></strong>
 		</a>
-		       
 		        <p>{$issue->getLocalizedDescription()|strip_unsafe_html|nl2br}</p>
 		        <div>
 		        <p>
@@ -55,8 +50,6 @@
 		      </div>
 		      </div>
 		  </div>
-		
-			
 	{else}
 	
 		  <div class="col-sm-6 col-md-3">
@@ -80,23 +73,11 @@
 		      </div>
 		       </div>
 		  </div>
-		
-	
 	{/if}
-
 	{/if}
-	
 {/iterate}
-
-
-		
-
-
-
 {iterate from=issuesSI item=issueSI}
-
 	{if $issueSI->getVolume() == 0}
-		
 		{if !$FirstLoopSI}
 		<div class="col-sm-6 col-md-11">
 			<h3>Special Issues</h3>
@@ -104,8 +85,6 @@
 			{assign var=FirstLoopSI value=1}
 		</div>
 		{/if}
-	
-	
 	{if $issueSI->getLocalizedFileName() && $issueSI->getShowCoverPage($locale) && !$issueSI->getHideCoverPageArchives($locale)}
 		<div class="col-sm-6 col-md-3">
 		
@@ -151,15 +130,10 @@
 		       </div>		
 		</div>
 	{/if}
-
-	
 	{/if}
-	
 {/iterate}
-
 </div>
 	</div>
 </div>
 
 {include file="common/footer.tpl"}
-

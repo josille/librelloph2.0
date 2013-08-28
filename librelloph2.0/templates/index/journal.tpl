@@ -19,7 +19,7 @@
 {/if}
 
 {call_hook name="Templates::Index::journal"}
-<hr>
+<hr/>
 {if $homepageImage}
 <br />
 <div id="homepageImage"><img src="{$publicFilesDir}/{$homepageImage.uploadName|escape:"url"}" width="{$homepageImage.width|escape}" height="{$homepageImage.height|escape}" {if $homepageImageAltText != ''}alt="{$homepageImageAltText|escape}"{else}alt="{translate key="common.journalHomepageImage.altText"}"{/if} /></div>
