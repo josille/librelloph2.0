@@ -34,7 +34,7 @@ class PKPLoginHandler extends Handler {
 		$posNew = strrpos($newUrl, "/");
 		$posBase = strrpos($baseUrl, "/");
 		if ($posNew !== false && $posBase !== false) { // note: three equal signs
-	   		$bodytag = str_replace(substr($baseUrl, $posBase+1),substr($newUrl, $posNew+1), "http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]);
+	   		$bodytag = str_replace(substr($baseUrl, $posBase+1),substr($newUrl, $posNew+1), "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 			 header( 'Location: '.$bodytag ) ;
 		}
 		/*

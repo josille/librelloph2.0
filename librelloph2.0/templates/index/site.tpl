@@ -28,8 +28,7 @@ value=$article->getJournalInitials()}
 
 <div class="row">
 <div class="col-10 col-sm-10 col-lg-12"><strong> <a
-	style='vertical-align: super;' href="{url journal="
-	$journalPath" page="article" op="view" path=$articlePath}">{$article->getArticleTitle()|strip_unsafe_html}</a>
+	style='vertical-align: super;' href='{url journal="$journalPath" page="article" op="view" path=$articlePath}'>{$article->getArticleTitle()|strip_unsafe_html}</a>
 </strong></div>
 
 <div class="col-10 col-sm-10 col-lg-12 font_size_10 margin_bottom_5"><strong>{$article->getDOI()}</strong>

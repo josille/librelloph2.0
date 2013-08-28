@@ -18,7 +18,7 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	$smarty.const.PUBLISHING_MODE_NONE} {if !$currentJournal}
 	<li id="librello"><a itemprop="url" href="{$baseUrl}">librello</a></li>
 	{else}
-	<li id="librello"><a href="{$baseUrl}"><span
+	<li id="librello"><a href="{$baseUrl}/"><span
 		itemprop="publisher" itemscope
 		itemtype="http://schema.org/Organization"> <span itemprop="name">librello</span></span></a></li>
 	{/if}
