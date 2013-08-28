@@ -24,17 +24,35 @@ class PKPLoginHandler extends Handler {
 	 * Redirect to user index page if user is already validated.
 	 */
 	function index() {
+		
+		/*
+		 * Hack to redirect all logins to old base url
+		 */
+		$newUrl = Config::getVar('general', 'submission_base_url');
+		$baseUrl = Config::getVar('general', 'base_url');
+		
+		$posNew = strrpos($newUrl, "/");
+		$posBase = strrpos($baseUrl, "/");
+		if ($posNew !== false && $posBase !== false) { // note: three equal signs
+	   		$bodytag = str_replace(substr($baseUrl, $posBase+1),substr($newUrl, $posNew+1), "http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]);
+			 header( 'Location: '.$bodytag ) ;
+		}
+		/*
+		 * End of hack
+		 */
+		
+		
 		$this->validate();
 		$this->setupTemplate();
 		if (Validation::isLoggedIn()) {
-			PKPRequest::redirect(null, 'user');
+			PKPRequest::redirect(null,'user');
 		}
 
 		if (Config::getVar('security', 'force_login_ssl') && Request::getProtocol() != 'https') {
 			// Force SSL connections for login
 			PKPRequest::redirectSSL();
 		}
-
+		
 		$sessionManager =& SessionManager::getManager();
 		$session =& $sessionManager->getUserSession();
 
