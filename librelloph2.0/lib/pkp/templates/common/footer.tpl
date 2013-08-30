@@ -12,7 +12,7 @@
 </div><!-- row -->
 
 </div><!-- body -->
- <br /><br />
+
 {if $displayCreativeCommons}
 {translate key="common.ccLicense"}
 {/if}
@@ -22,7 +22,9 @@
 {call_hook name="Templates::Common::Footer::PageFooter"}
 {get_debug_info}
 {if $enableDebugStats}{include file=$pqpTemplate}{/if}
-
+<div class='well well-sm font_size_10'>
+<span class="glyphicon glyphicon-copyright-mark"></span> 2012 - {'Y'|date}  Librello, Switzerland.
+</div>
 </div><!-- container -->
 
 <meta itemprop="email" content="support@librelloph.com"/>

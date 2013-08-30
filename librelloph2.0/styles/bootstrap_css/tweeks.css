@@ -62,8 +62,16 @@ login button, journal menu
     max-width: 1000px;
 }
 
+.line_height{
+	line-height:1;
+	}
+
 .margin_top_10{
 	margin-top:10px;
+	}
+	
+.margin_top__4{
+	margin-top:-4px;
 	}
 
 .margin_bottom_10{
@@ -84,6 +92,10 @@ login button, journal menu
 	
 .padding_right_0{
 	padding-right:0px;
+	}
+	
+.padding_bottom_10{
+	padding-bottom:10px;
 	}
 	
 .padding_5_5{

@@ -80,6 +80,24 @@
 
 {get_debug_info}
 {if $enableDebugStats}{include file=$pqpTemplate}{/if}
+
+<div class="row">
+
+<div class='col-6 col-sm-8 col-lg-10'>
+<div class='well well-sm font_size_10'>
+<span class="glyphicon glyphicon-copyright-mark"></span> 2012 - {'Y'|date}  by the authors; licensee Librello, Switzerland. This open access article was published
+under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/3.0/).
+
+</div>
+
+</div>
+<div class='col-6 col-sm-8 col-lg-2'>
+<img itemprop="image" src="{$publicFilesDir}/../../site/pageHeaderTitleImage_en_US.png"}" 
+	width="100%"
+	alt="{$displayPageHeaderLogoAltText|escape}"
+	/>
+</div>
+</div>
 </div> <!-- container -->
 </body>
 </html>
