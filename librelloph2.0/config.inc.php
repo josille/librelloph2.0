@@ -116,8 +116,6 @@ citation_checking_max_processes = 3
 
 driver = mysql
 host = localhost
-;username = cicerone
-;password = "xLp3zvOaf$8g"
 username = root
 password = 
 name = cicerone_librello_pub
