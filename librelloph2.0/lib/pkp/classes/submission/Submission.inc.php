@@ -184,36 +184,39 @@ class Submission extends DataObject {
 		return $author;
 	}
 	
-function getAuthorAffiliationArticleHTML()
+	/*
+	 * Method to return the authors and affiliations 
+	 * with a good format
+	 */
+	function &getAuthorAffiliationHTMLtpl($extended = false)
 	{
 		$authors_obj = $this->authors;
-		$html_authors = '<table>';
-		$html_authors .= '<tr>';
-		$arr_auth_affi = array();
+		$authors_arr = array();
+		$corrFlag = false;
 		$arr_affi = array();
-		$author_text = '';
-		
-		$flag_first_loop = true;
-		
 		/*
 		 * firts do authors
 		 */
 		foreach ($authors_obj as $index => $author)
-		{			
+		{
 			$author_name = $author->getFullName();
 			$author_id = $author->getAuthorID();
-			$author_indexes = '';
-			$flag_first_loop_aff = true;
+			
+			$author_indexes_arr = array();
+			
 			$one_affi = false;
 		
 			$affiliations = $author->getAffiliation(null);
 			
 			if (is_array($affiliations)) foreach ($affiliations as $locale => $affiliation) {
-
+				
 				$curr_affis = explode("\\", $affiliation);				
 				$curr_affis = array_filter($curr_affis);
 				$curr_affis = array_values($curr_affis);
 				
+				/*
+				 * Only one affiliation
+				 */
 				if(count($curr_affis) == 1)
 				{
 					$one_affi = true;
@@ -225,30 +228,30 @@ function getAuthorAffiliationArticleHTML()
 					if(count($arr_affi)==0)
 					{
 						$arr_affi[] = trim($affiliation);
-						$author_indexes = '1';
+						$author_indexes_arr[]='1';
 					}
 					else {
 						foreach ($curr_affis as $curr_aff) {
-							
-							if(!$flag_first_loop_aff)
-							{
-								$author_indexes .= ',';
-							}
-							$flag_first_loop_aff =false;
-							
+														
+							/*
+							 * look if affiliation already exist
+							 */
 							$key = array_search(trim($curr_aff), $arr_affi);
 							if($key === false){
 							    $arr_affi[] = trim($curr_aff);
-							    $author_indexes .= (count($arr_affi));
+							    $author_indexes_arr[] = count($arr_affi);
 							}
 							else {
-								 $author_indexes .= ($key+1);
+								 $author_indexes_arr[] = ($key+1);
 							}							
 						}
 					}
 				}
 				else {
-					// more than one affiliation
+					/*
+					 * more than one affiliation
+					 */
+					
 					/*
 					 * If affiliation exist, get index to be placed to @author jos
 					 * if not insert in array and get index
@@ -259,254 +262,61 @@ function getAuthorAffiliationArticleHTML()
 						foreach ($curr_affis as $key => $curr_aff) {
 							$arr_affi[] = trim($curr_aff);
 							
-							if(!$flag_first_loop_aff)
-							{
-								$author_indexes .= ',';
-							}
-							$flag_first_loop_aff =false;
-							
-							$author_indexes .= ($key+1);
+							$author_indexes_arr[] = ($key+1);
 						}
 					}
 					else
 					{
 						foreach ($curr_affis as $key => $curr_aff) {
-														
-							if(!$flag_first_loop_aff)
-							{
-								$author_indexes .= ',';
-							}
-							$flag_first_loop_aff =false;
-							
+													
 							$key = array_search(trim($curr_aff), $arr_affi);
 
 							if($key === false){
 							    $arr_affi[] = trim($curr_aff);
-							    $author_indexes .= (count($arr_affi));
+							    $author_indexes_arr[] = count($arr_affi);
 							}
 							else {
-								 $author_indexes .= ($key+1);
+								 $author_indexes_arr[] = ($key+1);
 							}							
 						}
 					}
-				}			
-			}
-			
-			
-			if(!$flag_first_loop)
-			{
-				if(count($authors_obj) >1 && ($index+1) == count($authors_obj))
-				{
-					$author_text .= ' and ';
-				}
-				else {
-					$author_text .= ', ';
 				}
 			}
-			$flag_first_loop =false;
-			if(count($authors_obj) == 1 && $one_affi)
-			{
-				$author_text .= $author_name;
-			}
-			else {
-				$author_text .= $author_name.'<sup><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">'.$author_indexes.'</span></span></sup>';
-			}
 			
-			if(count($authors_obj) >1 && $author->getPrimaryContact())
-			{
-				//$author_text .= '<strong><sup>,*</sup></strong>';
-				$author_text .= "<sup>,</sup><span style='font-size:larger;'>*</span>";
-			}
-		}
+			$author_text .= $author_name.'<sup>'.$author_indexes.'</sup>';
+		$single_author = false;
 		
-		$html_authors .= '<td><div style="padding-bottom:10px;"><em>'.$author_text.'</em></div></td>';
-		
-		$html_authors .= '</tr>';
-		
-		 // now do affiliations
-		foreach ($arr_affi as $index_affi => $name) {
-			if(count($authors_obj) == 1 && $one_affi)
-			{
-				$html_authors .= "<tr><td style='padding-left:7px;'>".$name.'</td></tr>';
-			}
-			else{
-				$html_authors .= "<tr><td style='padding-left:7px;'><sup>".($index_affi+1).'</sup> '.$name.'</td></tr>';
-			}
-		}
-		
-		// now corresponding author
-		if(count($authors_obj) >1)
+		if(count($authors_obj) == 1 && count($author_indexes_arr) == 1)
 		{
-			$html_authors .= "<tr><td style='padding-left:7px;'><span style='font-size:larger;'>*</span> Corresponding author</td></tr>";
+			$single_author=true;
 		}
 		
-		$html_authors .= '</table>';
-		
-		return $html_authors;
-	}
-
-		
-function &getAuthorAffiliationHTML()
-	{
-		$authors_obj = $this->authors;
-		$html_authors = '<table>';
-		$html_authors .= '<tr>';
-		$arr_auth_affi = array();
-		$arr_affi = array();
-		$author_text = '';
-		
-		$flag_first_loop = true;
-				
-		/*
-		 * firts do authors
-		 */
-		foreach ($authors_obj as $index => $author)
-		{			
-			$author_name = $author->getFullName();
-			$author_id = $author->getAuthorID();
-			$author_indexes = '';
-			$flag_first_loop_aff = true;
-			$one_affi = false;
-		
-			$affiliations = $author->getAffiliation(null);
-			
-			if (is_array($affiliations)) foreach ($affiliations as $locale => $affiliation) {
-
-				$curr_affis = explode("\\", $affiliation);				
-				$curr_affis = array_filter($curr_affis);
-				$curr_affis = array_values($curr_affis);
-				
-				if(count($curr_affis) == 1)
-				{
-					$one_affi = true;
-					// one affiliation in the field
-					/*
-					 * If affiliation exist, get index to be placed to @author jos
-					 * if not insert in array and get index
-					 */
-					if(count($arr_affi)==0)
-					{
-						$arr_affi[] = trim($affiliation);
-						$author_indexes = '1';
-								
-					}
-					else {
-						foreach ($curr_affis as $curr_aff) {
-							
-							if(!$flag_first_loop_aff)
-							{
-								$author_indexes .= ',';
-							}
-							$flag_first_loop_aff =false;
-							
-							$key = array_search(trim($curr_aff), $arr_affi);
-							if($key === false){
-							    $arr_affi[] = trim($curr_aff);
-							    $author_indexes .= (count($arr_affi));
-							}
-							else {
-								 $author_indexes .= ($key+1);
-							}							
-						}
-					}
-				}
-				else {
-					// more than one affiliation
-					/*
-					 * If affiliation exist, get index to be placed to @author jos
-					 * if not insert in array and get index
-					 */
-					$key_index = 0;
-					if(count($arr_affi)==0)
-					{
-						foreach ($curr_affis as $key => $curr_aff) {
-							$arr_affi[] = trim($curr_aff);
-							
-							if(!$flag_first_loop_aff)
-							{
-								$author_indexes .= ',';
-							}
-							$flag_first_loop_aff =false;
-							
-							$author_indexes .= ($key+1);
-						}
-					}
-					else
-					{
-						foreach ($curr_affis as $key => $curr_aff) {
-														
-							if(!$flag_first_loop_aff)
-							{
-								$author_indexes .= ',';
-							}
-							$flag_first_loop_aff =false;
-							
-							$key = array_search(trim($curr_aff), $arr_affi);
-
-							if($key === false){
-							    $arr_affi[] = trim($curr_aff);
-							    $author_indexes .= (count($arr_affi));
-							}
-							else {
-								 $author_indexes .= ($key+1);
-							}							
-						}
-					}
-				}			
-			}
-			
-			
-			if(!$flag_first_loop)
-			{
-				if(count($authors_obj) >1 && ($index+1) == count($authors_obj))
-				{
-					$author_text .= ' and ';
-				}
-				else {
-					$author_text .= ', ';
-				}
-			}
-			$flag_first_loop =false;
-			
-			if(count($authors_obj) == 1 && $one_affi)
-			{
-				$author_text .= $author_name;
-			}
-			else {
-				$author_text .= $author_name.'<sup>'.$author_indexes.'</sup>';
-			}
-			
-			if(count($authors_obj) >1 && $author->getPrimaryContact())
-			{
-				$author_text .= "<sup>,</sup><span style='font-size:larger;'>*</span>";
-			}
-		}
-		
-		$html_authors .= '<td><div style="padding-bottom:5px;">'.$author_text.'</div></td>';
-		
-		$html_authors .= '</tr>';
-		
-		 // now do affiliations
-		foreach ($arr_affi as $index_affi => $name) {
-			if(count($authors_obj) == 1 && $one_affi)
-			{
-				$html_authors .= "<tr><td style='padding-left:7px;'>".htmlspecialchars($name).'</td></tr>';
-			}
-			else{
-				$html_authors .= "<tr><td style='padding-left:7px;'><sup>".($index_affi+1).'</sup> '.htmlspecialchars($name).'</td></tr>';
-			}
-		}
-		
-		// now corresponding author
-		if(count($authors_obj) >1)
+		if(count($authors_obj) >1 && $author->getPrimaryContact())
 		{
-			$html_authors .= "<tr><td style='padding-left:7px;'><span style='font-size:larger;'>*</span> Corresponding author</td></tr>";
+			$corrFlag = true;
+				$authors_arr[] = array('id'=>$author_id,'user'=>$author, 'name' => $author_name,'ref'=>$author_indexes_arr,'corr'=>'*');
+		}
+		else
+		{
+			/*
+			 * Single author, if only one affi setr flag to not display affiliation number
+			 */
+				$authors_arr[] = array('id'=>$author_id,'user'=>$author, 'name' => $author_name,'ref'=>$author_indexes_arr);
+		}
 		}
 		
-		$html_authors .= '</table>';
+		$templateMgr =& TemplateManager::getManager();
 		
-		return $html_authors;
+		$templateMgr->assign('authors_arr', $authors_arr);
+		$templateMgr->assign('arr_affi', $arr_affi);
+		$templateMgr->assign('corrFlag', $corrFlag);
+		$templateMgr->assign('single_author',$single_author);
+		$templateMgr->assign('extended',$extended);
+		//$templateMgr->assign('user',$author);
+		$authorsHTML = $templateMgr->fetch('article/authorhtml.tpl');
+		return $authorsHTML; 
 	}
+	
 	
 	
 	/**

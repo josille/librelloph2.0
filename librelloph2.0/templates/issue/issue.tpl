@@ -42,7 +42,7 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 <div class="col-2 col-sm-2 col-lg-2">
 
 <div class="btn-group">
-<button type="button" class="btn btn-link btn-xs dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-send"></span> Share ths article <span class="caret"></span></button>
+<button type="button" class="btn btn-link btn-xs dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-send"></span> Share this article <span class="caret"></span></button>
 
 <ul class="dropdown-menu" role="menu">
 	<li>
@@ -73,7 +73,7 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 
 <div class="row padding_left_15">
 <div class="col-6 col-sm-6 col-lg-8">
-{$article->getAuthorAffiliationHTML()}</div>
+{$article->getAuthorAffiliationHTMLtpl()}</div>
 <div class="col-4 col-sm-6 col-lg-11">
 
 <div class="row">
@@ -116,7 +116,7 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 <div class="accordion-group accordion-group_noborders">
 <div id="collapse_{$article->getId()}" class="accordion-body collapse">
 <div class="accordion-inner">{if $article->getLocalizedAbstract()}
-<div id='abs_{$article->getId()}' class='article_abs_view'><strong>Abstract:
+<div id='abs_{$article->getId()}'><strong>Abstract:
 </strong>{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}</div>
 {/if}</div>
 </div>
@@ -130,7 +130,7 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 </div>
 
 
-<hr style='margin-top: 20px;' />
+<hr class='margin_bottom_5' />
 
 {/iterate} {*/foreach*} {if !$smarty.foreach.sections.last}
 <div class="separator"></div>

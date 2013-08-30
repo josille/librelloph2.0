@@ -127,7 +127,7 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 <div class="row">
 <div class="col-6 col-sm-8 col-lg-12">
 
-{$article->getAuthorAffiliationHTML()}
+{$article->getAuthorAffiliationHTMLtpl(true)}
 
 </div>
 </div>

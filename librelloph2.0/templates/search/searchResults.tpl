@@ -126,7 +126,7 @@ function ensureKeyword() {
 </div>
 <div class="row">
 <div class="col-9 col-sm-9 col-lg-8">
-{$article->getAuthorAffiliationHTML()}
+{$article->getAuthorAffiliationHTMLtpl()}
 </div>
 </div>
 <hr style='margin-top:20px;'>

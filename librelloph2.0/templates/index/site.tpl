@@ -31,7 +31,7 @@ value=$article->getJournalInitials()}
 	style='vertical-align: super;' href='{url journal="$journalPath" page="article" op="view" path=$articlePath}'>{$article->getArticleTitle()|strip_unsafe_html}</a>
 </strong></div>
 
-<div class="col-10 col-sm-10 col-lg-12 font_size_10 margin_bottom_5"><strong>{$article->getDOI()}</strong>
+<div class="col-10 col-sm-10 col-lg-12 font_size_10 margin_bottom_5 margin_top__4">doi: <strong>{$article->getDOI()}</strong>
 </div>
 </div>
 </div>
@@ -40,7 +40,7 @@ value=$article->getJournalInitials()}
 <div>
 <button type="button" class="btn btn-link btn-xs dropdown-toggle"
 	data-toggle="dropdown"><span class="glyphicon glyphicon-send"></span>
-Share ths article <span class="caret"></span></button>
+Share this article <span class="caret"></span></button>
 
 
 <ul class="dropdown-menu" role="menu">
@@ -74,7 +74,8 @@ Share ths article <span class="caret"></span></button>
 
 <div class="row">
 <div class="col-10 col-sm-10 col-lg-12 font_size_12">
-{$article->getAuthorAffiliationHTML()}</div>
+{$article->getAuthorAffiliationHTMLtpl()}
+</div>
 </div>
 
 <div class="row">
@@ -130,7 +131,7 @@ Download <span class="caret"></span></button>
 <div class="accordion-group accordion-group_noborders">
 <div id="collapse_{$article->getId()}" class="accordion-body collapse">
 <div class="accordion-inner">{if $article->getLocalizedAbstract()}
-<div id='abs_{$article->getId()}' class='article_abs_view'><strong>Abstract:
+<div id='abs_{$article->getId()}'><strong>Abstract:
 </strong>{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}</div>
 {/if}</div>
 </div>
@@ -145,7 +146,7 @@ Download <span class="caret"></span></button>
 </div>
 
 
-<hr style='margin-top: 20px;' />
+<hr class='margin_bottom_5' />
 {/iterate} {iterate from=journals item=journal} {assign
 var="displayHomePageImage"
 value=$journal->getLocalizedSetting('homepageImage')} {assign
