@@ -20,9 +20,10 @@
 {assign var=groupId value=$group->getId()}
 {assign var=members value=$teamInfo[$groupId]}
 
-{if $smarty.foreach.foo.first}
+{*if $smarty.foreach.foo.first*}
+<h4><strong><em>{$group->getLocalizedTitle()}</em></strong></h4>
 <div class="row">
-{/if}
+{*/if*}
 
 {foreach from=$members item=member}
 {assign var=user value=$member->getUser()}
@@ -32,7 +33,6 @@
     <div class="thumbnail">
    
       <div class="caption font_size_12">
-      	<strong><em>{$group->getLocalizedTitle()}</em></strong>
         <div class='font_size_16'><strong>{$user->getFullName()|escape}</strong></div>
         <p class='font_size_12'>
       {if $user->getLocalizedAffiliation()}{$user->getLocalizedAffiliation()|escape}{/if}{if $user->getCountry()}{assign var=countryCode value=$user->getCountry()}{assign var=country value=$countries.$countryCode}, {$country|escape}{/if}
@@ -89,20 +89,22 @@
     </div>
   </div>
 
-{counter}
-{*Can then use the $count var*}
+{*counter}
    {if $count is div by 4}
       </div>
       <br/>
 <div class="row">
-   {/if}
+   {/if*}
 
 
 {/foreach}
 
-{if $smarty.foreach.foo.last}
+ </div>
+      <br/>
+
+{*if $smarty.foreach.foo.last}
 </div>
-{/if}
+{/if*}
 
 {/foreach}
 
