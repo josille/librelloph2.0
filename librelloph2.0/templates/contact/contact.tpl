@@ -15,20 +15,20 @@
 
 <div id="contact">
 	<div id="principalContact">
-	  <p><strong><a style="color:#000000" href="javascript:openRTWindow('http://www.librelloph.com/ojs/index.php/challengesinsustainability/about/editorialTeamBio/3')">Dr. Jos&eacute; Alberto Fernandez Monteiro</a></strong><br />
+	  <p><strong>Dr. Jos&eacute; Alberto Fernandez Monteiro</strong><br />
 	    Challenges in Sustainability Editorial Office<br />
 Journal of Human Security Editorial Office<br />
 	    Email:&nbsp;<a href="mailto:%6a%6f%73%65.%6d%6f%6e%74%65%69%72%6f@%6c%69%62%72%65%6c%6c%6f%70%68.%63%6f%6d">Jose.Monteiro@librelloph.com</a></p>
 	  
           
-      <p><strong><a style="color:#000000" href="javascript:openRTWindow('http://www.librelloph.com/ojs/index.php/politicsandgovernance/about/editorialTeamBio/115')">Mr. Antonio Vieira</a></strong><br />
+      <p><strong>Mr. Antonio Vieira</strong><br />
         Media and Communication Editorial Office<br />
         Politics and Governance Editorial Office<br />
         Social Inclusion Editorial Office<br />
       Email:&nbsp;<a href="mailto:antonio.vieira@librelloph.com">antonio.vieira@librelloph.com</a></p>
       
-      <p><strong><a style="color:#000000" href="javascript:openRTWindow('http://www.librelloph.com/ojs/index.php/journalofhumansecurity/about/editorialTeamBio/2')">Ms. H&eacute;lia Martinho</a></strong><br />
-      Email:&nbsp;<a href="mailto:%68%65%6c%69%61.%6d%61%72%74%69%6e%68%6f@%6c%69%62%72%65%6c%6c%6f%70%68.%63%6f%6d">Helia.Martinho@librelloph.com</a></p>
+      <p><strong>Ms. Luana Occhilupo</strong><br />
+      Email:&nbsp;<a href="mailto:&#108;&#117;&#097;&#110;&#097;&#046;&#111;&#099;&#099;&#104;&#105;&#108;&#117;&#112;&#111;&#064;&#108;&#105;&#098;&#114;&#101;&#108;&#108;&#111;&#112;&#104;&#046;&#099;&#111;&#109;">luana.occhilupo@librelloph.com</a></p>
      
       <p><strong>Support</strong><br />
 	    Email:&nbsp;<a href="mailto:%73%75%70%70%6f%72%74@%6c%69%62%72%65%6c%6c%6f%70%68.%63%6f%6d">Support@librelloph.com</a>
