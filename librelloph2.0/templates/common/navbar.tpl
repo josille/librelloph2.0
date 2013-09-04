@@ -16,15 +16,15 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 <ul class="nav nav-pills menu_top">
 	{if $currentJournal && $currentJournal->getSetting('publishingMode') !=
 	$smarty.const.PUBLISHING_MODE_NONE} {if !$currentJournal}
-	<li id="librello"><a itemprop="url" href="{$baseUrl}">librello</a></li>
+	<li id="librello"><a style='padding-left:0;' itemprop="url" href="{$baseUrl}">librello</a></li>
 	{else}
-	<li id="librello"><a href="{$baseUrl}/"><span
+	<li id="librello"><a style='padding-left:0;' href="{$baseUrl}/"><span
 		itemprop="publisher" itemscope
 		itemtype="http://schema.org/Organization"> <span itemprop="name">librello</span></span></a></li>
 	{/if}
 	<li class='spaces_test'>&#183;</li>
 	{/if}
-	<li id="home"><a itemprop="url" href="{url page="index"}">{translate
+	<li id="home"><a style='padding-left:0;' itemprop="url" href="{url page="index"}">{translate
 	key="navigation.home"}</a></li>
 	<li class='spaces_test'>&#183;</li>
 		
@@ -39,13 +39,13 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 		<li class="dropdown-submenu"><a href="#">{translate
 		key="about.people"}</a>
 		<ul class="dropdown-menu" role="menu">
-			<li><a href="{url page=" about" op="contact"}">{translate
+			<li><a href="{url page="about" op="contact"}">{translate
 			key="about.contact"}</a></li>
 
-			<li><a href="{url page=" about" op="editorialTeam"}">{translate
+			<li><a href="{url page="about" op="editorialTeam"}">{translate
 			key="about.editorialTeam"}</a></li>
 			{iterate from=peopleGroups item=peopleGroup}
-			<li><a href="{url page=" about" op="displayMembership"
+			<li><a href="{url page="about" op="displayMembership"
 				path=$peopleGroup->getId()}">{$peopleGroup->getLocalizedTitle()|escape}</a></li>
 			{/iterate} {call_hook name="Templates::About::Index::People"}
 		</ul>
@@ -54,52 +54,52 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 		key="about.policies"}</a>
 		<ul class="dropdown-menu" role="menu">
 			{if $currentJournal->getLocalizedSetting('focusScopeDesc') != ''}
-			<li><a href="{url page=" about" op="editorialPolicies"
+			<li><a href="{url page="about" op="editorialPolicies"
 				anchor="focusAndScope"}">{translate key="about.focusAndScope"}</a></li>
 			{/if}
-			<li><a href="{url page=" about" op="editorialPolicies"
+			<li><a href="{url page="about" op="editorialPolicies"
 				anchor="sectionPolicies"}">{translate key="about.sectionPolicies"}</a></li>
 			{if $currentJournal->getLocalizedSetting('reviewPolicy') != ''}
-			<li><a href="{url page=" about"  op="editorialPolicies"
+			<li><a href="{url page="about"  op="editorialPolicies"
 				anchor="peerReviewProcess"}">{translate
 			key="about.peerReviewProcess"}</a></li>
 			{/if} {if $currentJournal->getLocalizedSetting('pubFreqPolicy') !=
 			''}
-			<li><a href="{url page=" about"  op="editorialPolicies"
+			<li><a href="{url page="about"  op="editorialPolicies"
 				anchor="publicationFrequency"}">{translate
 			key="about.publicationFrequency"}</a></li>
 			{/if} {if $currentJournal->getSetting('publishingMode') ==
 			$smarty.const.PUBLISHING_MODE_OPEN &&
 			$currentJournal->getLocalizedSetting('openAccessPolicy') != ''}
-			<li><a href="{url page=" about"  op="editorialPolicies"
+			<li><a href="{url page="about"  op="editorialPolicies"
 				anchor="openAccessPolicy"}">{translate key="about.openAccessPolicy"}</a></li>
 			{/if} {if $journalSettings.enableLockss &&
 			$currentJournal->getLocalizedSetting('lockssLicense') != ''}
-			<li><a href="{url page=" about"  op="editorialPolicies"
+			<li><a href="{url page="about"  op="editorialPolicies"
 				anchor="archiving"}">{translate key="about.archiving"}</a></li>
 			{/if} {if $paymentConfigured &&
 			$journalSettings.journalPaymentsEnabled &&
 			$journalSettings.membershipFeeEnabled &&
 			$journalSettings.membershipFee > 0}
-			<li><a href="{url page=" about"  op="memberships"}">{translate
+			<li><a href="{url page="about"  op="memberships"}">{translate
 			key="about.memberships"}</a></li>
 			{/if} {if $currentJournal->getSetting('publishingMode') ==
 			$smarty.const.PUBLISHING_MODE_SUBSCRIPTION}
 			<li><a href="{url op="subscriptions"}">{translate
 			key="about.subscriptions"}</a></li>
 			{if !empty($journalSettings.enableAuthorSelfArchive)}
-			<li><a href="{url  page=" about" op="editorialPolicies"
+			<li><a href="{url  page="about" op="editorialPolicies"
 				anchor="authorSelfArchivePolicy"}">{translate
 			key="about.authorSelfArchive"}</a></li>
 			{/if} {if !empty($journalSettings.enableDelayedOpenAccess)}
-			<li><a href="{url  page=" about" op="editorialPolicies"
+			<li><a href="{url  page="about" op="editorialPolicies"
 				anchor="delayedOpenAccessPolicy"}">{translate
 			key="about.delayedOpenAccess"}</a></li>
 			{/if} {/if}{* $currentJournal->getSetting('publishingMode') ==
 			$smarty.const.PUBLISHING_MODE_SUBSCRIPTION *} {foreach key=key
 			from=$customAboutItems item=customAboutItem} {if
 			$customAboutItem.title!=''}
-			<li><a href="{url  page=" about" op="editorialPolicies"
+			<li><a href="{url  page="about" op="editorialPolicies"
 				anchor=custom-$key}">{$customAboutItem.title|escape}</a></li>
 			{/if} {/foreach} {call_hook name="Templates::About::Index::Policies"}
 		</ul>
@@ -107,21 +107,21 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 		<li class="dropdown-submenu"><a href="#">{translate
 		key="about.submissions"}</a>
 		<ul class="dropdown-menu" role="menu">
-			<li><a href="{url page=" about" op="submissions"
+			<li><a href="{url page="about" op="submissions"
 				anchor="onlineSubmissions"}">{translate
 			key="about.onlineSubmissions"}</a></li>
 			{if $currentJournal->getLocalizedSetting('authorGuidelines') != ''}
-			<li><a href="{url page=" about" op="submissions"
+			<li><a href="{url page="about" op="submissions"
 				anchor="authorGuidelines"}">{translate key="about.authorGuidelines"}</a></li>
-			<li><a href="{url page=" pages" op="view"}/guidelinesreviewers">Guidelines
+			<li><a href="{url page="pages" op="view"}/guidelinesreviewers">Guidelines
 			for Reviewers</a></li>
 			{/if} {if $currentJournal->getLocalizedSetting('copyrightNotice') !=
 			''}
-			<li><a href="{url page=" about" op="submissions"
+			<li><a href="{url page="about" op="submissions"
 				anchor="copyrightNotice"}">{translate key="about.copyrightNotice"}</a></li>
 			{/if} {if $currentJournal->getLocalizedSetting('privacyStatement') !=
 			''}
-			<li><a href="{url page=" about" op="submissions"
+			<li><a href="{url page="about" op="submissions"
 				anchor="privacyStatement"}">{translate key="about.privacyStatement"}</a></li>
 			{/if} {if $currentJournal->getSetting('journalPaymentsEnabled') &&
 			($currentJournal->getSetting('submissionFeeEnabled') ||
@@ -145,15 +145,15 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 			<li><a href="{url page="about" op="journalSponsorship"}">{translate
 			key="about.journalSponsorship"}</a></li>
 			{/if} {if $currentJournal->getLocalizedSetting('history') != ''}
-			<li><a href="{url page=" about" op="history"}">{translate
+			<li><a href="{url page="about" op="history"}">{translate
 			key="about.history"}</a></li>
 			{/if}
-			<li><a href="{url page=" about" op="siteMap"}">{translate
+			<li><a href="{url page="about" op="siteMap"}">{translate
 			key="about.siteMap"}</a></li>
-			<li><a href="{url page=" about" op="aboutThisPublishingSystem"}">{translate
+			<li><a href="{url page="about" op="aboutThisPublishingSystem"}">{translate
 			key="about.aboutThisPublishingSystem"}</a></li>
 			{if $publicStatisticsEnabled}
-			<li><a href="{url page=" about" op="statistics"}">{translate
+			<li><a href="{url page="about" op="statistics"}">{translate
 			key="about.statistics"}</a></li>
 			{/if} {call_hook name="Templates::About::Index::Other"}
 		</ul>
@@ -192,7 +192,7 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	key="navigation.privacy"}</a></li>
 	{else}
 	<li class='spaces_test'>&#183;</li>
-	<li><a href="{url page=" about" op="editorialTeam"}">{translate
+	<li><a href="{url page="about" op="editorialTeam"}">{translate
 	key="about.editorialTeam"}</a></li>
 	{/if} {if $isUserLoggedIn}
 	<li class='spaces_test'>&#183;</li>
@@ -216,7 +216,7 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	<li class='spaces_test'>&#183;</li>
 
 	{if $currentJournal->getJournalId() == '4'}
-	<li id="current"><a href="{url page=" issue" op="current"}">{translate
+	<li id="current"><a href="{url page="issue" op="current"}">{translate
 	key="navigation.current"}</a></li>
 
 	{else}
@@ -244,7 +244,9 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	{/if} {/foreach}
 	
 	{if $currentJournal}
-	<li class="active pull-right"><a target='blank' href="{$submissionBaseUrl}/{$currentJournal->getPath()}/author/submit">Submit an article
+	<li class="pull-right"><a target='blank' href="{$submissionBaseUrl}/index.php/{$currentJournal->getPath()}/login" class="btn btn-default btn-login">Login
+    </a></li>
+	<li class="active pull-right"><a target='blank' href="{$submissionBaseUrl}/index.php/{$currentJournal->getPath()}/author/submit">Submit an article
     </a></li>
     
     {*
