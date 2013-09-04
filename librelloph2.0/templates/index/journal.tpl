@@ -12,7 +12,7 @@
 {assign var="pageTitleTranslated" value=$siteTitle}
 {include file="common/header.tpl"}
 {/strip}
-
+<div class='doi_journal'>doi: 10.12924/librello.{$currentJournal->getLocalizedInitials()}</div>
 {if $journalDescription}
 	<div id='journal_main_desc' class='view' itemprop="articleBody">{$journalDescription}</div>
 	<div id='journal_view_more1'><a href="{url page="about"}">View more about this Journal...</a></div>

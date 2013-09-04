@@ -665,6 +665,28 @@ class Issue extends DataObject {
 		}
 		return $str;
 	}
+	
+	/**
+	 * Return the string of the issue doi
+	 * @return string
+	 */
+	function getIssueDoi()
+	{
+		$journalDao =& DAORegistry::getDAO('JournalDAO');
+		$journal = $journalDao->getJournal($this->getJournalId());
+		
+		AppLocale::requireComponents(array(LOCALE_COMPONENT_APPLICATION_COMMON));
+		$volLabel = __('issue.vol');
+		$numLabel = __('issue.no');
+
+		$vol = $this->getData('volume');
+		$num = $this->getData('number');
+		$year = $this->getData('year');
+		
+		$doi = 'doi: 10.12924/librello.'.$journal->getLocalizedInitials().$year.'.'.sprintf('%1$02d', $num).sprintf('%1$02d', $vol);
+		
+		return $doi;
+	}
 
 	/**
 	 * Return the string of the issue identification based label format

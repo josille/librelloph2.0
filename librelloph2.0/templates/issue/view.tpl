@@ -9,6 +9,7 @@
  *
  * $Id$
  *}
+ <div class='issuesTocDoi'>{$issue->getIssueDoi()}</div>
 {if $subscriptionRequired && $showGalleyLinks && $showToc}
 	<div id="accessKey">
 		<img src="{$baseUrl}/lib/pkp/templates/images/icons/fulltext_open_medium.gif" alt="{translate key="article.accessLogoOpen.altText"}" />

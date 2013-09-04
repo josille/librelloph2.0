@@ -119,6 +119,7 @@ login button, journal menu
 	font-size:16px;
 	}
 	
+
 .panel_hidden{
 	/*visibility:hidden;*/
 	}
@@ -128,10 +129,43 @@ login button, journal menu
 	width:14%;
 	}
 	
-.email_lowercase {
-	text-transform:lowercase;
+/*
+JOURNALS
+*/
+.doi_journal {
+	 padding-bottom: 10px;
+    padding-top: 5px;
+    text-transform: lowercase;
 	} 
 	
+/*
+END JOURNALS
+*/
+	
+/*
+Issues List
+*/
+.issuesDoi{
+	font-size:10px;
+	text-align: center;
+	text-transform: lowercase;
+	}
+/*
+END Issues List
+*/
+
+/*
+Issues TOC
+*/
+.issuesTocDoi{
+	 font-size: 13px;
+    padding-bottom: 10px;
+    text-transform: lowercase;
+	}
+/*
+END Issues List
+*/
+
 	.nav .caret {
     border-bottom-color: #375;
     border-top-color: #375;

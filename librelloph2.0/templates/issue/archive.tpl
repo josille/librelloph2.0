@@ -41,6 +41,7 @@
 		{$issue->getIssueIdentification(false,false,false,true)|escape}
 		</h5></strong>
 		</a>
+		<p class='issuesDoi'>{$issue->getIssueDoi()}</p>
 		        <p>{$issue->getLocalizedDescription()|strip_unsafe_html|nl2br}</p>
 		        <div>
 		        <p>
