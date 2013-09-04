@@ -94,9 +94,8 @@
 DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><span style='margin-left:10px;'>Publication Date: {$article->getDatePublished()|date_format:"%e %B %Y"}</span>
 </div>
 </div>
-
 <div class="row">
-<div class="col-6 col-sm-8 col-lg-12">
+<div class="col-6 col-sm-8 col-lg-6">
 
 <div class='research_div'>
 <strong>
@@ -111,15 +110,47 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 		{elseif $articleType eq 'Editorials'}
 		    Editorial
 		{elseif $articleType eq 'Reviews'}
-		    Review:
+		    Review
 		{elseif $articleType eq 'Short Notes'}
 		    Short Note
-		{elseif $articleType eq 'Book Reviews'}
+		{elseif $articleType eq 'Book Review'}
 		    Book Review
 		{/if}
 		</span>
 		</strong>
 		</div>
+
+</div>
+
+<div class="col-6 col-sm-8 col-lg-6">
+{if $galleys}
+<div class="btn-group  pull-right">
+
+<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+<span class="glyphicon glyphicon-download"></span> Download this Article <span class="caret"></span></button>
+	
+  <ul class="dropdown-menu" role="menu">
+				{foreach from=$article->getGalleys() item=galley name=galleyList} {if
+	$galley->isPdfGalley()}
+	<li><a href="{url page='article' op='download' path=$article->getBestArticleId($currentJournal)|to_array:$galley->getBestGalleyId($currentJournal)}" 
+	class="file">Full text PDF</a></li>
+
+	<li><a href="{url page='article' op='viewXML' path=$article->getBestArticleId($currentJournal)}/xml" class="file">Abstract XML</a></li>
+	{else}
+	<li><a href="{url page='article' op='view' path=$article->getBestArticleId($currentJournal)|to_array:$galley->getBestGalleyId($currentJournal)}"
+	class="file" target="blank">{$galley->getGalleyLabel()|escape}</a></li>
+	{/if} {/foreach}
+				</ul>
+
+
+</div>
+{/if}
+</div>
+</div>
+
+<div class="row">
+<div class="col-6 col-sm-8 col-lg-12">
+
 	<div id="articleTitle"><h3 itemprop="name">{$article->getLocalizedTitle()|strip_unsafe_html}</h3></div>
 </div>
 </div>
@@ -143,42 +174,6 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 </div>
 {/if}
 
-<div class="row">
-<div class="col-6 col-sm-8 col-lg-12">
-{if (!$subscriptionRequired || $article->getAccessStatus() == $smarty.const.ARTICLE_ACCESS_OPEN || $subscribedUser || $subscribedDomain)}
-				{assign var=hasAccess value=1}
-			{else}
-				{assign var=hasAccess value=0}
-			{/if}
-{if $galleys}
-
-				{if $hasAccess || ($subscriptionRequired && $showGalleyLinks)}
-					{foreach from=$article->getGalleys() item=galley name=galleyList}
-						{if $galley->isPdfGalley()}
-						<div class='download_div'>
-						<a href="{url page='article' op='download' path=$article->getBestArticleId($currentJournal)|to_array:$galley->getBestGalleyId($currentJournal)}" target="_parent" class="btn btn-danger btn-block">
-						<span class="glyphicon glyphicon-download-alt"></span> Download full article PDF</a>
-						
-						<a href="{url page='article' op='viewXML' path=$article->getBestArticleId($currentJournal)}/xml" target="_parent" class="btn btn-warning btn-block">
-						<span class="glyphicon glyphicon-download-alt"></span> Download article abstract XML</a>
-						</div>
-						{else}
-						<a href="{url page='article' op='view' path=$article->getBestArticleId($currentJournal)|to_array:$galley->getBestGalleyId($currentJournal)}" class="file" target="_parent">{$galley->getGalleyLabel()|escape}</a>
-						{/if}
-						{if $subscriptionRequired && $showGalleyLinks && $restrictOnlyPdf}
-							{if $article->getAccessStatus() == $smarty.const.ARTICLE_ACCESS_OPEN || !$galley->isPdfGalley()}
-								<img class="accessLogo" src="{$baseUrl}/lib/pkp/templates/images/icons/fulltext_open_medium.gif" alt="{translate key="article.accessLogoOpen.altText"}" />
-							{else}
-								<img class="accessLogo" src="{$baseUrl}/lib/pkp/templates/images/icons/fulltext_restricted_medium.gif" alt="{translate key="article.accessLogoRestricted.altText"}" />
-							{/if}
-						{/if}
-					{/foreach}
-					
-			{/if}
-{/if}
-
-</div>
-</div>
 
 {if $article->getSuppFiles()}
 
