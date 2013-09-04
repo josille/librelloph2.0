@@ -92,10 +92,11 @@ under a Creative Commons Attribution License (http://creativecommons.org/license
 
 </div>
 <div class='col-6 col-sm-8 col-lg-2'>
-<img itemprop="image" src="{$publicFilesDir}/../../site/pageHeaderTitleImage_en_US.png"}" 
-	width="100%"
-	alt="{$displayPageHeaderLogoAltText|escape}"
+<a href='{$baseUrl}' target='_blank'>
+<img itemprop="image" src="{$baseUrl}/images/librello_logo.png" width='130px'
+	alt="Librello publishing"
 	/>
+	</a>
 </div>
 </div>
 </div> <!-- container -->
