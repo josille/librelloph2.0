@@ -28,7 +28,7 @@
 	<script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js"></script>
 	<!-- script src="http://code.jquery.com/jquery.js"></script-->
 	
-	{$additionalHeadData}
+	{*$additionalHeadData*}
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -62,19 +62,15 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top">
 <div class="container">
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://localhost/librelloph2.0/index.php/index/oai?verb=Identify">
-<img width="45px" height="35px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif"/>
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://www.librelloph.com/submission/index.php/index/oai?verb=Identify">
+<img width="38px" height="28px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif"/>
 </a></p>
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
-	href="{url page="gateway"}/plugin/WebFeedGatewayPlugin/rss2">
-<img src="{$publicFilesDir}/../../site/RSS_icon.png" width="26" height="26" alt="Rss"/></a></p>
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
-	href="https://twitter.com/librello" target="blank"><img src="{$publicFilesDir}/../../site/Twitter_icon.png" width="26" height="26" alt="Twitter"/></a>
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="{url page="gateway"}/plugin/WebFeedGatewayPlugin/rss2">
+<img src="{$baseUrl}/images/rss_top.png" width="26" height="26" alt="Rss"/></a></p>
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="https://twitter.com/librello" target="blank"><img src="{$baseUrl}/images/twitter_top.png" width="26" height="26" alt="Twitter"/></a>
 </p>
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
-	href="http://www.linkedin.com/company/librello" target="blank"><img src="{$publicFilesDir}/../../site/Linkedin_icon.png" width="26" height="26" alt="LinkedIn"/></a></p>
-	<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
-	href="https://plus.google.com/117721213017356591223" target="blank"><img src="{$publicFilesDir}/../../site/Google_icon.png" width="26" height="26" alt="Google +"/></a></p>
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="http://www.linkedin.com/company/librello" target="blank"><img src="{$baseUrl}/images/linkedin_top.png" width="26" height="26" alt="LinkedIn"/></a></p>
+	<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="https://plus.google.com/117721213017356591223" target="blank"><img src="{$baseUrl}/images/google_top.png" width="26" height="26" alt="Google +"/></a></p>
 </div>
 </div>
 
@@ -83,13 +79,15 @@
 
 <div id="header">
 <div id="headerTitle">
-<h1>
+<h1 class='margin_top_5'>
 {if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
 	<img itemprop="image" src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogoAltText != ''}alt="{$displayPageHeaderLogoAltText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
 	<span itemprop="name" style='height:1px;display:none;'>{if $displayPageHeaderLogoAltText != ''}{$displayPageHeaderLogoAltText|escape}{else}{translate key="common.pageHeaderLogo.altText"}{/if}</span>
 {/if}
 {if $displayPageHeaderTitle && is_array($displayPageHeaderTitle)}
+<a href="{url page="index"}" alt='Librello Publishing' style="background:none;">
 	<img itemprop="image" src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" width="{$displayPageHeaderTitle.width|escape}" height="{$displayPageHeaderTitle.height|escape}" {if $displayPageHeaderTitleAltText != ''}alt="{$displayPageHeaderTitleAltText|escape}"{else}alt="{translate key="common.pageHeader.altText"}"{/if} />
+	</a>
 	<span itemprop="name" style='height:1px;display:none;'>{if $displayPageHeaderTitleAltText != ''}{$displayPageHeaderTitleAltText|escape}{else}{translate key="common.pageHeader.altText"}{/if} </span>
 {elseif $displayPageHeaderTitle}
 	{$displayPageHeaderTitle}
