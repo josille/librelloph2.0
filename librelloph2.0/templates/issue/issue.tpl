@@ -18,7 +18,7 @@ $subscribedUser || $subscribedDomain || ($subscriptionExpiryPartial &&
 $articleExpiryPartial.$articleId))} {assign var=hasAccess value=1}
 {else} {assign var=hasAccess value=0} {/if}
 
-<div class="col-7 col-sm-7 col-lg-8">
+<div class="col-7 col-sm-7 col-lg-10">
 
 <span style='float: left; font-style: italic;'> {assign
 var=articleType value=$article->getSectionTitle()} {if $articleType eq
@@ -26,7 +26,8 @@ var=articleType value=$article->getSectionTitle()} {if $articleType eq
 Commentary {elseif $articleType eq 'Communications'} Communication
 {elseif $articleType eq 'Editorials'} Editorial {elseif $articleType eq
 'Reviews'} Review {elseif $articleType eq 'Short Notes'} Short Note
-{elseif $articleType eq 'Book Reviews'} Book Review {else} {/if} </span>
+{elseif $articleType eq 'Book Review'} Book Review {else} {/if} </span>
+
 <span
 	style='overflow: hidden; display: block; border-bottom: 1.5px dotted black; height: 16px; margin-bottom: 6px;'>&nbsp;</span>
 
@@ -38,10 +39,58 @@ Commentary {elseif $articleType eq 'Communications'} Communication
 <div class="col-2 col-sm-2 col-lg-2">{if
 $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 {$article->getPages()|escape}</div>
+</div>
 
-<div class="col-2 col-sm-2 col-lg-2">
+<div class="row padding_left_15">
+<div class="col-6 col-sm-6 col-lg-12 font_size_10 margin_bottom_5 margin_top_10">doi: {$article->getDOI()}</div>
+</div>
 
-<div class="btn-group">
+<div class="row padding_left_15">
+<div class="col-6 col-sm-6 col-lg-12">
+{$article->getAuthorAffiliationHTMLtpl()}</div>
+</div>
+
+<div class="row">
+<div class="col-10 col-sm-10 col-lg-12 font_size_12 margin_top_10">
+Publication Date: {$article->getDatePublished()|date_format:"%e
+%B %Y"}</div>
+</div>
+
+<div class="row">
+<div class="col-10 col-sm-10 col-lg-12 ">
+
+<div class="btn-toolbar padding_left_15">
+
+<div class="btn-group btn-group-xs">
+<a class="margin_top_10 btn btn-success btn-sm accordion-toggle"  data-toggle="collapse"
+	data-parent="#accordion_{$article->getId()}"
+	href="#collapse_{$article->getId()}"><span class="glyphicon glyphicon-tags"></span> View abstract</a>
+
+</div>
+
+<div class="btn-group btn-group-xs margin_top_10">
+
+<button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-download"></span> Download <span class="caret"></span></button>
+	
+  <ul class="dropdown-menu" role="menu">
+				{foreach from=$article->getGalleys() item=galley name=galleyList} {if
+	$galley->isPdfGalley()}
+	<li><a href="{url page='article' op='download'
+		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
+	class="file">{$galley->getGalleyLabel()|escape}</a></li>
+
+	<li><a href="{url page='article' op='viewXML' path=$articlePath}/xml" class="file">XML</a></li>
+	{else}
+	<li><a href="{url page='article' op='view'
+		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
+	class="file" target="blank">{$galley->getGalleyLabel()|escape}</a></li>
+	{/if} {/foreach}
+				</ul>
+
+</div>
+
+<div class="btn-group margin_top_10 ">
+
 <button type="button" class="btn btn-link btn-xs dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-send"></span> Share this article <span class="caret"></span></button>
 
 <ul class="dropdown-menu" role="menu">
@@ -67,49 +116,17 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 	</li>
 
 </ul>
+
 </div>
+
 </div>
-</div>
+
+</div></div>
+
 
 <div class="row padding_left_15">
-<div class="col-6 col-sm-6 col-lg-8">
-{$article->getAuthorAffiliationHTMLtpl()}</div>
-<div class="col-4 col-sm-6 col-lg-11">
-
-<div class="row">
-
-<div class="col-2 col-sm-2 col-lg-2">
-<a class="margin_top_10 btn btn-success btn-sm accordion-toggle"  data-toggle="collapse"
-	data-parent="#accordion_{$article->getId()}"
-	href="#collapse_{$article->getId()}"><span class="glyphicon glyphicon-tags"></span> View abstract</a>
-	
-</div>
-<div class="col-4 col-sm-6 col-lg-3">
-
-
-	<div class="btn-group margin_top_10">
-<button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-download"></span> Download <span class="caret"></span></button>
-	
-  <ul class="dropdown-menu" role="menu">
-				{foreach from=$article->getGalleys() item=galley name=galleyList} {if
-	$galley->isPdfGalley()}
-	<li><a href="{url page='article' op='download'
-		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
-	class="file">{$galley->getGalleyLabel()|escape}</a></li>
-
-	<li><a href="{url page='article' op='viewXML' path=$articlePath}/xml" class="file">XML</a></li>
-	{else}
-	<li><a href="{url page='article' op='view'
-		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
-	class="file" target="blank">{$galley->getGalleyLabel()|escape}</a></li>
-	{/if} {/foreach}
-				</ul>
-	</div>
-
-</div>
-
-
 <div class="col-4 col-sm-6 col-lg-12 margin_top_10">
+
 
 
 <div class="accordion" id="accordion_{$article->getId()}">
@@ -126,8 +143,6 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 </div>
 </div>
 
-</div>
-</div>
 
 
 <hr class='margin_bottom_5' />

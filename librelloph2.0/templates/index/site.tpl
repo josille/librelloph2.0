@@ -15,35 +15,83 @@ value=$article->getJournalPath()} {assign var=journalInitials
 value=$article->getJournalInitials()}
 
 <div class="row row_over" id='row_over_{$article->getId()}'>
-<div class="col-7 col-sm-7 col-lg-11">
+<div class="col-7 col-sm-7 col-lg-12">
 
 <div class="row">
 <div class="col-1 col-sm-1 col-lg-1"><img alt="{$journalInitials}"
-	src="/public/journals/{$article->getJournalId()}/{$journalInitials}_small_notext.png"
+	src="{$publicFilesDir}/../journals/{$article->getJournalId()}/{$journalInitials}_small_notext.png"
 	style='float: left; margin: 4px 10px 4px 4px;' /></div>
 <div class="col-10 col-sm-10 col-lg-11">
 
 <div class="row">
-<div class="col-10 col-sm-10 col-lg-9">
+<div class="col-10 col-sm-10 col-lg-11">
 
 <div class="row">
 <div class="col-10 col-sm-10 col-lg-12"><strong> <a
 	style='vertical-align: super;' href='{url journal="$journalPath" page="article" op="view" path=$articlePath}'>{$article->getArticleTitle()|strip_unsafe_html}</a>
 </strong></div>
 
-<div class="col-10 col-sm-10 col-lg-12 font_size_10 margin_bottom_5 margin_top__4">doi: <strong>{$article->getDOI()}</strong>
+<div class="col-10 col-sm-10 col-lg-12 font_size_10 margin_bottom_5 margin_top__4">doi: {$article->getDOI()}
 </div>
 </div>
 </div>
 
-<div class="col-10 col-sm-10 col-lg-3">
-<div>
+
+
+</div>
+
+<div class="row">
+<div class="col-10 col-sm-10 col-lg-12 font_size_12">
+{$article->getAuthorAffiliationHTMLtpl()}
+</div>
+</div>
+
+<div class="row">
+<div class="col-10 col-sm-10 col-lg-12 font_size_12 margin_top_10">
+Publication Date: {$article->getDatePublished()|date_format:"%e
+%B %Y"}</div>
+</div>
+
+<div class="row">
+<div class="col-10 col-sm-10 col-lg-12 ">
+
+<div class="btn-toolbar">
+<div class="btn-group btn-group-xs">
+<a	class="margin_top_10 btn btn-sm btn-success accordion-toggle"
+	data-toggle="collapse" data-parent="#accordion_{$article->getId()}"
+	href="#collapse_{$article->getId()}"> <span
+	class="glyphicon glyphicon-tags"></span> View abstract</a>
+
+</div>
+<div class="btn-group btn-group-xs margin_top_10">
+<button type="button" class="btn btn-sm btn-info dropdown-toggle"
+	data-toggle="dropdown"><span class="glyphicon glyphicon-download"></span>
+Download <span class="caret"></span></button>
+
+<ul class="dropdown-menu" role="menu">
+	{foreach from=$article->getGalleys() item=galley name=galleyList} {if
+	$galley->isPdfGalley()}
+	<li><a target='blank'
+		href="{url journal=$journalPath page='article' op='download' path=$articlePath|to_array:$galley->getPublicGalleyId()}">{$galley->getGalleyLabel()|escape}</a>
+	</li>
+
+	<li><a
+		href="{url journal=$journalPath page='article' op='viewXML' path=$articlePath}/xml">XML</a></li>
+	{else}
+	<li><a
+		href="{url journal=$journalPath page='article' op='view' path=$articlePath|to_array:$galley->getPublicGalleyId()}"
+		target="blank">{$galley->getGalleyLabel()|escape}</a></li>
+	{/if} {/foreach}
+</ul>
+</div>
+
+<div class="btn-group margin_top_10 ">
 <button type="button" class="btn btn-link btn-xs dropdown-toggle"
 	data-toggle="dropdown"><span class="glyphicon glyphicon-send"></span>
 Share this article <span class="caret"></span></button>
 
 
-<ul class="dropdown-menu" role="menu">
+<ul class="dropdown-menu padding_left_15" role="menu">
 	<li>
 	<div class='twitter_div margin_bottom_10 padding_left_15'><a
 		href="https://twitter.com/share" class="twitter-share-button"
@@ -71,18 +119,8 @@ Share this article <span class="caret"></span></button>
 </div>
 
 </div>
-
-<div class="row">
-<div class="col-10 col-sm-10 col-lg-12 font_size_12">
-{$article->getAuthorAffiliationHTMLtpl()}
-</div>
 </div>
 
-<div class="row">
-<div class="col-10 col-sm-10 col-lg-12 font_size_12 margin_top_10">
-Publication Date: <strong>{$article->getDatePublished()|date_format:"%e
-%B %Y"}</strong></div>
-</div>
 
 </div>
 </div>
@@ -94,38 +132,6 @@ Publication Date: <strong>{$article->getDatePublished()|date_format:"%e
 <div class="col-4 col-sm-6 col-lg-11">
 
 <div class="row">
-<div class="col-2 col-sm-2 col-lg-2"><a
-	class="margin_top_10 btn btn-sm btn-success accordion-toggle"
-	data-toggle="collapse" data-parent="#accordion_{$article->getId()}"
-	href="#collapse_{$article->getId()}"> <span
-	class="glyphicon glyphicon-tags"></span> View abstract</a></div>
-<div class="col-4 col-sm-6 col-lg-3">
-
-
-<div class="btn-group margin_top_10">
-<button type="button" class="btn btn-sm btn-info dropdown-toggle"
-	data-toggle="dropdown"><span class="glyphicon glyphicon-download"></span>
-Download <span class="caret"></span></button>
-
-<ul class="dropdown-menu" role="menu">
-	{foreach from=$article->getGalleys() item=galley name=galleyList} {if
-	$galley->isPdfGalley()}
-	<li><a target='blank'
-		href="{url journal=$journalPath page='article' op='download' path=$articlePath|to_array:$galley->getPublicGalleyId()}">{$galley->getGalleyLabel()|escape}</a>
-	</li>
-
-	<li><a
-		href="{url journal=$journalPath page='article' op='viewXML' path=$articlePath}/xml">XML</a></li>
-	{else}
-	<li><a
-		href="{url journal=$journalPath page='article' op='view' path=$articlePath|to_array:$galley->getPublicGalleyId()}"
-		target="blank">{$galley->getGalleyLabel()|escape}</a></li>
-	{/if} {/foreach}
-</ul>
-</div>
-
-</div>
-
 <div class="col-4 col-sm-6 col-lg-12 margin_top_10">
 <div class="accordion" id="accordion_{$article->getId()}">
 <div class="accordion-group accordion-group_noborders">
