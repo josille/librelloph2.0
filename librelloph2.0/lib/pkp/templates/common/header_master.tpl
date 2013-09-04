@@ -49,17 +49,14 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 <div id="fb-root"></div>
 <div class="navbar navbar-inverse navbar-fixed-top">
 <div class="container">
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://localhost/librelloph2.0/index.php/index/oai?verb=Identify">
-<img width="45px" height="35px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif" />
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://www.librelloph.com/submission/index.php/index/oai?verb=Identify">
+<img width="38px" height="28px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif" />
 </a></p>
 
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
-	href="https://twitter.com/librello" target="blank"><img src="{$publicFilesDir}/Twitter_icon.png" width="26" height="26" alt="Twitter"/></a>
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="https://twitter.com/librello" target="blank"><img src="{$baseUrl}/images/twitter_top.png" width="26" height="26" alt="Twitter"/></a>
 </p>
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
-	href="http://www.linkedin.com/company/librello" target="blank"><img src="{$publicFilesDir}/Linkedin_icon.png" width="26" height="26" alt="LinkedIn"/></a></p>
-	<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a class="btn btn-default btn-xs"
-	href="https://plus.google.com/117721213017356591223" target="blank"><img src="{$publicFilesDir}/Google_icon.png" width="26" height="26" alt="Google +"/></a></p>
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="http://www.linkedin.com/company/librello" target="blank"><img src="{$baseUrl}/images/linkedin_top.png" width="26" height="26" alt="LinkedIn"/></a></p>
+	<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="https://plus.google.com/117721213017356591223" target="blank"><img src="{$baseUrl}/images/google_top.png" width="26" height="26" alt="Google +"/></a></p>
 
 </div>
 </div>
@@ -73,7 +70,7 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 
 <div>
 
-<h1>{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)} <img
+<h1 class='margin_top_5'>{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)} <img
 	itemprop="image"
 	src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"
 	url"}" width="{$displayPageHeaderLogo.width|escape}"
@@ -106,9 +103,9 @@ $alternatePageHeader} {$alternatePageHeader} {elseif $siteTitle}
 		<ul class="nav nav-pills nav-stacked">
 			{iterate from=journals item=journal}
 			<li><a href="{url journal=$journal->getPath()}" class="mainjournal"
-				style="font-style: italic; background: none;"> <img
+				style="font-style: italic; background: none; padding-left:0;"> <img
 				style="margin-bottom: 10px; border-style: none;" alt="{$journal->getJournalInitials()}" 
-				src="/public/journals/{$journal->getJournalId()}/{$journal->getJournalInitials()}small.png" />
+				src="{$publicFilesDir}/../journals/{$journal->getJournalId()}/{$journal->getJournalInitials()}small.png" />
 
 			</a></li>
 			{/iterate}
