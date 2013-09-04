@@ -21,13 +21,21 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	<li id="librello"><a style='padding-left:0;' href="{$baseUrl}/"><span
 		itemprop="publisher" itemscope
 		itemtype="http://schema.org/Organization"> <span itemprop="name">librello</span></span></a></li>
+				
+	
 	{/if}
+	
+		<li class='spaces_test'>&#183;</li>
+	<li id="home"><a itemprop="url" href="{url page="index"}">{translate
+	key="navigation.home"}</a></li>
 	<li class='spaces_test'>&#183;</li>
-	{/if}
+	
+	{else}
 	<li id="home"><a style='padding-left:0;' itemprop="url" href="{url page="index"}">{translate
 	key="navigation.home"}</a></li>
 	<li class='spaces_test'>&#183;</li>
 		
+	{/if}
 	{if $currentJournal && $currentJournal->getSetting('publishingMode') !=
 	$smarty.const.PUBLISHING_MODE_NONE}
 	
