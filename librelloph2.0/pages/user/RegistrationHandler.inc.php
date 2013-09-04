@@ -28,6 +28,23 @@ class RegistrationHandler extends UserHandler {
 	 * Display registration form for new users.
 	 */
 	function register($args, &$request) {
+		
+		/*
+		 * Hack to redirect all logins to old base url
+		 */
+		$newUrl = Config::getVar('general', 'submission_base_url');
+		$baseUrl = Config::getVar('general', 'base_url');
+		
+		$posNew = strrpos($newUrl, "/");
+		$posBase = strrpos($baseUrl, "/");
+		if ($posNew !== false && $posBase !== false) { // note: three equal signs
+	   		$bodytag = str_replace(substr($baseUrl, $posBase+1),substr($newUrl, $posNew+1), "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+			 header( 'Location: '.$bodytag ) ;
+		}
+		/*
+		 * End of hack
+		 */
+		
 		$this->validate();
 		$this->setupTemplate(true);
 
