@@ -130,7 +130,7 @@ class PublishedArticleDAO extends DAO {
 	 * @return object
 	 * by RDLG
 	 */
-	function &getPublishedArticlesByIssueId($issueId = null, $rangeInfo = null, $reverse = false) {
+	function &getPublishedArticlesByIssueId($issueId = null, $rangeInfo = null, $reverse = false, $pagesSort = false) {
 		$primaryLocale = AppLocale::getPrimaryLocale();
 		$locale = AppLocale::getLocale();
 		
@@ -150,7 +150,8 @@ class PublishedArticleDAO extends DAO {
 			'SELECT	pa.*,
 				a.*,
 				COALESCE(stl.setting_value, stpl.setting_value) AS section_title,
-				COALESCE(sal.setting_value, sapl.setting_value) AS section_abbrev
+				COALESCE(sal.setting_value, sapl.setting_value) AS section_abbrev,
+				SUBSTRING_INDEX( a.pages, "-", 1 ) AS PagesSort
 			FROM	published_articles pa
 				LEFT JOIN articles a ON pa.article_id = a.article_id
 				LEFT JOIN issues i ON pa.issue_id = i.issue_id
@@ -162,7 +163,9 @@ class PublishedArticleDAO extends DAO {
 			WHERE 	i.published = 1
 				' . ($issueId !== null?'AND pa.issue_id = ?':'') . '
 				AND a.status <> ' . STATUS_ARCHIVED . '
-			ORDER BY pa.seq ASC, date_published '. ($reverse?'DESC':'ASC'),
+			ORDER BY '.($pagesSort?'CAST(PagesSort as decimal),':'')
+			
+			.' pa.seq ASC, date_published '. ($reverse?'DESC':'ASC'),
 			$params,
 			$rangeInfo
 		);

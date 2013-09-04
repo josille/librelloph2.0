@@ -95,7 +95,7 @@ class IssueHandler extends Handler {
 				
 				$articleDao =& DAORegistry::getDAO('PublishedArticleDAO');
 				//$articles =& $articleDao->getPublishedArticlesByJournalId($journal->getId(),NULL,true);
-				$articles =& $articleDao->getPublishedArticlesByIssueId($issue->getId(),NULL,false);
+				$articles =& $articleDao->getPublishedArticlesByIssueId($issue->getId(),NULL,false,true);
 				
 				$templateMgr->assign_by_ref('articles',$articles );
 				
