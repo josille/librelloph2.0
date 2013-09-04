@@ -69,6 +69,10 @@ login button, journal menu
 .margin_top_10{
 	margin-top:10px;
 	}
+
+.margin_top_5{
+	margin-top:5px;
+	}
 	
 .margin_top__4{
 	margin-top:-4px;
@@ -127,6 +131,13 @@ login button, journal menu
 	.nav .caret {
     border-bottom-color: #375;
     border-top-color: #375;
+}
+
+
+.btn-login {
+    cursor: pointer;
+    font-weight: bold;
+    color: #5CB85C;
 }
 
 .accordion-group_noborders{
