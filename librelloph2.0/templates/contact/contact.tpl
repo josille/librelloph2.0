@@ -18,7 +18,7 @@
 	  <p><strong>Dr. Jos&eacute; Alberto Fernandez Monteiro</strong><br />
 	    Challenges in Sustainability Editorial Office<br />
 Journal of Human Security Editorial Office<br />
-	    Email:&nbsp;<a href="mailto:%6a%6f%73%65.%6d%6f%6e%74%65%69%72%6f@%6c%69%62%72%65%6c%6c%6f%70%68.%63%6f%6d">Jose.Monteiro@librelloph.com</a></p>
+	    Email:&nbsp;<a href="mailto:%6a%6f%73%65.%6d%6f%6e%74%65%69%72%6f@%6c%69%62%72%65%6c%6c%6f%70%68.%63%6f%6d">jose.monteiro@librelloph.com</a></p>
 	  
           
       <p><strong>Mr. Antonio Vieira</strong><br />
@@ -31,7 +31,7 @@ Journal of Human Security Editorial Office<br />
       Email:&nbsp;<a href="mailto:&#108;&#117;&#097;&#110;&#097;&#046;&#111;&#099;&#099;&#104;&#105;&#108;&#117;&#112;&#111;&#064;&#108;&#105;&#098;&#114;&#101;&#108;&#108;&#111;&#112;&#104;&#046;&#099;&#111;&#109;">luana.occhilupo@librelloph.com</a></p>
      
       <p><strong>Support</strong><br />
-	    Email:&nbsp;<a href="mailto:%73%75%70%70%6f%72%74@%6c%69%62%72%65%6c%6c%6f%70%68.%63%6f%6d">Support@librelloph.com</a>
+	    Email:&nbsp;<a href="mailto:%73%75%70%70%6f%72%74@%6c%69%62%72%65%6c%6c%6f%70%68.%63%6f%6d">support@librelloph.com</a>
         </p>
         
         <p><strong>Membership</strong><br />
