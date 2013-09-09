@@ -683,7 +683,7 @@ class Issue extends DataObject {
 		$num = $this->getData('number');
 		$year = $this->getData('year');
 		
-		$doi = 'doi: 10.12924/librello.'.$journal->getLocalizedInitials().$year.'.'.sprintf('%1$02d', $num).sprintf('%1$02d', $vol);
+		$doi = 'doi: 10.12924/librello.'.$journal->getLocalizedInitials().$year.'.'.sprintf('%1$02d', $vol).sprintf('%1$02d', $num);
 		
 		return $doi;
 	}
