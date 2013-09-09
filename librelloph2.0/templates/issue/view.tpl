@@ -9,7 +9,7 @@
  *
  * $Id$
  *}
- <div class='issuesTocDoi'>{$issue->getIssueDoi()}</div>
+
 {if $subscriptionRequired && $showGalleyLinks && $showToc}
 	<div id="accessKey">
 		<img src="{$baseUrl}/lib/pkp/templates/images/icons/fulltext_open_medium.gif" alt="{translate key="article.accessLogoOpen.altText"}" />
@@ -28,46 +28,14 @@
 	{else}
 		{url|assign:"currentUrl" page="issue" op="current" path="showToc"}
 	{/if}
-	<!-- ul class="menu">
-		<li><a href="{$currentUrl}">{translate key="issue.toc"}</a></li>
-	</ul>
-	<br /-->
-	{if $issue->getLocalizedCoverPageDescription()}
-		<div id="issueCoverDescription" style='padding-bottom:20px;'>{$issue->getLocalizedCoverPageDescription()|strip_unsafe_html|nl2br}</div>
-	{/if}
-	{*if $coverPagePath}
-	<table border='0' style='width:100%'>
-		<tr>
-		<td style='width:150px;'>
-		<div class="issueCoverImage">
-			<a href="{$currentUrl}">
-				<!-- img src="{$coverPagePath|escape}{$issue->getFileName($locale)|escape}"{if $coverPageAltText != ''} alt="{$coverPageAltText|escape}"{else} alt="{translate key="issue.coverPage.altText"}"{/if}{if $width} width="{$width|escape}"{/if}{if $height} height="{$height|escape}"{/if}/></a-->
-				<img src="{$coverPagePath|escape}{$issue->getFileName($locale)|escape}"{if $coverPageAltText != ''} alt="{$coverPageAltText|escape}"{else} alt="{translate key="issue.coverPage.altText"}"{/if}/></a>
-		</div>
-		
-		</td>
-		<td style='vertical-align:top;'>
-		<div style='margin:0.75em 1em 0.25em 0'>
-			<a style="float:left;" href="{url op="viewXML" path=$issue->getBestIssueId($currentJournal)}">Download Abstracts (XML)</a><br/>
-			<a style="float:left;" href="{url op="downloadPDF" path=$issue->getBestIssueId($currentJournal)}">Download Complete Issue (PDF;  {$issue->getNiceFileSize($issue->getBestIssueId($currentJournal))})</a>
-		</div>
-		</td>
-		</tr>
-		<tr>
-			<td colspan="2" style='padding-top:25px;padding-bottom:15px;'>
-				<h2>Papers published:</h2>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				{include file="issue/issue.tpl"}
-			</td>
-		</tr>
-		</table>
-	{/if*}
+	
 {if $coverPagePath}
+ <div class='issuesTocDoi'>{$issue->getIssueDoi()}</div>
 <div class='row'>
-
+<div class="col-sm-2 col-md-2">
+<img class="img-rounded" src="{$coverPagePath|escape}{$issue->getFileName($locale)|escape}"{if $coverPageAltText != ''} alt="{$coverPageAltText|escape}"{else} alt="{translate key="issue.coverPage.altText"}"{/if}/>
+	
+</div>
 <div class="col-sm-6 col-md-3">
 
 <div class="panel panel-success">

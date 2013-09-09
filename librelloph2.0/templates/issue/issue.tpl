@@ -1,7 +1,8 @@
 {** * issue.tpl * * Copyright (c) 2003-2012 John Willinsky * Distributed
 under the GNU GPL v2. For full terms see the file docs/COPYING. * *
-Issue * * $Id$ *} {*foreach name=sections from=$publishedArticles
-item=section key=sectionId*}
+Issue * * $Id$ *} 
+
+{*foreach name=sections from=$publishedArticles item=section key=sectionId*}
 <!-- {if $section.title}<h4 class="tocSectionTitle">{$section.title|escape}</h4>{/if} -->
 
 {*foreach from=$section.articles item=article*} {iterate from=articles
