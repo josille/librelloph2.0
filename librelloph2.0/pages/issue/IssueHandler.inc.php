@@ -391,6 +391,62 @@ class IssueHandler extends Handler {
 		parent::setupTemplate();
 		AppLocale::requireComponents(array(LOCALE_COMPONENT_PKP_READER, LOCALE_COMPONENT_OJS_EDITOR));
 	}
+	
+	/**
+	 * Display the issue archive index sitemap
+	 */
+	function archiveSiteMapXML() {
+		//$this->validate();
+		//$this->setupTemplate();
+
+		$journal =& Request::getJournal();
+		$issueDao =& DAORegistry::getDAO('IssueDAO');
+		$rangeInfo = Handler::getRangeInfo('issues');
+
+		$publishedIssuesIterator = $issueDao->getPublishedIssues($journal->getId(), $rangeInfo);
+		$publishedIssuesIteratorSI = $issueDao->getPublishedIssues($journal->getId(), $rangeInfo);
+
+		$templateMgr =& TemplateManager::getManager();
+		//$templateMgr->assign('coverPagePath', $coverPagePath);
+		$templateMgr->assign('locale', AppLocale::getLocale());
+		$templateMgr->assign_by_ref('issues', $publishedIssuesIterator);
+		$templateMgr->assign_by_ref('issuesSI', $publishedIssuesIteratorSI);
+		//$templateMgr->assign('helpTopicId', 'user.currentAndArchives');
+		$templateMgr->display('issue/siteMapXmlArchive.tpl','text/xml');
+	}
+	
+	
+	/**
+	 * Display issue sitemap.
+	 */
+	function issueSiteMapXml($args) {
+		//$this->validate();
+		//$this->setupTemplate();
+
+		$issueId = isset($args[0]) ? $args[0] : 0;
+		$showToc = isset($args[1]) ? $args[1] : '';
+
+		$journal =& Request::getJournal();
+
+		$issueDao =& DAORegistry::getDAO('IssueDAO');
+
+		if ($journal->getSetting('enablePublicIssueId')) {
+			$issue =& $issueDao->getIssueByBestIssueId($issueId, $journal->getId());
+		} else {
+			$issue =& $issueDao->getIssueById((int) $issueId, null, true);
+		}
+
+		$templateMgr =& TemplateManager::getManager();
+
+		
+		$articleDao =& DAORegistry::getDAO('PublishedArticleDAO');
+		$articles =& $articleDao->getPublishedArticlesByIssueId($issueId,NULL,false);
+		$templateMgr->assign_by_ref('articles',$articles );
+		
+		$templateMgr->display('issue/issueSiteMapXml.tpl','text/xml');
+
+	}
+	
 }
 
 ?>

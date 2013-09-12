@@ -23,6 +23,8 @@ switch ($op) {
 	case 'current':
 	case 'view':
 	case 'viewXML':
+	case 'archiveSiteMapXML':
+	case 'issueSiteMapXml':
 	case 'downloadPDF':
 	case 'archive':
 		define('HANDLER_CLASS', 'IssueHandler');

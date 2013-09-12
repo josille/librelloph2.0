@@ -528,7 +528,7 @@ class AboutHandler extends Handler {
 			$templateMgr->assign('isSiteAdmin', $roleDao->getRole(0, $user->getId(), ROLE_ID_SITE_ADMIN));
 		}
 		
-		$templateMgr->display('about/siteMapXML.tpl');
+		$templateMgr->display('about/siteMapXML.tpl','text/xml');
 	}
 
 	/**
