@@ -45,7 +45,11 @@
     
     <!-- BOOTSTRAP Override -->
 	<link href="{$baseUrl}/styles/bootstrap_css/tweeks.css" rel="stylesheet" media="screen" />
+	<link media="only screen and (max-width: 500px)" href="{$baseUrl}/styles/bootstrap_css/small.css" type="text/css" rel="stylesheet" />
+	<link media="only screen and (max-width: 650px)" href="{$baseUrl}/styles/bootstrap_css/medium.css" type="text/css" rel="stylesheet" />
+	
 	<script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweeks.js"></script>
+	<script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweeks_size_journals.js"></script>
 
 <script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweek_social.js"></script>
 
@@ -60,7 +64,7 @@
 {/if}
 
 <div class="navbar navbar-inverse navbar-fixed-top">
-<div class="container">
+<div id='top_nav_bar_journal' class="container">
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://www.librelloph.com/submission/index.php/index/oai?verb=Identify">
 <img width="38px" height="28px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif" />
 </a></p>
@@ -90,12 +94,12 @@ href="http://www.linkedin.com/company/librello" target="blank"><img src="{$baseU
     
     <h1 class='margin_top_5'>
     {if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
-        <img itemprop="image" src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogoAltText != ''}alt="{$displayPageHeaderLogoAltText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
+        <img id='librello_logo_img' itemprop="image" src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" {if $displayPageHeaderLogoAltText != ''}alt="{$displayPageHeaderLogoAltText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
         <span itemprop="name" style='height:1px;display:none;'>{if $displayPageHeaderLogoAltText != ''}{$displayPageHeaderLogoAltText|escape}{else}{translate key="common.pageHeaderLogo.altText"}{/if}</span>
     {/if}
     {if $displayPageHeaderTitle && is_array($displayPageHeaderTitle)}
     <a href="{url page="index"}" alt='Librello Publishing' style="background:none;">
-        <img itemprop="image" src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" width="{$displayPageHeaderTitle.width|escape}" height="{$displayPageHeaderTitle.height|escape}" {if $displayPageHeaderTitleAltText != ''}alt="{$displayPageHeaderTitleAltText|escape}"{else}alt="{translate key="common.pageHeader.altText"}"{/if} />
+        <img id='librello_logo_img' itemprop="image" src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"url"}" width="{$displayPageHeaderTitle.width|escape}" {if $displayPageHeaderTitleAltText != ''}alt="{$displayPageHeaderTitleAltText|escape}"{else}alt="{translate key="common.pageHeader.altText"}"{/if} />
         </a>
         <span itemprop="name" style='height:1px;display:none;'>{if $displayPageHeaderTitleAltText != ''}{$displayPageHeaderTitleAltText|escape}{else}{translate key="common.pageHeader.altText"}{/if}</span>
     {elseif $displayPageHeaderTitle}

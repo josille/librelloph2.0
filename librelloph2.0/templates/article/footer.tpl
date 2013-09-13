@@ -92,7 +92,7 @@ under a Creative Commons Attribution License (http://creativecommons.org/license
 
 </div>
 <div class='col-6 col-sm-8 col-lg-2'>
-<a href='{$baseUrl}' target='_blank'>
+<a href='http://www.librelloph.com' target='_blank'>
 <img itemprop="image" src="{$baseUrl}/images/librello_logo.png" width='130px'
 	alt="Librello publishing"
 	/>

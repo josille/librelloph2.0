@@ -22,13 +22,17 @@ a , a:hover, a:focus{
 	font-size:16px;
 	}
 
-.spaces_test{
+.spaces_top_menu{
    display: block;
     padding-bottom: 10px;
     /*padding-left: 15px;
     padding-right: 15px;*/
     padding-top: 10px;
     position: relative;
+	}
+
+#home_main > a{
+	padding-left:0;
 	}
 
 /*

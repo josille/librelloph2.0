@@ -90,7 +90,7 @@
 		<div class="col-sm-6 col-md-3">
 		
 		 <div class="thumbnail">
-		 <a href="{url op="view" path=issueSI->getBestIssueId($currentJournal)}">
+		 <a href="{url op="view" path=$issueSI->getBestIssueId($currentJournal)}">
 		    <img class="img-rounded" src="{$coverPagePath|escape}{$issue->getFileName($locale)|escape}"{if $issue->getCoverPageAltText($locale) != ''} alt="{$issue->getCoverPageAltText($locale)|escape}"{else} alt="{translate key="issue.coverPage.altText"}"{/if}/>
 		     </a>
 		      <div class="caption">

@@ -11,29 +11,31 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 <div>
 <hr />
 </div>
-<div class="dropdown">
 
-<ul class="nav nav-pills menu_top">
+
+<div id='navigation_top_dropdown' class="dropdown">
+
+<ul id='navigation_menu' class="nav nav-pills menu_top">
 	{if $currentJournal && $currentJournal->getSetting('publishingMode') !=
 	$smarty.const.PUBLISHING_MODE_NONE} {if !$currentJournal}
-	<li id="librello"><a style='padding-left:0;' itemprop="url" href="{$baseUrl}">librello</a></li>
+	<li id="librello"><a style='padding-left:0;' itemprop="url" href="http://www.librelloph.com">librello</a></li>
 	{else}
-	<li id="librello"><a style='padding-left:0;' href="{$baseUrl}/"><span
+	<li id="librello"><a style='padding-left:0;' href="http://www.librelloph.com"><span
 		itemprop="publisher" itemscope
 		itemtype="http://schema.org/Organization"> <span itemprop="name">librello</span></span></a></li>
 				
 	
 	{/if}
 	
-		<li class='spaces_test'>&#183;</li>
-	<li id="home"><a itemprop="url" href="{url page="index"}">{translate
+		<li class='spaces_top_menu'>&#183;</li>
+	<li id="home_journal"><a itemprop="url" href="{url page="index"}">{translate
 	key="navigation.home"}</a></li>
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 	
 	{else}
-	<li id="home"><a style='padding-left:0;' itemprop="url" href="{url page="index"}">{translate
+	<li id="home_main"><a itemprop="url" href="{url page="index"}">{translate
 	key="navigation.home"}</a></li>
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 		
 	{/if}
 	{if $currentJournal && $currentJournal->getSetting('publishingMode') !=
@@ -176,10 +178,10 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	
 	</li>
 	{if !$currentJournal}
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 	<li id="forauthors"><a href="{url page="forauthors"}">{translate
 	key="navigation.forauthors"}</a></li>
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 	<li id="membership" class="dropdown"><a class="dropdown-toggle"
 		data-toggle="dropdown" href="#">{translate
 	key="navigation.membership"}<span class="caret"></span></a>
@@ -189,39 +191,39 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 		list</a></li>
 	</ul>
 	</li>
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 	<li><a href="{url page="indexing"}">{translate
 	key="navigation.indexing"}</a></li>
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 	<li id="contact"><a href="{url page="contact"}">{translate
 	key="navigation.contact"}</a></li>
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 	<li id="privacy"><a href="{url page="privacy"}">{translate
 	key="navigation.privacy"}</a></li>
 	{else}
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 	<li><a href="{url page="about" op="editorialTeam"}">{translate
 	key="about.editorialTeam"}</a></li>
 	{/if} {if $isUserLoggedIn}
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 	<li id="userHome"><a href="{url page="user"}">{translate
 	key="navigation.userHome"}</a></li>
 	{/if} {if $currentJournal &&
 	$currentJournal->getSetting('publishingMode') !=
 	$smarty.const.PUBLISHING_MODE_NONE}
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 	<li id="membership"><a href="{url page="pages"}/view/membership">{translate
 	key="navigation.membership"}</a></li>
 	{/if} {if !$currentJournal ||
 	$currentJournal->getSetting('publishingMode') !=
 	$smarty.const.PUBLISHING_MODE_NONE}
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 	<li id="search"><a href="{url page="search"}">{translate
 	key="navigation.search"}</a></li>
 	{/if} {if $currentJournal &&
 	$currentJournal->getSetting('publishingMode') !=
 	$smarty.const.PUBLISHING_MODE_NONE}
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 
 	{if $currentJournal->getJournalId() == '4'}
 	<li id="current"><a href="{url page="issue" op="current"}">{translate
@@ -244,7 +246,7 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	name="Templates::Common::Header::Navbar::CurrentJournal"} {foreach
 	from=$navMenuItems item=navItem} {if $navItem.url != '' &&
 	$navItem.name != ''}
-	<li class='spaces_test'>&#183;</li>
+	<li class='spaces_top_menu'>&#183;</li>
 	<li id="navItem"><a
 		href="{if $navItem.isAbsolute}{$navItem.url|escape}{else}{$navItem.url|escape}{/if}">{if
 	$navItem.isLiteral}{$navItem.name|escape}{else}{translate
@@ -252,48 +254,18 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	{/if} {/foreach}
 	
 	{if $currentJournal}
-	<li class="pull-right"><a target='blank' href="{$submissionBaseUrl}/index.php/{$currentJournal->getPath()}/login" class="btn btn-default btn-login">Login
+	<li class="pull-right element_remove"><a target='blank' href="{$submissionBaseUrl}/index.php/{$currentJournal->getPath()}/login" class="btn btn-default btn-login">Login
     </a></li>
-	<li class="active pull-right"><a target='blank' href="{$submissionBaseUrl}/index.php/{$currentJournal->getPath()}/author/submit">Submit an article
+	<li class="active pull-right element_remove"><a target='blank' href="{$submissionBaseUrl}/index.php/{$currentJournal->getPath()}/author/submit">Submit an article
     </a></li>
-    
-    {*
-	{if $donationEnabled}
-	<li>submit</li>
 	{/if}
-	
-<li class='pull-right login_main_form'>
-<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-    Login <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li>
-    {if $leftSidebarCode || $rightSidebarCode}
-	<div id="sidebar">
-		{if $leftSidebarCode}
-			<div id="leftSidebar">
-				{$leftSidebarCode}
-			</div>
-		{/if}
-		{if $rightSidebarCode}
-			<div id="rightSidebar">
-				{$rightSidebarCode}
-			</div>
-		{/if}
-	</div>
-{/if}
-    </li>
-  </ul>
-</li>
-*}
-{/if}
 </ul>
 
 </div>
+
 
 <div>
 <hr />
 </div>
 
 </div>
-

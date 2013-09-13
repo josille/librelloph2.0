@@ -15,23 +15,23 @@ value=$article->getJournalPath()} {assign var=journalInitials
 value=$article->getJournalInitials()}
 
 <div class="row row_over" id='row_over_{$article->getId()}'>
-<div class="col-7 col-sm-7 col-lg-12">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 <div class="row">
-<div class="col-1 col-sm-1 col-lg-1"><img alt="{$journalInitials}"
+<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1"><img alt="{$journalInitials}"
 	src="{$publicFilesDir}/../journals/{$article->getJournalId()}/{$journalInitials}_small_notext.png"
 	style='float: left; margin: 4px 10px 4px 4px;' /></div>
-<div class="col-10 col-sm-10 col-lg-11">
+<div class="col-xs-10 col-sm-11 col-md-10 col-lg-11">
 
 <div class="row">
-<div class="col-10 col-sm-10 col-lg-11">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-11">
 
 <div class="row">
-<div class="col-10 col-sm-10 col-lg-12"><strong> <a
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><strong> <a
 	style='vertical-align: super;' href='{url journal="$journalPath" page="article" op="view" path=$articlePath}'>{$article->getArticleTitle()|strip_unsafe_html}</a>
 </strong></div>
 
-<div class="col-10 col-sm-10 col-lg-12 font_size_10 margin_bottom_5 margin_top__4">doi: {$article->getDOI()}
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_10 margin_bottom_5 margin_top__4">doi: {$article->getDOI()}
 </div>
 </div>
 </div>
@@ -41,19 +41,19 @@ value=$article->getJournalInitials()}
 </div>
 
 <div class="row">
-<div class="col-10 col-sm-10 col-lg-12 font_size_12">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_12">
 {$article->getAuthorAffiliationHTMLtpl()}
 </div>
 </div>
 
 <div class="row">
-<div class="col-10 col-sm-10 col-lg-12 font_size_12 margin_top_10">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_12 margin_top_10">
 Publication Date: {$article->getDatePublished()|date_format:"%e
 %B %Y"}</div>
 </div>
 
 <div class="row">
-<div class="col-10 col-sm-10 col-lg-12 ">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
 
 <div class="btn-toolbar">
 <div class="btn-group btn-group-xs">
@@ -129,10 +129,10 @@ Share this article <span class="caret"></span></button>
 </div>
 <div class="row">
 
-<div class="col-4 col-sm-6 col-lg-11">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-11">
 
 <div class="row">
-<div class="col-4 col-sm-6 col-lg-12 margin_top_10">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10">
 <div class="accordion" id="accordion_{$article->getId()}">
 <div class="accordion-group accordion-group_noborders">
 <div id="collapse_{$article->getId()}" class="accordion-body collapse">

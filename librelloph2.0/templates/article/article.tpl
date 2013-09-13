@@ -22,8 +22,8 @@
 		{translate|assign:"noPluginText" key='article.pdf.pluginMissing'}
 		<script type="text/javascript"><!--{literal}
 			$(document).ready(function(){
-				if ($.browser.webkit) { // PDFObject does not correctly work with safari's built-in PDF viewer
-					var embedCode = "<object id='pdfObject' type='application/pdf' data='{/literal}{$pdfUrl|escape:'javascript'}{literal}' width='99%' height='99%'><div id='pluginMissing'>{/literal}{$noPluginText|escape:'javascript'}{literal}</div></object>";
+				if (true) { // PDFObject does not correctly work with safari's built-in PDF viewer
+					var embedCode = "<object id='pdfObject' type='application/pdf' data='{/literal}{$pdfUrl|escape:'javascript'}{literal}' width='99%' height='500px'><div id='pluginMissing'>{/literal}{$noPluginText|escape:'javascript'}{literal}</div></object>";
 					$("#articlePdf").html(embedCode);
 					if($("#pluginMissing").is(":hidden")) {
 						$('#fullscreenShow').show();
@@ -33,8 +33,7 @@
 					} else { // Chrome Mac hides the embed object, obscuring the text.  Reinsert.
 						$("#articlePdf").html('{/literal}{$noPluginText|escape:"javascript"}{literal}');
 					}
-
-					$("#articlePdf").append('<p><br/><br/><a class="action" target="_parent" href="{/literal}{url op="download" path=$articleId|to_array:$galley->getBestGalleyId($currentJournal)}{literal}">{/literal}{translate key="article.pdf.download"}{literal}</a></p>');
+					
 					
 				} else {
 					var success = new PDFObject({ url: "{/literal}{$pdfUrl|escape:'javascript'}{literal}" }).embed("articlePdf");
@@ -80,7 +79,7 @@
 {assign var=galleys value=$article->getGalleys()}
 
 <div class="row">
-<div class="col-6 col-sm-6 col-lg-6 doi_style">
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 doi_style">
 {if $coverPagePath}
 		<div id="articleCoverImage"><img src="{$coverPagePath|escape}{$coverPageFileName|escape}"{if $coverPageAltText != ''} alt="{$coverPageAltText|escape}"{else} alt="{translate key="article.coverPage.altText"}"{/if}{if $width} width="{$width|escape}"{/if}{if $height} height="{$height|escape}"{/if}/>
 		</div>
@@ -90,12 +89,12 @@
 </div>
 
 <div class="row">
-<div class="col-6 col-sm-6 col-lg-6 doi_style">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 doi_style">
 DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><span style='margin-left:10px;'>Publication Date: {$article->getDatePublished()|date_format:"%e %B %Y"}</span>
 </div>
 </div>
 <div class="row">
-<div class="col-6 col-sm-8 col-lg-6">
+<div class="col-xs-7 col-sm-5 col-md-8 col-lg-6">
 
 <div class='research_div'>
 <strong>
@@ -115,6 +114,8 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 		    Short Note
 		{elseif $articleType eq 'Book Review'}
 		    Book Review
+		{elseif $articleType eq 'Research Notes'}
+		    Research Note
 		{/if}
 		</span>
 		</strong>
@@ -122,7 +123,7 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 
 </div>
 
-<div class="col-6 col-sm-8 col-lg-6">
+<div class="col-xs-8 col-sm-5 col-md-8 col-lg-6">
 {if $galleys}
 <div class="btn-group  pull-right">
 
@@ -149,14 +150,14 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 </div>
 
 <div class="row">
-<div class="col-6 col-sm-8 col-lg-12">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 	<div id="articleTitle"><h3 itemprop="name">{$article->getLocalizedTitle()|strip_unsafe_html}</h3></div>
 </div>
 </div>
 
 <div class="row">
-<div class="col-6 col-sm-8 col-lg-12">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 {$article->getAuthorAffiliationHTMLtpl(true)}
 
@@ -165,7 +166,7 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 
 {if $article->getLocalizedAbstract()}
 <div class="row">
-<div class="col-6 col-sm-8 col-lg-12 margin_top_10">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10">
 	
 		<div itemprop="articleBody"><strong>{translate key="article.abstract"}:</strong>
 		{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}</div>
@@ -178,13 +179,13 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 {if $article->getSuppFiles()}
 
 <div class="row">
-<div class="col-6 col-sm-8 col-lg-12 margin_top_10">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10">
 <h4>Supplementary files</h4>
 </div>
 </div>
 
 <div class="row">
-<div class="col-6 col-sm-8 col-lg-12 margin_top_10">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10">
 
 <div class="table-responsive">
   <table class="table table-hover supp_files_table">
@@ -217,7 +218,7 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 
 
 <div class="row">
-<div class="col-6 col-sm-8 col-lg-12 margin_top_10">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10">
 
 	{if $article->getLocalizedSubject()}
 		<div id="articleSubject">

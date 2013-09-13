@@ -19,7 +19,7 @@ $subscribedUser || $subscribedDomain || ($subscriptionExpiryPartial &&
 $articleExpiryPartial.$articleId))} {assign var=hasAccess value=1}
 {else} {assign var=hasAccess value=0} {/if}
 
-<div class="col-7 col-sm-7 col-lg-10">
+<div class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
 
 <span style='float: left; font-style: italic;'> {assign
 var=articleType value=$article->getSectionTitle()} {if $articleType eq
@@ -27,7 +27,10 @@ var=articleType value=$article->getSectionTitle()} {if $articleType eq
 Commentary {elseif $articleType eq 'Communications'} Communication
 {elseif $articleType eq 'Editorials'} Editorial {elseif $articleType eq
 'Reviews'} Review {elseif $articleType eq 'Short Notes'} Short Note
-{elseif $articleType eq 'Book Review'} Book Review {else} {/if} </span>
+{elseif $articleType eq 'Book Review'} Book Review
+{elseif $articleType eq 'Research Notes'}
+		    Research Note
+		{/if}</span>
 
 <span
 	style='overflow: hidden; display: block; border-bottom: 1.5px dotted black; height: 16px; margin-bottom: 6px;'>&nbsp;</span>
@@ -37,28 +40,28 @@ Commentary {elseif $articleType eq 'Communications'} Communication
 {$article->getLocalizedTitle()|strip_unsafe_html}</a> </strong>
 </div>
 </div>
-<div class="col-2 col-sm-2 col-lg-2">{if
+<div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">{if
 $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 {$article->getPages()|escape}</div>
 </div>
 
 <div class="row padding_left_15">
-<div class="col-6 col-sm-6 col-lg-12 font_size_10 margin_bottom_5 margin_top_10">doi: {$article->getDOI()}</div>
+<div class="col-xs-9 col-sm-6 col-md-12 col-lg-12 font_size_10 margin_bottom_5 margin_top_10">doi: {$article->getDOI()}</div>
 </div>
 
 <div class="row padding_left_15">
-<div class="col-6 col-sm-6 col-lg-12">
+<div class="col-xs-12 col-sm-10 col-md-12 col-lg-12">
 {$article->getAuthorAffiliationHTMLtpl()}</div>
 </div>
 
 <div class="row">
-<div class="col-10 col-sm-10 col-lg-12 font_size_12 margin_top_10">
+<div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 font_size_12 margin_top_10">
 Publication Date: {$article->getDatePublished()|date_format:"%e
 %B %Y"}</div>
 </div>
 
 <div class="row">
-<div class="col-10 col-sm-10 col-lg-12 ">
+<div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 ">
 
 <div class="btn-toolbar padding_left_15">
 
@@ -126,7 +129,7 @@ Publication Date: {$article->getDatePublished()|date_format:"%e
 
 
 <div class="row padding_left_15">
-<div class="col-4 col-sm-6 col-lg-12 margin_top_10">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10">
 
 
 

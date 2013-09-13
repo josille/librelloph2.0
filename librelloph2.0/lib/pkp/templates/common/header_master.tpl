@@ -31,32 +31,43 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
 <!-- Bootstrap -->
 <link href="{$baseUrl}/styles/bootstrap_css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <!-- link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css"-->
 <script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/bootstrap.min.js"></script> 
 <!-- script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script-->
 
+<script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweeks.js"></script>
+<script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweeks_size_main.js"></script>
 
 <link href="{$baseUrl}/styles/bootstrap_css/tweeks.css" rel="stylesheet" media="screen" />
 
-<script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweeks.js"></script>
+<link media="only screen and (max-width: 500px)" href="{$baseUrl}/styles/bootstrap_css/small.css" type="text/css" rel="stylesheet" />
+
 <script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweek_social.js"></script>
 </head>
 
 <body>
 <div id="fb-root"></div>
 <div class="navbar navbar-inverse navbar-fixed-top">
-<div class="container">
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://www.librelloph.com/submission/index.php/index/oai?verb=Identify">
+<div id='top_nav_bar' class="container">
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10">
+<a target="blank" style="background:none;" href="http://www.librelloph.com/submission/index.php/index/oai?verb=Identify">
 <img width="38px" height="28px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif" />
 </a></p>
 
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="https://twitter.com/librello" target="blank"><img src="{$baseUrl}/images/twitter_top.png" width="26" height="26" alt="Twitter"/></a>
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10">
+<a href="https://twitter.com/librello" target="blank">
+<img src="{$baseUrl}/images/twitter_top.png" width="26" height="26" alt="Twitter"/></a>
 </p>
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="http://www.linkedin.com/company/librello" target="blank"><img src="{$baseUrl}/images/linkedin_top.png" width="26" height="26" alt="LinkedIn"/></a></p>
-	<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="https://plus.google.com/117721213017356591223" target="blank"><img src="{$baseUrl}/images/google_top.png" width="26" height="26" alt="Google +"/></a></p>
+
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10">
+<a href="http://www.linkedin.com/company/librello" target="blank">
+<img src="{$baseUrl}/images/linkedin_top.png" width="26" height="26" alt="LinkedIn"/></a></p>
+
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10">
+<a href="https://plus.google.com/117721213017356591223?rel=author" target="blank">
+<img src="{$baseUrl}/images/google_top.png" width="26" height="26" alt="Google +"/></a></p>
 
 </div>
 </div>
@@ -68,9 +79,11 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 <div id="header">
 <div id="headerTitle">
 
-<div>
+<div class="row">
+  <div class="resize_detect col-sm-3 col-md-4 col-lg-4">
 
-<h1 class='margin_top_5'>{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)} <img
+<h1 class='margin_top_5'>{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)} 
+<img id='librello_logo_img'
 	itemprop="image"
 	src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"
 	url"}" width="{$displayPageHeaderLogo.width|escape}"
@@ -79,16 +92,16 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 	}alt="{$displayPageHeaderLogoAltText|escape}"
 	{else}alt="{translate key=" common.pageHeaderLogo.altText"}"{/if} />
 {/if} {if $displayPageHeaderTitle && is_array($displayPageHeaderTitle)}
-<img itemprop="image"
+<img id='librello_logo_img' itemprop="image"
 	src="{$publicFilesDir}/{$displayPageHeaderTitle.uploadName|escape:"
 	url"}" width="{$displayPageHeaderTitle.width|escape}"
-	height="{$displayPageHeaderTitle.height|escape}"
 	{if $displayPageHeaderTitleAltText !=''
 	}alt="{$displayPageHeaderTitleAltText|escape}"
 	{else}alt="{translate key=" common.pageHeader.altText"}"{/if} />
 {elseif $displayPageHeaderTitle} {$displayPageHeaderTitle} {elseif
 $alternatePageHeader} {$alternatePageHeader} {elseif $siteTitle}
 {$siteTitle} {else} {$applicationName} {/if}</h1>
+</div>
 </div>
 
 {include file="common/navbar.tpl"}</div>
@@ -97,10 +110,10 @@ $alternatePageHeader} {$alternatePageHeader} {elseif $siteTitle}
 <div id="body">
 
 <div class="row">
-  <div class="col-2 col-sm-3 col-lg-2">
+  <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 element_remove">
   {if $journals}
 		<h3 class='font_our_journals'>Our Journals:</h3>
-		<ul class="nav nav-pills nav-stacked">
+		<ul id='journals_menu' class="nav nav-pills nav-stacked">
 			{iterate from=journals item=journal}
 			<li><a href="{url journal=$journal->getPath()}" class="mainjournal"
 				style="font-style: italic; background: none; padding-left:0;"> <img
@@ -112,8 +125,8 @@ $alternatePageHeader} {$alternatePageHeader} {elseif $siteTitle}
 		</ul>
 		{/if}
 	</div>
-  <div class="col-12 col-sm-8 col-lg-9">
-<h2><span itemprop="name">{$pageTitleTranslated}</span></h2>
+  <div id='row_div_initial_page' class="col-xs-12 col-sm-9 col-md-8 col-lg-9">
+<h2 class='small_h2'><span itemprop="name">{$pageTitleTranslated}</span></h2>
 
 		{if $pageSubtitle &&
 		!$pageSubtitleTranslated}{translate|assign:"pageSubtitleTranslated"
