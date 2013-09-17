@@ -181,7 +181,7 @@ class IssueHandler extends Handler {
 
 		
 		$articleDao =& DAORegistry::getDAO('PublishedArticleDAO');
-		$articles =& $articleDao->getPublishedArticlesByIssueId($issueId,NULL,false);
+		$articles =& $articleDao->getPublishedArticlesByIssueId($issueId,NULL,false,true);
 		$templateMgr->assign_by_ref('articles',$articles );
 		
 		$templateMgr->assign_by_ref('issueHeadingTitle',$issue->getIssueIdentification(false,false,false,true));
