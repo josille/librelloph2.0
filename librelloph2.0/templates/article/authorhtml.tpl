@@ -3,19 +3,25 @@
 	<tbody>
 		<tr>
 			<td>
-			<div>{foreach from=$authors_arr item=author name=authorIter} {if
-			$smarty.foreach.authorIter.last AND not
+			<div>{foreach from=$authors_arr item=author name=authorIter} 
+			{if $smarty.foreach.authorIter.last AND not
 			$smarty.foreach.authorIter.first} and {/if} 
 			{if $extended}
 			<a data-toggle="modal" href="#bioModal_{$author.user->getId()}">{$author.name}</a>
 			{else}
 			{$author.name}
-			{/if}{if not $single_author}<sup>{foreach
-			from=$author.ref item=aff name=affIter}{$aff}{if not
-			$smarty.foreach.affIter.last},{/if}{/foreach}</sup>{/if}{foreach
-			from=$author.corr item=corr}<sup>,</sup><span
-				style='font-size: larger;'>{$corr}</span>{/foreach}{if not
-			$smarty.foreach.authorIter.last AND
+			{/if}
+			
+			{if not $single_author}<sup>
+			{foreach from=$author.ref item=aff name=affIter}{$aff}
+				{if not $smarty.foreach.affIter.last},{/if}
+			{/foreach}</sup>{/if}
+			
+			{foreach from=$author.corr item=corr}<sup>,</sup><span
+				style='font-size: larger;'>{$corr}</span>
+			{/foreach}
+			
+			{if not $smarty.foreach.authorIter.last AND
 			$smarty.foreach.authorIter.iteration <
 			($smarty.foreach.authorIter.total-1)},{/if} 
 			

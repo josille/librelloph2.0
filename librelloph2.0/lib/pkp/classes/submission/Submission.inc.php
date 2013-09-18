@@ -284,25 +284,25 @@ class Submission extends DataObject {
 			}
 			
 			$author_text .= $author_name.'<sup>'.$author_indexes.'</sup>';
-		$single_author = false;
+			$single_author = false;
 		
-		if(count($authors_obj) == 1 && count($author_indexes_arr) == 1)
-		{
-			$single_author=true;
-		}
+			if(count($authors_obj) == 1 && count($author_indexes_arr) == 1)
+			{
+				$single_author=true;
+			}
 		
-		if(count($authors_obj) >1 && $author->getPrimaryContact())
-		{
-			$corrFlag = true;
+			if(count($authors_obj) >1 && $author->getPrimaryContact())
+			{
+				$corrFlag = true;
 				$authors_arr[] = array('id'=>$author_id,'user'=>$author, 'name' => $author_name,'ref'=>$author_indexes_arr,'corr'=>'*');
-		}
-		else
-		{
-			/*
-			 * Single author, if only one affi setr flag to not display affiliation number
-			 */
+			}
+			else
+			{
+				/*
+				 * Single author, if only one affi setr flag to not display affiliation number
+				 */
 				$authors_arr[] = array('id'=>$author_id,'user'=>$author, 'name' => $author_name,'ref'=>$author_indexes_arr);
-		}
+			}
 		}
 		
 		$templateMgr =& TemplateManager::getManager();

@@ -19,8 +19,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
-	<title>{$pageTitleTranslated}</title>
-	<meta name="description" content="{$metaSearchDescription|escape}" />
+	<title>{$pageTitleTranslated}{if $currentJournal} | {$currentJournal->getLocalizedTitle()} {/if}</title>
+	<meta name="description" content="{$pageTitleTranslated}, {if $currentJournal}Journal:{$currentJournal->getLocalizedTitle()}{/if}, Info:{$metaSearchDescription|escape}" />
 	<meta name="keywords" content="{$metaSearchKeywords|escape}" />
 	<meta name="generator" content="{$applicationName} {$currentVersionString|escape}" />
 	{$metaCustomHeaders}
@@ -65,7 +65,7 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top">
 <div id='top_nav_bar_journal' class="container">
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://www.librelloph.com/submission/index.php/index/oai?verb=Identify">
+<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://www.librelloph.com/oai?verb=Identify">
 <img width="38px" height="28px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif" />
 </a></p>
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a

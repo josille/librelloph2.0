@@ -11,9 +11,13 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>{$article->getLocalizedTitle()|escape} | {$article->getFirstAuthor(true)|escape} | {$currentJournal->getLocalizedTitle()|escape}</title>
+	<title>{$article->getLocalizedTitle()|escape} | {$article->getFirstAuthor(true)|escape} | pdf</title>
 	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
-	<meta name="description" content="{$article->getLocalizedTitle()|strip_tags|escape}" />
+
+	{if $article->getAbstract(null)}
+	<meta name="description" content="View PDF, Abstract: {foreach from=$article->getAbstract(null) key=metaLocale item=metaValue}{$metaValue|strip_tags|escape}{/foreach}, Author(s): {foreach from=$article->getAuthorString()|explode:', ' item=dc_author}{$dc_author|escape}{/foreach}, Category: {$article->getSectionTitle()}, Pages: {$article->getPages()}"/>
+	{/if}	
+
 	{if $article->getLocalizedSubject()}
 		<meta name="keywords" content="{$article->getLocalizedSubject()|escape}" />
 	{/if}

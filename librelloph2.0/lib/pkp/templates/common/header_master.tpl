@@ -52,7 +52,7 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 <div class="navbar navbar-inverse navbar-fixed-top">
 <div id='top_nav_bar' class="container">
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10">
-<a target="blank" style="background:none;" href="http://www.librelloph.com/submission/index.php/index/oai?verb=Identify">
+<a target="blank" style="background:none;" href="{url page="oai"}?verb=Identify">
 <img width="38px" height="28px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif" />
 </a></p>
 

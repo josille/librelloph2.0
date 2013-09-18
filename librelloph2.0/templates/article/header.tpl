@@ -5,15 +5,17 @@
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Article View -- Header component.
- *}
-<?xml version="1.0" encoding="UTF-8"?>
+ *}<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>{$article->getLocalizedTitle()|escape} | {$article->getFirstAuthor(true)|escape} | {$currentJournal->getLocalizedTitle()|escape}</title>
+	<title>{$article->getLocalizedTitle()|escape} | {$article->getFirstAuthor(true)|escape}{if $galley}{if $galley->isHTMLGalley()} | html{elseif $galley->isPdfGalley()} | pdf{/if}{/if}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
-	<meta name="description" content="{$article->getLocalizedTitle()|strip_tags|escape}" />
+	{if $article->getAbstract(null)}
+	<meta name="description" content="Abstract: {foreach from=$article->getAbstract(null) key=metaLocale item=metaValue}{$metaValue|strip_tags|escape}{/foreach}, Author(s): {foreach from=$article->getAuthorString()|explode:', ' item=dc_author}{$dc_author|escape}{/foreach}, Category: {$article->getSectionTitle()}, Pages: {$article->getPages()}"/>
+	{/if}
+	
 	{if $article->getLocalizedSubject()}
 		<meta name="keywords" content="{$article->getLocalizedSubject()|escape}" />
 	{/if}
@@ -114,13 +116,6 @@
 
 <div id="main">
 
-{*
-<div id="breadcrumb">
-	<a href="{url page="index"}" target="_parent">{translate key="navigation.home"}</a> &gt;
-	{if $issue}<a href="{url page="issue" op="view" path=$issue->getBestIssueId($currentJournal)}" target="_parent">{$issue->getIssueIdentification(false,true)|escape}</a> &gt;{/if}
-	<a href="{url page="article" op="view" path=$articleId|to_array:$galleyId}" class="current" target="_parent" itemprop="url" >{$article->getFirstAuthor(true)|escape}</a>
-</div>
-*}
 <ol class="breadcrumb margin_top_10">
   <li><a href="{url page="index"}" target="_parent">{translate key="navigation.home"}</a></li>
   {if $issue}
