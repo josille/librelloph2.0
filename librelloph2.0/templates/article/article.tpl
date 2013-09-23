@@ -175,6 +175,17 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 </div>
 {/if}
 
+{if $article->getLocalizedSubject()}
+<br/>
+
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10">
+<strong>{translate key="article.subject"}:</strong> {$article->getLocalizedSubject()|escape}
+</div>
+</div>
+
+<br/>
+{/if}
 
 {if $article->getSuppFiles()}
 
@@ -219,15 +230,6 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 
 <div class="row">
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10">
-
-	{if $article->getLocalizedSubject()}
-		<div id="articleSubject">
-		<h4>{translate key="article.subject"}</h4>
-		<br />
-		<div>{$article->getLocalizedSubject()|escape}</div>
-		<br />
-		</div>
-	{/if}
 
 	{if $citationFactory->getCount()}
 		<div id="articleCitations">
