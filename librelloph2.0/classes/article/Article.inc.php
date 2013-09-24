@@ -151,6 +151,34 @@ class Article extends Submission {
 		//return $journal
 	}
 	
+	/**
+	 * Retrieve title of journal
+	 * @return array
+	 * by RDLG
+	 */
+	function getJournalTitle() {
+			$journalDao =& DAORegistry::getDAO('JournalDAO');
+			$journal = $journalDao->getJournal($this->getJournalId());
+		
+		return $journal->getLocalizedTitle();
+		//return $journal
+	}
+	
+	/*
+	 * retrieve the issue of the article
+	 */
+	function getArticleIssue() {
+		
+		// Get the issue
+		$issueDao =& DAORegistry::getDAO('IssueDAO');
+		$issue =& $issueDao->getIssueById($this->getIssueId(), $this->getJournalId(), true);
+		
+		if (!$issue) return null;
+				
+		return $issue;
+		//return $journal
+	}
+	
 	
 	/**
 	 * Get ID of article's section.
