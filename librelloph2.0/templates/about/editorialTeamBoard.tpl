@@ -29,9 +29,8 @@
 {assign var=user value=$member->getUser()}
 
 
-<div class="col-sm-6 col-md-3 padding_5_5">
-    <div class="thumbnail">
-   
+<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 padding_5_5">
+    <div class="thumbnail min_heigth_boxes">
       <div class="caption font_size_12">
         <div class='font_size_16'><strong>{$user->getFullName()|escape}</strong></div>
         <p class='font_size_12'>
@@ -39,8 +38,8 @@
       </p>	
 	<p>
 	<!-- Button trigger modal -->
-  <a data-toggle="modal" href="#bioModal_{$user->getId()}" class="btn btn-success btn-xs">View Bio</a>
-</p>
+  	<a data-toggle="modal" href="#bioModal_{$user->getId()}" class="btn btn-success btn-xs">View Bio</a>
+	</p>
   <!-- Modal -->
   <div class="modal fade" id="bioModal_{$user->getId()}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -89,12 +88,12 @@
     </div>
   </div>
 
-{*counter}
-   {if $count is div by 4}
+{counter}
+   {if $count is div by 3}
       </div>
       <br/>
 <div class="row">
-   {/if*}
+   {/if}
 
 
 {/foreach}
