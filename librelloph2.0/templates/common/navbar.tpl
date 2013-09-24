@@ -17,18 +17,9 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 
 <ul id='navigation_menu' class="nav nav-pills menu_top">
 	{if $currentJournal && $currentJournal->getSetting('publishingMode') !=
-	$smarty.const.PUBLISHING_MODE_NONE} {if !$currentJournal}
-	<li id="librello"><a style='padding-left:0;' itemprop="url" href="http://www.librelloph.com">librello</a></li>
-	{else}
-	<li id="librello"><a style='padding-left:0;' href="http://www.librelloph.com"><span
-		itemprop="publisher" itemscope
-		itemtype="http://schema.org/Organization"> <span itemprop="name">librello</span></span></a></li>
-				
+	$smarty.const.PUBLISHING_MODE_NONE} 
 	
-	{/if}
-	
-		<li class='spaces_top_menu'>&#183;</li>
-	<li id="home_journal"><a itemprop="url" href="{url page="index"}">{translate
+	<li id="home_main"><a itemprop="url" href="{url page="index"}">{translate
 	key="navigation.home"}</a></li>
 	<li class='spaces_top_menu'>&#183;</li>
 	

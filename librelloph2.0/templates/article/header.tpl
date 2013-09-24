@@ -73,13 +73,23 @@
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://www.librelloph.com/submission/index.php/index/oai?verb=Identify">
 <img width="38px" height="28px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif"/>
 </a></p>
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="{url page="gateway"}/plugin/WebFeedGatewayPlugin/rss2">
+<p class="navbar-text pull-right margin_top_18 margin_bottom_10"><a href="{url page="gateway"}/plugin/WebFeedGatewayPlugin/rss2">
 <img src="{$baseUrl}/images/rss_top.png" width="26" height="26" alt="Rss"/></a></p>
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="https://twitter.com/librello" target="blank"><img src="{$baseUrl}/images/twitter_top.png" width="26" height="26" alt="Twitter"/></a>
+<p class="navbar-text pull-right margin_top_18 margin_bottom_10"><a href="https://twitter.com/librello" target="blank"><img src="{$baseUrl}/images/twitter_top.png" width="26" height="26" alt="Twitter"/></a>
 </p>
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="http://www.linkedin.com/company/librello" target="blank"><img src="{$baseUrl}/images/linkedin_top.png" width="26" height="26" alt="LinkedIn"/></a></p>
-	<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a href="https://plus.google.com/117721213017356591223" target="blank"><img src="{$baseUrl}/images/google_top.png" width="26" height="26" alt="Google +"/></a></p>
+<p class="navbar-text pull-right margin_top_18 margin_bottom_10"><a href="http://www.linkedin.com/company/librello" target="blank"><img src="{$baseUrl}/images/linkedin_top.png" width="26" height="26" alt="LinkedIn"/></a></p>
+<p class="navbar-text pull-right margin_top_18 margin_bottom_10"><a href="https://plus.google.com/117721213017356591223" target="blank"><img src="{$baseUrl}/images/google_top.png" width="26" height="26" alt="Google +"/></a></p>
+<p class="navbar-text pull-left margin_top_10 margin_bottom_10 margin_left_0">
+<a href="http://www.librelloph.com">
+<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<span itemprop="name">
+<img src="{$baseUrl}/images/librello_logo_top_small.png" height="35" width="131" alt="Librello Home"/>
+</span>
+</span>
+</a>
+</p>
 </div>
+
 </div>
 
 <div class="container" itemscope="" itemtype="http://schema.org/Article" id="container">
