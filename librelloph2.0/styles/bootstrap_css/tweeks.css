@@ -4,7 +4,7 @@
     src: local(footlight_mt_light), url(../../ftltlt.ttf) format("truetype");
 }
 
-body { padding-top: 50px; }
+body { padding-top: 60px; }
 
 hr {
   margin-top: 5px;
@@ -32,7 +32,19 @@ a , a:hover, a:focus{
 	}
 
 #home_main > a{
-	padding-left:0;
+	/*padding-left:0;*/
+	}
+	
+#home_main,#librello_home{
+	margin-left:-15px;
+	}
+	
+/*
+nav bar
+*/
+.logo_top_nav_bar{
+	width:46px;
+	background:url('/images/librello_logo.png') 0 0;
 	}
 
 /*
@@ -73,6 +85,10 @@ login button, journal menu
 .margin_top_10{
 	margin-top:10px;
 	}
+	
+.margin_top_18{
+	margin-top:18px;
+	}
 
 .margin_top_5{
 	margin-top:5px;
@@ -90,6 +106,10 @@ login button, journal menu
 	margin-bottom:5px;
 	}
 	
+.margin_left_0{
+	margin-left:0px;
+	}
+
 .padding_left_15{
 	padding-left:15px;
 	}
@@ -223,6 +243,12 @@ TOC
     text-align: center;
 }
 
+/*
+Editorial board
+*/
+.min_heigth_boxes{
+min-height:150px;
+	}
 	
 	
 	/*
