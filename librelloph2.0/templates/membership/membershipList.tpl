@@ -42,7 +42,7 @@
      
       <div class="caption">
         <p>The Royal Institute of Technology is a university in Stockholm, Sweden. KTH was founded in 1827 as Sweden's first polytechnic and is one of Scandinavia's largest institutions of higher education in technology.</p>
-        <p><a href="http://www.kth.se" class="btn btn-primary" target="_blank">Visit KTH</a></p>
+        <p><a href="http://www.kth.se/en" class="btn btn-primary" target="_blank">Visit KTH</a></p>
       </div>
     </div>
   </div>
