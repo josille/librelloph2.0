@@ -64,14 +64,14 @@
 		</tr>
 		{foreach from=$arr_affi item=aff name=affIter}
 		<tr>
-			<td style="padding-left: 7px;">
+			<td>
 			{if not $single_author}
 			<sup>{$smarty.foreach.affIter.iteration}</sup>
 			{/if}{$aff}</td>
 		</tr>
 		{/foreach} {if $corrFlag}
 		<tr>
-			<td style="padding-left: 7px;"><span style="font-size: larger;">*</span>
+			<td><span style="font-size: larger;">*</span>
 			Corresponding author</td>
 		</tr>
 		{/if}
