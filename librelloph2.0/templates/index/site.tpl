@@ -31,7 +31,9 @@ value=$article->getJournalInitials()}
 	style='vertical-align: super;' href='{url journal="$journalPath" page="article" op="view" path=$articlePath}'>{$article->getArticleTitle()|strip_unsafe_html}</a>
 </strong></div>
 
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_10 margin_bottom_5 margin_top__4">doi: {$article->getDOI()}
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_10 margin_bottom_5 margin_top__4">
+{assign var=issueArt value=$article->getArticleIssue()}
+doi: {$article->getDOI()} | {$article->getJournalTitle()} | {$issueArt->getYear()} | Volume {$issueArt->getVolume()} | Issue {$issueArt->getNumber()}
 </div>
 </div>
 </div>
@@ -48,8 +50,8 @@ value=$article->getJournalInitials()}
 
 <div class="row">
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_12 margin_top_10">
-Publication Date: {$article->getDatePublished()|date_format:"%e
-%B %Y"}</div>
+Publication Date: {$article->getDatePublished()|date_format:"%e %B %Y"}
+</div>
 </div>
 
 <div class="row">
@@ -123,12 +125,14 @@ Share this article <span class="caret"></span></button>
 
 
 </div>
+
 </div>
 </div>
 
 </div>
 <div class="row">
-
+<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">&nbsp;
+</div>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-11">
 
 <div class="row">

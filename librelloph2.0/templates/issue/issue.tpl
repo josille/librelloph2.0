@@ -46,7 +46,10 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 </div>
 
 <div class="row padding_left_15">
-<div class="col-xs-9 col-sm-6 col-md-12 col-lg-12 font_size_10 margin_bottom_5 margin_top_10">doi: {$article->getDOI()}</div>
+<div class="col-xs-9 col-sm-6 col-md-12 col-lg-12 font_size_10 margin_bottom_5 margin_top_10">
+{assign var=issueArt value=$article->getArticleIssue()}
+
+doi: {$article->getDOI()} | Volume {$issueArt->getVolume()} ({$issueArt->getYear()}) | Issue {$issueArt->getNumber()}</div>
 </div>
 
 <div class="row padding_left_15">
@@ -54,10 +57,10 @@ $article->getPages()|strstr:"-"} pp. {else} p. {/if}
 {$article->getAuthorAffiliationHTMLtpl()}</div>
 </div>
 
-<div class="row">
+<div class="row padding_left_15">
 <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 font_size_12 margin_top_10">
-Publication Date: {$article->getDatePublished()|date_format:"%e
-%B %Y"}</div>
+Publication Date: {$article->getDatePublished()|date_format:"%e %B %Y"}
+</div>
 </div>
 
 <div class="row">
