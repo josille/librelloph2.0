@@ -19,8 +19,8 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 {if $journalsK}
 <meta name="keywords" content="open access; open access journals; {iterate from=journalsK item=journal}{$journal->getLocalizedTitle()};{/iterate} publisher; publishing house; Librello; Switzerland " />
 {/if}
-<meta name="generator"
-	content="{$applicationName} {$currentVersionString|escape}" />
+<meta name="generator" content="{$applicationName} {$currentVersionString|escape}" />
+<meta http-equiv="Content-Language" content="en">
 {$metaCustomHeaders} {if $displayFavicon}
 <link rel="icon" href="{$faviconDir}/{$displayFavicon.uploadName|escape:" url"}" />
 {/if}

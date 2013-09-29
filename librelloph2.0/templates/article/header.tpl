@@ -19,7 +19,7 @@
 	{if $article->getLocalizedSubject()}
 		<meta name="keywords" content="{$article->getLocalizedSubject()|escape}" />
 	{/if}
-
+	<meta http-equiv="Content-Language" content="en">
 	{if $displayFavicon}<link rel="icon" href="{$faviconDir}/{$displayFavicon.uploadName|escape:"url"}" />{/if}
 
 	{include file="article/dublincore.tpl"}

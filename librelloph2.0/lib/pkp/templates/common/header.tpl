@@ -23,6 +23,7 @@
 	<meta name="description" content="{$pageTitleTranslated}, {if $currentJournal}Journal:{$currentJournal->getLocalizedTitle()}{/if}, Info:{$metaSearchDescription|escape}" />
 	<meta name="keywords" content="{$metaSearchKeywords|escape}" />
 	<meta name="generator" content="{$applicationName} {$currentVersionString|escape}" />
+	<meta http-equiv="Content-Language" content="en">
 	{$metaCustomHeaders}
 	{if $displayFavicon}<link rel="icon" href="{$faviconDir}/{$displayFavicon.uploadName|escape:"url"}" />{/if}
 
