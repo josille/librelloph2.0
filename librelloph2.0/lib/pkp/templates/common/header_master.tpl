@@ -33,6 +33,8 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<link href="https://plus.google.com/117721213017356591223" rel="publisher"/>
+
 <!-- Bootstrap -->
 <link href="{$baseUrl}/styles/bootstrap_css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <!-- link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css"-->
@@ -68,7 +70,7 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 <img src="{$baseUrl}/images/linkedin_top.png" width="26" height="26" alt="LinkedIn"/></a></p>
 
 <p class="navbar-text pull-right margin_top_10 margin_bottom_10">
-<a href="https://plus.google.com/117721213017356591223?rel=author" target="blank">
+<a href="https://plus.google.com/117721213017356591223?rel=author" rel="author" target="blank">
 <img src="{$baseUrl}/images/google_top.png" width="26" height="26" alt="Google +"/></a></p>
 
 </div>

@@ -37,6 +37,7 @@
 <script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/bootstrap.min.js"></script> 
 <!-- script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script-->
 	
+	<link href="https://plus.google.com/117721213017356591223" rel="publisher"/>
 	
 	<!-- Bootstrap -->
 <link href="{$baseUrl}/styles/bootstrap_css/bootstrap.min.css" rel="stylesheet" media="screen"/>
@@ -78,7 +79,7 @@
 <p class="navbar-text pull-right margin_top_18 margin_bottom_10"><a href="https://twitter.com/librello" target="blank"><img src="{$baseUrl}/images/twitter_top.png" width="26" height="26" alt="Twitter"/></a>
 </p>
 <p class="navbar-text pull-right margin_top_18 margin_bottom_10"><a href="http://www.linkedin.com/company/librello" target="blank"><img src="{$baseUrl}/images/linkedin_top.png" width="26" height="26" alt="LinkedIn"/></a></p>
-<p class="navbar-text pull-right margin_top_18 margin_bottom_10"><a href="https://plus.google.com/117721213017356591223" target="blank"><img src="{$baseUrl}/images/google_top.png" width="26" height="26" alt="Google +"/></a></p>
+<p class="navbar-text pull-right margin_top_18 margin_bottom_10"><a href="https://plus.google.com/117721213017356591223?rel=author" rel="author" target="blank"><img src="{$baseUrl}/images/google_top.png" width="26" height="26" alt="Google +"/></a></p>
 <p class="navbar-text pull-left margin_top_10 margin_bottom_10 margin_left_0">
 <a href="http://www.librelloph.com">
 <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
