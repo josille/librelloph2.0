@@ -10,7 +10,7 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>{$article->getLocalizedTitle()|escape} | {$article->getFirstAuthor(true)|escape}{if $galley}{if $galley->isHTMLGalley()} | html{elseif $galley->isPdfGalley()} | pdf{/if}{/if}</title>
+	<title>Open Access | {$article->getLocalizedTitle()|escape} | {$article->getFirstAuthor(true)|escape}{if $galley}{if $galley->isHTMLGalley()} | html{elseif $galley->isPdfGalley()} | pdf{/if}{/if}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
 	{if $article->getAbstract(null)}
 	<meta name="description" content="Abstract: {foreach from=$article->getAbstract(null) key=metaLocale item=metaValue}{$metaValue|strip_tags|escape}{/foreach}, Author(s): {foreach from=$article->getAuthorString()|explode:', ' item=dc_author}{$dc_author|escape}{/foreach}, Category: {$article->getSectionTitle()}, Pages: {$article->getPages()}"/>
@@ -70,7 +70,7 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top">
 <div id='top_nav_bar_journal' class="container">
-<p class="navbar-text pull-right margin_top_10 margin_bottom_10"><a target="blank" style="background:none;" href="http://www.librelloph.com/submission/index.php/index/oai?verb=Identify">
+<p class="navbar-text pull-right margin_top_18 margin_bottom_10"><a target="blank" style="background:none;" href="http://www.librelloph.com/submission/index.php/index/oai?verb=Identify">
 <img width="38px" height="28px" alt="OAI" src="http://www.openarchives.org/images/OA100.gif"/>
 </a></p>
 <p class="navbar-text pull-right margin_top_18 margin_bottom_10"><a href="{url page="gateway"}/plugin/WebFeedGatewayPlugin/rss2">

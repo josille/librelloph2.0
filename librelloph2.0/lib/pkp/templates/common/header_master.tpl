@@ -14,9 +14,11 @@ var="pageCrumbTitleTranslated" value=$pageTitleTranslated} {/if}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type"	content="text/html; charset={$defaultCharset|escape}" />
-<title>{$pageTitleTranslated}</title>
-<meta name="description" content="{$metaSearchDescription|escape}" />
-<meta name="keywords" content="{$metaSearchKeywords|escape}" />
+<title>{$pageTitleTranslated} | Open Access Journals</title>
+<meta name="description" content="{$intro|nl2br|escape}" />
+{if $journalsK}
+<meta name="keywords" content="open access; open access journals; {iterate from=journalsK item=journal}{$journal->getLocalizedTitle()};{/iterate} publisher; publishing house; Librello; Switzerland " />
+{/if}
 <meta name="generator"
 	content="{$applicationName} {$currentVersionString|escape}" />
 {$metaCustomHeaders} {if $displayFavicon}

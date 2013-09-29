@@ -19,7 +19,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
-	<title>{$pageTitleTranslated}{if $currentJournal} | {$currentJournal->getLocalizedTitle()} {/if}</title>
+	<title>{$pageTitleTranslated}{if $currentJournal} | {$currentJournal->getLocalizedTitle()} | Open Access Journal | Librello Publishing House  {/if}</title>
 	<meta name="description" content="{$pageTitleTranslated}, {if $currentJournal}Journal:{$currentJournal->getLocalizedTitle()}{/if}, Info:{$metaSearchDescription|escape}" />
 	<meta name="keywords" content="{$metaSearchKeywords|escape}" />
 	<meta name="generator" content="{$applicationName} {$currentVersionString|escape}" />
