@@ -372,7 +372,7 @@ class String {
 	 * @see http://ca.php.net/manual/en/function.mime_content_type.php
 	 */
 	function mime_content_type($filename) {
-		if (function_exists('mime_content_type')) {
+		if (false && function_exists('mime_content_type')) {
 			$result = mime_content_type($filename);
 			// mime_content_type appears to return a charset
 			// (erroneously?) in recent versions of PHP5
