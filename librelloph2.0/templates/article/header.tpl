@@ -47,7 +47,11 @@
 <!-- link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css"-->
 
 <link href="{$baseUrl}/styles/bootstrap_css/tweeks.css" rel="stylesheet" media="screen"/>
-
+{if $galley}
+{if $galley->isHTMLGalley()}
+<link href="{$baseUrl}/styles/articles/articles_html.css" rel="stylesheet" media="screen"/>
+{/if}
+{/if}
 
 	<script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweeks_size_journals.js"></script>
 </head>
@@ -132,9 +136,20 @@
   {if $issue}
   <li><a href="{url page='issue' op='view' path=$issue->getBestIssueId($currentJournal)}" target="_parent">{$issue->getIssueIdentification(false,true)|escape}</a></li>
   {/if}
-  <li class="active">{$article->getFirstAuthor(true)|escape}</li>
+  
+  {if $galley}
+  	{if $galley->isHTMLGalley()}
+  		<li><a href="{url page='article' op='view' path=$article->getBestArticleId($currentJournal)}">{$article->getFirstAuthor(true)|escape}</a></li>
+  		<li class="active">{$galley->getGalleyLabel()|escape}</li>
+  	{elseif $galley->isPdfGalley()}
+  		<li><a href="{url page='article' op='view' path=$article->getBestArticleId($currentJournal)}">{$article->getFirstAuthor(true)|escape}</a></li>
+  		<li class="active">{$galley->getGalleyLabel()|escape}</li>
+  	{else}
+  		<li class="active">{$article->getFirstAuthor(true)|escape}</li>
+  	{/if}
+  {else}
+  	<li class="active">{$article->getFirstAuthor(true)|escape}</li>
+  {/if}
 </ol>
 
-
 <div id="content">
-
