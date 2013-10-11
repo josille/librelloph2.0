@@ -49,7 +49,10 @@
 <link href="{$baseUrl}/styles/bootstrap_css/tweeks.css" rel="stylesheet" media="screen"/>
 {if $galley}
 {if $galley->isHTMLGalley()}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="{$baseUrl}/styles/articles/articles_html.css" rel="stylesheet" media="screen"/>
+<script type="text/javascript" src="{$baseUrl}/js/articles/articles_html.js"></script>
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {/if}
 {/if}
 

@@ -44,17 +44,17 @@
    margin-bottom: 15px;
    }
    
-   .Abstract,.Keywords{
+   .AbstractLibrello,.KeywordsLibrello{
    		margin-bottom: 15px;
    		margin-left: 5%;
    		width: 80%;
    }
-   .Abstract > span,.Keywords > span{
+   .AbstractLibrello > span,.KeywordsLibrello > span{
    		color:#800000;
    		font-weight: bold;
    }
    
-    .hiTitleLibrello {
+    .h1TitleLibrello, .hiTitleLibrello {
       margin-top:18px;
       margin-bottom:18px;
       font-weight:bold;
@@ -80,6 +80,15 @@ column-count:2;
    .italicsLibrello{
    font-style: italic;
    }
+   
+   .equationsWraper{
+   text-align:center;
+   }
+   
+   .equationsIndex{
+   margin-left:80px;
+   }
+      
    /*
       span.PageNumber {}
       span.Emphasis {font-style:italic}
