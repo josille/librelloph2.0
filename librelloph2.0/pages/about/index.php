@@ -30,6 +30,7 @@ switch($op) {
 	case 'journalSponsorship':
 	case 'siteMap':
 	case 'siteMapXML':
+	case 'RePEc':
 	case 'history':
 	case 'aboutThisPublishingSystem':
 	case 'statistics':

@@ -188,7 +188,7 @@ class Submission extends DataObject {
 	 * Method to return the authors and affiliations 
 	 * with a good format
 	 */
-	function &getAuthorAffiliationHTMLtpl($extended = false)
+	function &getAuthorAffiliationHTMLtpl($extended = false,$repec = false)
 	{
 		$authors_obj = $this->authors;
 		$authors_arr = array();
@@ -312,8 +312,13 @@ class Submission extends DataObject {
 		$templateMgr->assign('corrFlag', $corrFlag);
 		$templateMgr->assign('single_author',$single_author);
 		$templateMgr->assign('extended',$extended);
-		//$templateMgr->assign('user',$author);
-		$authorsHTML = $templateMgr->fetch('article/authorhtml.tpl');
+		
+		if($repec){
+			$authorsHTML = $templateMgr->fetch('article/authorRepec.tpl');
+		}
+		else {
+			$authorsHTML = $templateMgr->fetch('article/authorhtml.tpl');
+		}
 		return $authorsHTML; 
 	}
 	

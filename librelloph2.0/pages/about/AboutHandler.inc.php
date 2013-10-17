@@ -530,6 +530,194 @@ class AboutHandler extends Handler {
 		
 		$templateMgr->display('about/siteMapXML.tpl','text/xml');
 	}
+	
+	
+/**
+	 * Display siteMap xml page.
+	 */
+	function RePEc($args) {
+		$this->validate();
+		$this->setupTemplate(true);
+
+		$repec_code = isset($args[0])?$args[0]:false;
+		
+		$repec_second_level = isset($args[1])?$args[1]:false;
+		
+		if(!$repec_code || $repec_code != 'lib')
+		{
+			Request::redirect(null, 'about');
+		}
+		
+		if(!$repec_second_level)
+		{
+			//Request::redirect(null, 'about');
+			$repec_second_level='index';
+		}
+		
+		$site =& Request::getSite();
+		$siteTitle = $site->getLocalizedTitle();
+		$siteContactEmail = $site->getLocalizedContactEmail();
+		$siteIntro = $site->getLocalizedIntro();
+		
+		$templateMgr =& TemplateManager::getManager();
+		
+		
+		if($repec_second_level == 'index'){
+			$journalDao =& DAORegistry::getDAO('JournalDAO');
+			$journals =& $journalDao->getEnabledJournals();
+			
+			$arrLinks = array();
+			foreach ($journals->toArray() as $journal) {
+				$jouTemp = strtolower($journal->getLocalizedInitials());
+				$jouTemp = sprintf("%06s",$jouTemp);
+				
+				$arrLinks[]=$jouTemp;
+			}
+			$templateMgr->assign('arrLinks',$arrLinks);
+		}
+		elseif($repec_second_level == 'libarch.rdf' || $repec_second_level == 'libseri.rdf')
+		{			
+			$journals_arr = array();
+			$archiv_info = array('jouname'=>'',
+								'joudesc'=>'',
+								'mantainer'=>array(),
+								'editor'=>array(),
+								'handler'=>'');
+	
+			$journalDao =& DAORegistry::getDAO('JournalDAO');
+			$journals =& $journalDao->getEnabledJournals();
+			
+			foreach ($journals->toArray() as $journal) {
+				
+				$groupDao =& DAORegistry::getDAO('GroupDAO');
+				$groupMembershipDao =& DAORegistry::getDAO('GroupMembershipDAO');
+		
+				$allGroups =& $groupDao->getGroups(ASSOC_TYPE_JOURNAL, $journal->getId(), GROUP_CONTEXT_EDITORIAL_TEAM);
+				$teamInfo = array();
+				$groups = array();
+				while ($group =& $allGroups->next()) {
+					if (!$group->getAboutDisplayed()) continue;
+					$memberships = array();
+					$allMemberships =& $groupMembershipDao->getMemberships($group->getId());
+					while ($membership =& $allMemberships->next()) {
+						if (!$membership->getAboutDisplayed()) continue;
+						$memberships[] =& $membership;
+						unset($membership);
+					}
+					if (!empty($memberships)) $groups[] =& $group;
+					$teamInfo[$group->getId()] = $memberships;
+					
+					if ($group->getPublishEmail()) $publishEmail = true;
+					
+					unset($group);
+				}
+				
+				$archiv_info['jouname']=$journal->getLocalizedTitle();
+				$archiv_info['jouabbr']=sprintf("%06s\n",$journal->getLocalizedInitials());
+				//$archiv_info['jouabbr']=$journal->getLocalizedInitials();
+				//$archiv_info['joudesc']=htmlspecialchars( $journal->getLocalizedDescription(), ENT_QUOTES);
+				$archiv_info['joudesc']=$journal->getLocalizedDescription();
+				$archiv_info['handler']=$journal->getLocalizedInitials();
+				
+				foreach ($groups as $group) {
+					$groupId = $group->getId();
+					$members = $teamInfo[$groupId];
+					
+					if ($group->getLocalizedTitle() == 'Managing Editor')
+					{
+						$mant = array();
+						$index = 0;
+						foreach ($members as $member) {
+							$user =$member->getUser();
+							$mant[$index]['name']= $user->getFullName();
+							$mant[$index]['email']= $user->getEmail();
+							$index++;
+						}
+						$archiv_info['mantainer']=$mant;
+					}
+					elseif ($group->getLocalizedTitle() == 'Editor-in-Chief'){
+						$edit = array();					
+						$index = 0;
+						foreach ($members as $member) {
+							$user =$member->getUser();
+							$edit[$index]['name']= $user->getFullName();
+							$edit[$index]['email']= $user->getEmail();
+							$index++;
+						}
+						$archiv_info['editor']=$edit;
+					}
+	
+				}
+				
+				$journals_arr[]=$archiv_info;
+			}
+			
+			$templateMgr->assign('siteTitle',$siteTitle);
+			$templateMgr->assign('siteContactEmail',$siteContactEmail);
+			$templateMgr->assign('siteIntro',$siteIntro);
+			
+			$templateMgr->assign('journals',$journals_arr);
+		
+		}
+		elseif($repec_second_level != 'index'){			
+			$journalDao =& DAORegistry::getDAO('JournalDAO');
+			$journals =& $journalDao->getEnabledJournals();
+			
+			$jouId = 0;
+			$jouName = '';
+			foreach ($journals->toArray() as $journal) {
+				$jouTemp = strtolower($journal->getLocalizedInitials());
+				$jouTemp = sprintf("%06s",$jouTemp);
+				//var_dump($jouTemp , $repec_second_level);exit;
+				if($jouTemp == $repec_second_level) {
+					$jouId = $journal->getId();
+					$jouName = $journal->getLocalizedTitle();
+					break;	
+				}
+			}
+			
+			if($jouId >0) {
+				$articleDao =& DAORegistry::getDAO('PublishedArticleDAO');
+				$articles =& $articleDao->getPublishedArticlesByJournalId($jouId);
+				
+				/*
+				 * Clasification
+				 * - Social Inclusion: A0,F0,F22,F24,H0,H4,I2,I3;J0,J3,J5,J6,J7,J8,K0,K31,K37,L3,N3,R2,Z12,Z13,Z18
+				 * - Politics and Governance: A0,E0,E6,F0,F02,H0,H1,H5,H7,H83,I28,J5,K0,K10,K14,K33,L3,L88,N4
+				 * - Media and Communication: F60,I29,L82,M3,O3
+				 * - CiS: D11, D12, D13, D61, D78, D81, F64, F68, I3, O2, O3, O4, Q, R4, Y3, Z1
+				 * - JoHS: D63, D71, D74, F51, F52, F53, F54, F55, F64, F68, I1, I3, J5, J7, J8, O2, O3, O4, Q, Y3, Z1 
+				 */
+				$clasif = '';
+				
+				switch ($repec_second_level){
+					case '000cis':
+						$clasif ='D11, D12, D13, D61, D78, D81, F64, F68, I3, O2, O3, O4, Q, R4, Y3, Z1';
+					break;
+					case '00johs':
+						$clasif ='D63, D71, D74, F51, F52, F53, F54, F55, F64, F68, I1, I3, J5, J7, J8, O2, O3, O4, Q, Y3, Z1';
+					break;
+					case '000mac':
+						$clasif ='F60, I29, L82, M3, O3';
+					break;
+					case '000pag':
+						$clasif ='A0, E0, E6, F0, F02, H0, H1, H5, H7, H83, I28, J5, K0, K10, K14, K33, L3, L88, N4';
+					break;
+					case '0000si':
+						$clasif ='A0, F0, F22, F24, H0, H4, I2, I3, J0, J3, J5, J6, J7, J8, K0, K31, K37, L3, N3, R2, Z12, Z13, Z18';
+					break;
+				}
+				
+				$templateMgr->assign('articles',$articles);
+				$templateMgr->assign('jouName',$jouName);
+				$templateMgr->assign('clasif',$clasif);
+			}
+		}
+		
+		$templateMgr->assign('secondlevel',$repec_second_level);
+		$templateMgr->display('about/repec.tpl');
+	}
+	
 
 	/**
 	 * Display journal history.
