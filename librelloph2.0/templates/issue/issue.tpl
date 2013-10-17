@@ -84,13 +84,13 @@ Publication Date: {$article->getDatePublished()|date_format:"%e %B %Y"}
 	$galley->isPdfGalley()}
 	<li><a href="{url page='article' op='download'
 		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
-	class="file">{$galley->getGalleyLabel()|escape}</a></li>
+	class="file">Full text PDF{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a></li>
 
-	<li><a href="{url page='article' op='viewXML' path=$articlePath}/xml" class="file">XML</a></li>
+	<li><a href="{url page='article' op='viewXML' path=$articlePath}/xml" class="file">Abstract XML</a></li>
 	{else}
 	<li><a href="{url page='article' op='view'
 		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
-	class="file" target="blank">{$galley->getGalleyLabel()|escape}</a></li>
+	class="file" target="blank">{$galley->getGalleyLabel()|escape}{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a></li>
 	{/if} {/foreach}
 				</ul>
 

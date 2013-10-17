@@ -74,15 +74,15 @@ Download <span class="caret"></span></button>
 	{foreach from=$article->getGalleys() item=galley name=galleyList} {if
 	$galley->isPdfGalley()}
 	<li><a target='blank'
-		href="{url journal=$journalPath page='article' op='download' path=$articlePath|to_array:$galley->getPublicGalleyId()}">{$galley->getGalleyLabel()|escape}</a>
+		href="{url journal=$journalPath page='article' op='download' path=$articlePath|to_array:$galley->getPublicGalleyId()}">Full text PDF{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a>
 	</li>
 
 	<li><a
-		href="{url journal=$journalPath page='article' op='viewXML' path=$articlePath}/xml">XML</a></li>
+		href="{url journal=$journalPath page='article' op='viewXML' path=$articlePath}/xml">Abstract XML</a></li>
 	{else}
 	<li><a
 		href="{url journal=$journalPath page='article' op='view' path=$articlePath|to_array:$galley->getPublicGalleyId()}"
-		target="blank">{$galley->getGalleyLabel()|escape}</a></li>
+		target="blank">{$galley->getGalleyLabel()|escape}{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a></li>
 	{/if} {/foreach}
 </ul>
 </div>

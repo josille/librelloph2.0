@@ -134,12 +134,12 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 				{foreach from=$article->getGalleys() item=galley name=galleyList} {if
 	$galley->isPdfGalley()}
 	<li><a href="{url page='article' op='download' path=$article->getBestArticleId($currentJournal)|to_array:$galley->getBestGalleyId($currentJournal)}" 
-	class="file">Full text PDF</a></li>
+	class="file">Full text PDF{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a></li>
 
 	<li><a href="{url page='article' op='viewXML' path=$article->getBestArticleId($currentJournal)}/xml" class="file">Abstract XML</a></li>
 	{else}
 	<li><a href="{url page='article' op='view' path=$article->getBestArticleId($currentJournal)|to_array:$galley->getBestGalleyId($currentJournal)}"
-	class="file" target="blank">{$galley->getGalleyLabel()|escape}</a></li>
+	class="file" target="blank">{$galley->getGalleyLabel()|escape}{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a></li>
 	{/if} {/foreach}
 				</ul>
 
