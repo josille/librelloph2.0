@@ -3,11 +3,11 @@ Distributed under the GNU GPL v2. For full terms see the file
 docs/COPYING. * * About the Journal / Site Map. * * TODO: Show the site
 map. * * $Id$ *}
 {if $secondlevel eq 'index'}
-<a href='lib/libarch.rdf'>libarch.rdf</a><br/>
-<a href='lib/libseri.rdf'>libseri.rdf</a><br/>
+<a href='libarch.rdf'>libarch.rdf</a><br/>
+<a href='libseri.rdf'>libseri.rdf</a><br/>
 
-{foreach from=$arrLinks item=link}
-<a href='lib/{$link}'>{$link}/</a><br/>
+{foreach from=$arrLinks key=key item=link}
+<a href='{$link}/{$key}.rdf'>{$link}/{$key}.rdf</a><br/>
 {/foreach}
 {elseif $secondlevel eq 'libarch.rdf'}
 
@@ -17,7 +17,7 @@ Name: {$siteTitle}
 Maintainer-Email: {$siteContactEmail}
 Description: {$siteIntro}
 {*URL: {$baseUrl}/index/about/RePEc/lib/*}
-URL: http://www.librelloph.com/index/about/RePEc/lib/
+URL: http://www.librelloph.com/about/RePEc/lib/
 
 {elseif $secondlevel eq 'libseri.rdf'}
 {foreach from=$journals item=journal}

@@ -569,9 +569,9 @@ class AboutHandler extends Handler {
 			$arrLinks = array();
 			foreach ($journals->toArray() as $journal) {
 				$jouTemp = strtolower($journal->getLocalizedInitials());
-				$jouTemp = sprintf("%06s",$jouTemp);
+				$jouTempBig = sprintf("%06s",$jouTemp);
 				
-				$arrLinks[]=$jouTemp;
+				$arrLinks[$jouTemp]=$jouTempBig;
 			}
 			$templateMgr->assign('arrLinks',$arrLinks);
 		}
