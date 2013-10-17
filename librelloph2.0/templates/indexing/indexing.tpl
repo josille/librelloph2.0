@@ -227,6 +227,10 @@ following indexing and archiving companies.</p>
 		<td
 			style='border-bottom: 2px solid #337755; border-left: 2px solid #337755;'>
 		<a class="mainjournal" style="font-style: italic; background: none;"
+			href="{$baseUrl}/index.php/challengesinsustainability"> <img alt=""
+			src="{$publicFilesDir}/../journals/1/CiSsmall.png"
+			style="margin-bottom: 10px; border-style: none;"/> </a>&nbsp;&nbsp;	<a 
+			class="mainjournal" style="font-style: italic; background: none;"
 			href="{$baseUrl}/index.php/journalofhumansecurity"> <img alt=""
 			src="{$publicFilesDir}/../journals/4/JoHSsmall.png"
 			style="margin-bottom: 10px; border-style: none;"/> </a>&nbsp;&nbsp; <a
@@ -306,6 +310,10 @@ following indexing and archiving companies.</p>
 			class="mainjournal" style="font-style: italic; background: none;"
 			href="{$baseUrl}/index.php/journalofhumansecurity"> <img alt=""
 			src="{$publicFilesDir}/../journals/4/JoHSsmall.png"
+			style="margin-bottom: 10px; border-style: none;"/> </a>&nbsp;&nbsp;<a
+			class="mainjournal" style="font-style: italic; background: none;"
+			href="{$baseUrl}/index.php/mediaandcommunication"> <img alt=""
+			src="{$publicFilesDir}/../journals/5/MaCsmall.png"
 			style="margin-bottom: 10px; border-style: none;"/> </a>&nbsp;&nbsp; <a
 			class="mainjournal" style="font-style: italic; background: none;"
 			href="{$baseUrl}/index.php/politicsandgovernance"> <img alt=""
