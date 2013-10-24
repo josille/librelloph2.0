@@ -40,3 +40,30 @@ $(document).ready(function() {
 		//}
 	}
 });
+
+
+/*
+ * Two methos to make the anchor transition smoother, 
+ * The first one is on teh same page
+ * The second one is when navigation from a different page
+ */
+$(document).ready(function() {
+	$('a[href*=#]').click(function(){
+	    $('html, body').animate({
+	        scrollTop: ($( $.attr(this, 'href') ).offset().top-70)
+	    }, 500);
+	    return false;
+	});
+});
+
+$(document).ready(function() {
+	if (window.location.hash) {
+		var hash = window.location.hash;
+	    $('html, body').animate({
+	        scrollTop: ($(hash).offset().top-70)
+	    }, 100);
+		
+	}
+});
+
+
