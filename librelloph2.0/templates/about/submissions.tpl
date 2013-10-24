@@ -8,6 +8,7 @@
  *
  * $Id$
  *}
+ <span id='top_menu'></span>
 {strip}
 {assign var="pageTitle" value="about.submissions"}
 {include file="common/header.tpl"}
@@ -19,11 +20,11 @@
 {/if}
 
 <ul class="plain">
-	<li>&#187; <a href="{url page="about" op="submissions" anchor="onlineSubmissions"}">{translate key="about.onlineSubmissions"}</a></li>
-	{if $currentJournal->getLocalizedSetting('authorGuidelines') != ''}<li>&#187; <a href="{url page="about" op="submissions" anchor="authorGuidelines"}">{translate key="about.authorGuidelines"}</a></li>{/if}
-	{if $currentJournal->getLocalizedSetting('copyrightNotice') != ''}<li>&#187; <a href="{url page="about" op="submissions" anchor="copyrightNotice"}">{translate key="about.copyrightNotice"}</a></li>{/if}
-	{if $currentJournal->getLocalizedSetting('privacyStatement') != ''}<li>&#187; <a href="{url page="about" op="submissions" anchor="privacyStatement"}">{translate key="about.privacyStatement"}</a></li>{/if}
-	{if $authorFees}<li>&#187; <a href="{url page="about" op="submissions" anchor="authorFees"}">{translate key="about.authorFees"}</a></li>{/if}	
+	<li>&#187; <a href="#onlineSubmissions">{translate key="about.onlineSubmissions"}</a></li>
+	{if $currentJournal->getLocalizedSetting('authorGuidelines') != ''}<li>&#187; <a href="#authorGuidelines">{translate key="about.authorGuidelines"}</a></li>{/if}
+	{if $currentJournal->getLocalizedSetting('copyrightNotice') != ''}<li>&#187; <a href="#copyrightNotice">{translate key="about.copyrightNotice"}</a></li>{/if}
+	{if $currentJournal->getLocalizedSetting('privacyStatement') != ''}<li>&#187; <a href="#privacyStatement">{translate key="about.privacyStatement"}</a></li>{/if}
+	{if $authorFees}<li>&#187; <a href="#authorFees">{translate key="about.authorFees"}</a></li>{/if}	
 </ul>
 
 <div id="onlineSubmissions"><h3>{translate key="about.onlineSubmissions"}</h3>
@@ -37,6 +38,7 @@
 </p>
 <p>{translate key="about.onlineSubmissions.registrationRequired"}</p>
 
+<a href="#top_menu">[Top]</a>
 <div class="separator">&nbsp;</div>
 </div>
 
@@ -44,6 +46,7 @@
 <div id="authorGuidelines"><h3>{translate key="about.authorGuidelines"}</h3>
 <p>{$currentJournal->getLocalizedSetting('authorGuidelines')|nl2br}</p>
 
+<a href="#top_menu">[Top]</a>
 <div class="separator">&nbsp;</div>
 </div>
 {/if}
@@ -56,6 +59,7 @@
 			<li>{$checklistItem.content|nl2br}</li>	
 		{/foreach}
 	</ol>
+<a href="#top_menu">[Top]</a>
 	<div class="separator">&nbsp;</div>
 	</div>
 {/if}{* $submissionChecklist *}
@@ -64,6 +68,7 @@
 <div id="copyrightNotice"><h3>{translate key="about.copyrightNotice"}</h3>
 <p>{$currentJournal->getLocalizedSetting('copyrightNotice')|nl2br}</p>
 
+<a href="#top_menu">[Top]</a>
 <div class="separator">&nbsp;</div>
 </div>
 {/if}
@@ -71,6 +76,7 @@
 {if $currentJournal->getLocalizedSetting('privacyStatement') != ''}<div id="privacyStatement"><h3>{translate key="about.privacyStatement"}</h3>
 <p>{$currentJournal->getLocalizedSetting('privacyStatement')|nl2br}</p>
 
+<a href="#top_menu">[Top]</a>
 <div class="separator">&nbsp;</div>
 </div>
 {/if}
@@ -95,6 +101,8 @@
 		<p>{$currentJournal->getLocalizedSetting('waiverPolicy')|escape}</p>
 	{/if}
 </div>
+
+<a href="#top_menu">[Top]</a>
 {/if}
 {include file="common/footer.tpl"}
 
