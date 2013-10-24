@@ -332,12 +332,12 @@ class ArticleGalleyDAO extends DAO {
 	 * @param $galleyId int
 	 */
 	function incrementViews($galleyId) {
-		if ( !HookRegistry::call('ArticleGalleyDAO::incrementGalleyViews', array(&$galleyId)) ) {
+		//if ( !HookRegistry::call('ArticleGalleyDAO::incrementGalleyViews', array(&$galleyId)) ) {
 			return $this->update(
 				'UPDATE article_galleys SET views = views + 1 WHERE galley_id = ?',
 				$galleyId
 			);
-		} else return false;
+		//} else return false;
 	}
 
 	/**
