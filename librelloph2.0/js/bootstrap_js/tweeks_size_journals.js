@@ -48,7 +48,7 @@ $(document).ready(function() {
  * The second one is when navigation from a different page
  */
 $(document).ready(function() {
-	$('a[href*=#]').click(function(){
+	$('.anchorLink').click(function(){
 	    $('html, body').animate({
 	        scrollTop: ($( $.attr(this, 'href') ).offset().top-70)
 	    }, 500);
