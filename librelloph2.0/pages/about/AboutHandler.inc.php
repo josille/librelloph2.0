@@ -629,18 +629,18 @@ class AboutHandler extends Handler {
 						$index = 0;
 						foreach ($members as $member) {
 							$user =$member->getUser();
-							$mant[$index]['name']= $user->getFullName();
+							$mant[$index]['name']= htmlentities($user->getFullName(), ENT_QUOTES, "UTF-8");
 							$mant[$index]['email']= $user->getEmail();
 							$index++;
 						}
 						$archiv_info['mantainer']=$mant;
 					}
-					elseif ($group->getLocalizedTitle() == 'Editor-in-Chief'){
+					elseif ($group->getLocalizedTitle() == 'Editor-in-Chief' || $group->getLocalizedTitle() == 'Editors-in-Chief'){
 						$edit = array();					
 						$index = 0;
 						foreach ($members as $member) {
 							$user =$member->getUser();
-							$edit[$index]['name']= $user->getFullName();
+							$edit[$index]['name']= htmlentities($user->getFullName(), ENT_QUOTES, "UTF-8");
 							$edit[$index]['email']= $user->getEmail();
 							$index++;
 						}
@@ -651,6 +651,7 @@ class AboutHandler extends Handler {
 				
 				$journals_arr[]=$archiv_info;
 			}
+			
 			
 			$templateMgr->assign('siteTitle',$siteTitle);
 			$templateMgr->assign('siteContactEmail',$siteContactEmail);
