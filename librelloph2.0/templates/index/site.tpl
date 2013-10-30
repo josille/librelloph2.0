@@ -18,9 +18,12 @@ value=$article->getJournalInitials()}
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 <div class="row">
-<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1"><img alt="{$journalInitials}"
+<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
+<img alt="{$journalInitials}"
 	src="{$publicFilesDir}/../journals/{$article->getJournalId()}/{$journalInitials}_small_notext.png"
-	style='float: left; margin: 4px 10px 4px 4px;' /></div>
+	style='float: left; margin: 4px 10px 4px 4px;' />
+
+</div>
 <div class="col-xs-10 col-sm-11 col-md-10 col-lg-11">
 
 <div class="row">
@@ -43,8 +46,41 @@ doi: {$article->getDOI()} | {$article->getJournalTitle()} | {$issueArt->getYear(
 </div>
 
 <div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_12">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 font_size_12">
 {$article->getAuthorAffiliationHTMLtpl()}
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 font_size_10">
+{foreach from=$article->getGalleys() item=galley name=galleyList}
+
+
+<div class="table-responsive">
+  <table class="table table-condensed table_margin_bottom_0">
+    <tr>
+    	<td><a title="" class='tooltipTOC' data-toggle="tooltip" data-original-title="{$article->getViews()} abstract views.">Views</a></td>
+    	<td><span class="badge">{$article->getViews()}</span> <span class="glyphicon glyphicon-eye-open"></span></td>
+    </tr>
+    {if $galley->getViews() >5}
+    
+    	{if $galley->isPdfGalley()}
+    		<tr>
+    	<td><a title="" class='tooltipTOC' data-toggle="tooltip" data-original-title="{$galley->getViews()} Full-Text PDF downloads.">PDF</a></td>
+    	<td><span class="badge">{$galley->getViews()}</span> <span class="glyphicon glyphicon-download-alt"></span></td>
+    	</tr>
+    
+	    {else}
+	    	<tr>
+		    	<td><a title="" class='tooltipTOC' data-toggle="tooltip" data-original-title="{$galley->getViews()} {$galley->getGalleyLabel()|escape} views.">{$galley->getPublicGalleyId()|escape|upper}</td>
+		    	<td><span class="badge">{$galley->getViews()}</span><span class="glyphicon glyphicon-bookmark"></span></td>
+		    	</tr>
+		    	
+    	{/if}
+    {/if}
+    
+  </table>
+</div>
+
+
+{/foreach}
 </div>
 </div>
 
@@ -73,7 +109,7 @@ Download <span class="caret"></span></button>
 <ul class="dropdown-menu" role="menu">
 	{foreach from=$article->getGalleys() item=galley name=galleyList} {if
 	$galley->isPdfGalley()}
-	<li><a target='blank'
+	<li><a 
 		href="{url journal=$journalPath page='article' op='download' path=$articlePath|to_array:$galley->getPublicGalleyId()}">Full text PDF{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a>
 	</li>
 
@@ -82,7 +118,7 @@ Download <span class="caret"></span></button>
 	{else}
 	<li><a
 		href="{url journal=$journalPath page='article' op='view' path=$articlePath|to_array:$galley->getPublicGalleyId()}"
-		target="blank">{$galley->getGalleyLabel()|escape}{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a></li>
+		target="_blank">{$galley->getGalleyLabel()|escape}{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a></li>
 	{/if} {/foreach}
 </ul>
 </div>
@@ -117,6 +153,7 @@ Share this article <span class="caret"></span></button>
 
 </ul>
 </div>
+
 
 </div>
 

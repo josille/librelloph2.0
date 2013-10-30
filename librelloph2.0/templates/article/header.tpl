@@ -57,6 +57,11 @@
 {/if}
 
 	<script type="text/javascript" src="{$baseUrl}/js/bootstrap_js/tweeks_size_journals.js"></script>
+	
+	<!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
+	
 </head>
 <body>
 

@@ -134,12 +134,12 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 				{foreach from=$article->getGalleys() item=galley name=galleyList} {if
 	$galley->isPdfGalley()}
 	<li><a href="{url page='article' op='download' path=$article->getBestArticleId($currentJournal)|to_array:$galley->getBestGalleyId($currentJournal)}" 
-	class="file">Full text PDF{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a></li>
+	class="file">Full text PDF</a></li>
 
 	<li><a href="{url page='article' op='viewXML' path=$article->getBestArticleId($currentJournal)}/xml" class="file">Abstract XML</a></li>
 	{else}
 	<li><a href="{url page='article' op='view' path=$article->getBestArticleId($currentJournal)|to_array:$galley->getBestGalleyId($currentJournal)}"
-	class="file" target="blank">{$galley->getGalleyLabel()|escape}{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a></li>
+	class="file" target="blank">{$galley->getGalleyLabel()|escape}</a></li>
 	{/if} {/foreach}
 				</ul>
 
@@ -227,11 +227,63 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 
 {/if}
 
-
 <div class="row">
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10">
 
-	{if $citationFactory->getCount()}
+<script type="text/javascript">
+    {literal}
+      // Load the Visualization API and the piechart package.
+      // Load the Visualization API and the piechart package.
+    google.load('visualization', '1', {'packages':['corechart']});
+      
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.setOnLoadCallback(drawChart);
+
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      
+      //{url page='article' op='download' path=$article->getBestArticleId($currentJournal)|to_array:$galley->getBestGalleyId($currentJournal)}
+      function drawChart() {
+
+    	  var jsonData = $.ajax({
+              //url: "http://localhost/librelloph2.0/index.php/politicsandgovernance/article/viewVisits/PaG-1.1.1",
+              url: $('#urlArtCount').text(),
+              dataType:"json",
+              async: false
+              }).responseText;
+              
+          // Create our data table out of JSON data loaded from server.
+          var data = new google.visualization.DataTable(jsonData);
+
+         var options = {
+        		 	pieSliceText: 'value',
+        	        title: 'Article visist and downloads',
+        	        width: 500, 
+        	        height: 250,
+        	        is3D: true
+        	      };
+        	          
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+
+      }
+      {/literal}
+    </script>
+
+<div style='width:500px;margin-left: auto;  margin-right: auto;'>
+<!--Div that will hold the pie chart-->
+<span id='urlArtCount' style='display:none;'>{url page='article' op='viewVisits' path=$article->getBestArticleId($currentJournal)}</span>
+    <div id="chart_div"></div>
+    </div>
+</div></div>
+
+{if $citationFactory->getCount()}
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10">
 		<div id="articleCitations">
 		<h4>{translate key="submission.citations"}</h4>
 		<br />
@@ -242,9 +294,8 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 		</div>
 		<br />
 		</div>
-	{/if}
-
 </div></div>
+{/if}
 
 {/if}
 <div style='display:block;height:30px;'></div>

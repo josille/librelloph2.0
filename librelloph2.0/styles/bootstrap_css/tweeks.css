@@ -39,6 +39,14 @@ a , a:hover, a:focus{
 	margin-left:-15px;
 	}
 	
+.tooltipTOC{
+	cursor:pointer;
+	}
+	
+.table_margin_bottom_0{
+	margin-bottom: 0px;
+	}
+	
 /*
 nav bar
 */

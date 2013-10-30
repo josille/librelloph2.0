@@ -40,9 +40,13 @@ Commentary {elseif $articleType eq 'Communications'} Communication
 {$article->getLocalizedTitle()|strip_unsafe_html}</a> </strong>
 </div>
 </div>
-<div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">{if
+
+<div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
+
+{if
 $article->getPages()|strstr:"-"} pp. {else} p. {/if}
-{$article->getPages()|escape}</div>
+{$article->getPages()|escape}
+</div>
 </div>
 
 <div class="row padding_left_15">
@@ -53,8 +57,41 @@ doi: {$article->getDOI()} | Volume {$issueArt->getVolume()} ({$issueArt->getYear
 </div>
 
 <div class="row padding_left_15">
-<div class="col-xs-12 col-sm-10 col-md-12 col-lg-12">
+<div class="col-xs-12 col-sm-10 col-md-12 col-lg-9">
 {$article->getAuthorAffiliationHTMLtpl()}</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 font_size_10">
+
+<div class="table-responsive">
+  <table class="table table-condensed table_margin_bottom_0">
+    <tr>
+    	<td><a title="" class='tooltipTOC' data-toggle="tooltip" data-original-title="{$article->getViews()} abstract views.">Views</a></td>
+    	<td><span class="badge">{$article->getViews()}</span> <span class="glyphicon glyphicon-eye-open"></span></td>
+    </tr>
+{foreach from=$article->getGalleys() item=galley name=galleyList}
+
+    {if $galley->getViews() >5}
+    
+    	{if $galley->isPdfGalley()}
+    		<tr>
+    	<td><a title="" class='tooltipTOC' data-toggle="tooltip" data-original-title="{$galley->getViews()} Full-Text PDF downloads.">PDF</a></td>
+    	<td><span class="badge">{$galley->getViews()}</span> <span class="glyphicon glyphicon-download-alt"></span></td>
+    	</tr>
+    	    
+	    {else}
+	    	<tr>
+	    	<td><a title="" class='tooltipTOC' data-toggle="tooltip" data-original-title="{$galley->getViews()} {$galley->getGalleyLabel()|escape} views.">{$galley->getPublicGalleyId()|escape|upper}</td>
+	    	<td><span class="badge">{$galley->getViews()}</span><span class="glyphicon glyphicon-bookmark"></span></td>
+	    	</tr>
+    	{/if}
+    {/if}
+  
+{/foreach}
+  
+  </table>
+</div>
+</div>
+
 </div>
 
 <div class="row padding_left_15">
@@ -84,13 +121,13 @@ Publication Date: {$article->getDatePublished()|date_format:"%e %B %Y"}
 	$galley->isPdfGalley()}
 	<li><a href="{url page='article' op='download'
 		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
-	class="file">Full text PDF{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a></li>
+	class="file">Full text PDF</a></li>
 
 	<li><a href="{url page='article' op='viewXML' path=$articlePath}/xml" class="file">Abstract XML</a></li>
 	{else}
 	<li><a href="{url page='article' op='view'
 		path=$articlePath|to_array:$galley->getBestGalleyId($currentJournal)}"
-	class="file" target="blank">{$galley->getGalleyLabel()|escape}{if $galley->getViews() > 20}<span class="badge badgeLibrello">{$galley->getViews()} <span class="glyphicon glyphicon-bookmark"></span></span>{/if}</a></li>
+	class="file" target="blank">{$galley->getGalleyLabel()|escape}</a></li>
 	{/if} {/foreach}
 				</ul>
 
@@ -125,6 +162,7 @@ Publication Date: {$article->getDatePublished()|date_format:"%e %B %Y"}
 </ul>
 
 </div>
+
 
 </div>
 

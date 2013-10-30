@@ -231,6 +231,92 @@ class ArticleHandler extends Handler {
 
 		$templateMgr->display('article/article.tpl');
 	}
+	
+	
+/**
+	 * get Article visits in JSON format
+	 * @param $args array
+	 * @param $request Request
+	 */
+	function viewVisits($args, &$request) {
+		$router =& $request->getRouter();
+		$articleId = isset($args[0]) ? $args[0] : 0;
+
+		$this->validate($request, $articleId);
+		$journal =& $this->journal;
+		$issue =& $this->issue;
+		$article =& $this->article;
+		$this->setupTemplate();
+		
+		/*
+		 {
+  "cols": [
+        {"id":"","label":"Topping","pattern":"","type":"string"},
+        {"id":"","label":"Slices","pattern":"","type":"number"}
+      ],
+  "rows": [
+        {"c":[{"v":"Mushrooms","f":null},{"v":3,"f":null}]},
+        {"c":[{"v":"Onions","f":null},{"v":1,"f":null}]},
+        {"c":[{"v":"Olives","f":null},{"v":1,"f":null}]},
+        {"c":[{"v":"Zucchini","f":null},{"v":1,"f":null}]},
+        {"c":[{"v":"Pepperoni","f":null},{"v":2,"f":null}]}
+      ]
+}
+
+		 */
+
+		$arrVisits = array('cols'=>array(),'rows'=>array());
+		/*
+		 * do cols
+		 */
+		//foreach ($article->getGalleys() as $key => $galley) {
+			$cols1 = array('id'=>'');
+			$cols1['label']='Clicks';
+			$cols1['pattern']='';
+			$cols1['type']='string';
+			
+			$cols2 = array('id'=>'');
+			$cols2['label']='Slices';
+			$cols2['pattern']='';
+			$cols2['type']='number';
+	
+		$arrVisits['cols']=array($cols1,$cols2);
+				
+		$cols = array();			
+			$cols['c']=array(
+							array(
+							'v'=>'Abstract views',
+							'f'=>null)
+							,
+							array(
+							'v'=>intval($article->getViews()),
+							'f'=>null));
+			
+			$arrVisits['rows'][]=$cols;
+			
+		
+		foreach ($article->getGalleys() as $key => $galley) {
+			
+			$cols = array();			
+			$cols['c']=array(
+							array(
+							'v'=>$galley->getGalleyLabel().' downloads',
+							'f'=>null)
+							,
+							array(
+							'v'=>intval($galley->getViews()),
+							'f'=>null));
+			
+			$arrVisits['rows'][]=$cols;
+					
+		}
+		
+		echo json_encode($arrVisits);
+	 
+	}
+	
+	
+	
 
 	/**
 	 * Article interstitial page before PDF is shown

@@ -25,6 +25,7 @@ switch ($op) {
 	case 'viewRST':
 	case 'viewXML':
 	case 'viewFile':
+	case 'viewVisits':
 	case 'download':
 	case 'downloadSuppFile':
 		define('HANDLER_CLASS', 'ArticleHandler');

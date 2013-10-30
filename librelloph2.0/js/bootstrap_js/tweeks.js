@@ -7,3 +7,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$("#journal_desc p:first-child").css("display", "none");
 });
+
+$(document).ready(function() {
+	$('.tooltipTOC').tooltip();
+});
