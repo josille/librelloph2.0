@@ -1,6 +1,3 @@
-librelloph2.0
-=============
-
 Lite OJS with Boostrap
 ==============
 
