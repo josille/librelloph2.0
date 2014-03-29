@@ -116,6 +116,10 @@ DOI: <span style='margin-right:10px;'>{$article->getDOI()}</span><span>|</span><
 		    Book Review
 		{elseif $articleType eq 'Research Notes'}
 		    Research Note
+        {elseif $articleType eq 'Opinions'}
+             Opinion
+        {else}
+             {$articleType}
 		{/if}
 		</span>
 		</strong>

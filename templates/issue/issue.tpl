@@ -21,16 +21,30 @@ $articleExpiryPartial.$articleId))} {assign var=hasAccess value=1}
 
 <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
 
-<span style='float: left; font-style: italic;'> {assign
-var=articleType value=$article->getSectionTitle()} {if $articleType eq
-'Articles'} Research Article {elseif $articleType eq 'Commentaries'}
-Commentary {elseif $articleType eq 'Communications'} Communication
-{elseif $articleType eq 'Editorials'} Editorial {elseif $articleType eq
-'Reviews'} Review {elseif $articleType eq 'Short Notes'} Short Note
-{elseif $articleType eq 'Book Review'} Book Review
-{elseif $articleType eq 'Research Notes'}
-		    Research Note
-		{/if}</span>
+<span style='float: left; font-style: italic;'>
+    {assign var=articleType value=$article->getSectionTitle()}
+    {if $articleType eq 'Articles'}
+        Research Article
+    {elseif $articleType eq 'Commentaries'}
+        Commentary
+    {elseif $articleType eq 'Communications'}
+        Communication
+    {elseif $articleType eq 'Editorials'}
+        Editorial
+    {elseif $articleType eq 'Reviews'}
+        Review
+    {elseif $articleType eq 'Short Notes'}
+        Short Note
+    {elseif $articleType eq 'Book Review'}
+        Book Review
+    {elseif $articleType eq 'Research Notes'}
+        Research Note
+    {elseif $articleType eq 'Opinions'}
+        Opinion
+    {else}
+        {$articleType}
+    {/if}
+</span>
 
 <span
 	style='overflow: hidden; display: block; border-bottom: 1.5px dotted black; height: 16px; margin-bottom: 6px;'>&nbsp;</span>
@@ -57,10 +71,10 @@ doi: {$article->getDOI()} | Volume {$issueArt->getVolume()} ({$issueArt->getYear
 </div>
 
 <div class="row padding_left_15">
-<div class="col-xs-12 col-sm-10 col-md-12 col-lg-9">
+<div class="col-xs-11 col-sm-10 col-md-9 col-lg-9">
 {$article->getAuthorAffiliationHTMLtpl()}</div>
 
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 font_size_10">
+<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 font_size_10">
 
 <div class="table-responsive">
   <table class="table table-condensed table_margin_bottom_0">
