@@ -48,4 +48,18 @@
   </div>
 </div>
 <br/>
+<div class="row">
+  <div class="col-xs-10 col-sm-11 col-md-10 col-lg-11">
+    <div class="thumbnail">
+      <h4>University of Groningen</h4>
+      <img style='margin-left:inherit;' width="155" height="155" alt="It is one of the oldest universities in the Netherland" src="{$publicFilesDir}/Imembers/rugr_logo.png"/>
+     
+      <div class="caption">
+        <p>The University of Groningen, located in the city of Groningen, was founded in 1614. It is one of the oldest universities in the Netherlands as well as one of its largest. Since its inception more than 200,000 students have graduated</p>
+        <p><a href="http://www.rug.nl/" class="btn btn-primary" target="_blank">Visit University of Groningen</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
 {include file="common/footer.tpl"}

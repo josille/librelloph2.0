@@ -163,9 +163,9 @@ class PublishedArticleDAO extends DAO {
 			WHERE 	i.published = 1
 				' . ($issueId !== null?'AND pa.issue_id = ?':'') . '
 				AND a.status <> ' . STATUS_ARCHIVED . '
-			ORDER BY '.($pagesSort?'CAST(PagesSort as decimal) ASC,':'')
+			ORDER BY '.($pagesSort?'CAST(PagesSort as decimal),':'')
 			
-			.' date_published '. ($reverse?'DESC':'ASC').',pa.seq ASC ',
+			.' date_published '. ($reverse?'DESC':'ASC').' , pa.seq ASC',
 			$params,
 			$rangeInfo
 		);

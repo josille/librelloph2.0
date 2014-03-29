@@ -216,11 +216,7 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	$smarty.const.PUBLISHING_MODE_NONE}
 	<li class='spaces_top_menu'>&#183;</li>
 
-	{if $currentJournal->getJournalId() == '4'}
-	<li id="current"><a href="{url page="issue" op="current"}">{translate
-	key="navigation.current"}</a></li>
-
-	{else}
+	
 	<li id="issues" class="dropdown"><a class="dropdown-toggle"
 		data-toggle="dropdown" href="{url page="issue" op="archive"}">Issues<span
 		class="caret"></span></a>
@@ -233,7 +229,7 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 		issues</a></li>
 	</ul>
 	</li>
-	{/if} {/if} {call_hook
+	 {/if} {call_hook
 	name="Templates::Common::Header::Navbar::CurrentJournal"} {foreach
 	from=$navMenuItems item=navItem} {if $navItem.url != '' &&
 	$navItem.name != ''}

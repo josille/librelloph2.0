@@ -46,10 +46,10 @@ doi: {$article->getDOI()} | {$article->getJournalTitle()} | {$issueArt->getYear(
 </div>
 
 <div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 font_size_12">
+<div class="col-xs-12 col-sm-11 col-md-9 col-lg-9 font_size_12">
 {$article->getAuthorAffiliationHTMLtpl()}
 </div>
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 font_size_10">
+<div class="col-xs-5 col-sm-5 col-md-3 col-lg-3 font_size_10">
 {foreach from=$article->getGalleys() item=galley name=galleyList}
 
 

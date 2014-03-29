@@ -86,12 +86,12 @@ allow_url_fopen = Off
 ;base_url[index] = http://www.librelloph.com/ojs/index.php
 ;base_url[librelloph/index.php/challengesinsustainability] = http://localhost/librelloph.com/challengesinsustainability
 ;base_url[index] = http://localhost/librelloph
-base_url[index] = http://localhost/librelloph2.0
-base_url[challengesinsustainability] = http://localhost/librelloph2.0/challengesinsustainability
-base_url[journalofhumansecurity] = http://localhost/librelloph2.0/journalofhumansecurity
-base_url[mediaandcommunication] = http://localhost/librelloph2.0/mediaandcommunication
-base_url[politicsandgovernance] = http://localhost/librelloph2.0/politicsandgovernance
-base_url[socialinclusion] = http://localhost/librelloph2.0/socialinclusion
+base_url[index] = http://localhosts
+base_url[challengesinsustainability] = http://localhost/challengesinsustainability
+;base_url[journalofhumansecurity] = http://localhost/librelloph2.0/journalofhumansecurity
+;base_url[mediaandcommunication] = http://localhost/librelloph2.0/mediaandcommunication
+;base_url[politicsandgovernance] = http://localhost/librelloph2.0/politicsandgovernance
+;base_url[socialinclusion] = http://localhost/librelloph2.0/socialinclusion
 
 ; Generate RESTful URLs using mod_rewrite.  This requires the
 ; rewrite directive to be enabled in your .htaccess or httpd.conf.
@@ -117,7 +117,7 @@ citation_checking_max_processes = 3
 driver = mysql
 host = localhost
 username = root
-password = 
+password = pass
 name = cicerone_librello_pub
 
 ; Enable persistent connections
@@ -197,7 +197,7 @@ charset_normalization = Off
 ; Windows users should use forward slashes
 ;files_dir = /home/cicerone/librello_library
 ;files_dir = C:\xampp\htdocs\librelloph.com\librello_library
-files_dir = C:\wamp\www\librello_library
+files_dir = /var/www/librello_library
 
 ; Path to the directory to store public uploaded files
 ; (This directory should be web-accessible and the specified path
