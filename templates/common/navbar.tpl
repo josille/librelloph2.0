@@ -240,7 +240,8 @@ key="plugins.block.user.loggedInAs"} <strong>{$loggedInUsername|escape}</strong>
 	key=$navItem.name}{/if}</a></li>
 	{/if} {/foreach}
 	
-	{if $currentJournal}
+	{if $currentJournal && $currentJournal->getJournalId() != 2 && $currentJournal->getJournalId() != 6 && $currentJournal->getJournalId() != 5}
+
 	<li class="pull-right element_remove"><a target='blank' href="{$submissionBaseUrl}/index.php/{$currentJournal->getPath()}/login" class="btn btn-default btn-login">Login
     </a></li>
 	<li class="active pull-right element_remove"><a target='blank' href="{$submissionBaseUrl}/index.php/{$currentJournal->getPath()}/author/submit">Submit an article
