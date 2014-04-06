@@ -126,6 +126,10 @@ $alternatePageHeader} {$alternatePageHeader} {elseif $siteTitle}
 
 			</a></li>
 			{/iterate}
+            <li>
+                <br/>
+                    <a href="http://www.librelloph.com/formerjournals" class="btn btn-primary btn-sm active" role="button"">Former Journals</a>
+                </li>
 		</ul>
 		{/if}
 	</div>

@@ -264,6 +264,7 @@
 	<message key="locale.supported">Supported locales</message>
 	<message key="navigation.about">About</message>
 	<message key="navigation.forauthors">For Authors</message>
+    <message key="navigation.formerjournals">Former Journals</message>
 	<message key="navigation.indexing">Indexing and Archiving</message>
 	<message key="navigation.membership">Membership</message>
 	<message key="navigation.membershipList">Members List</message>
